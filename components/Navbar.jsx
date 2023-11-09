@@ -55,7 +55,7 @@ const Navbar = () => {
     }
 
     return (
-        <header className={`w-full px-32 py-8 font-medium flex items-center justify-between dark:text-light relative ${montserrat.className} z-10 lg:px-16 md:px-12 sm:px-8`}>
+        <header className={`w-full h-max px-32 py-8 font-medium flex items-center justify-between dark:text-light relative ${montserrat.className} z-10 lg:px-16 md:px-12 sm:px-8`} onClick={() => isOpen ? setIsOpen(false) : ""}>
 
             <button className='flex-col justify-center items-center hidden lg:flex' onClick={handleClick}>
                 <span className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm  ${isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"}`}></span>
@@ -72,16 +72,16 @@ const Navbar = () => {
                 </nav>
 
                 <nav className='flex items-center justify-end flex-1 gap-3'>
-                    <MotionLink href="/1" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <MotionLink href="/https://twitter.com/tejaspatel1532" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <TwitterIcon />
                     </MotionLink>
-                    <MotionLink href="/2" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <MotionLink href="https://github.com/Techno-Tez" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <GithubIcon />
                     </MotionLink>
-                    <MotionLink href="/3" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <MotionLink href="/https://www.linkedin.com/in/techtez/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <LinkedInIcon />
                     </MotionLink>
-                    <MotionLink href="/4" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <MotionLink href="/https://www.instagram.com/_pateltejas_/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <InstagramIcon />
                     </MotionLink>
 
@@ -97,7 +97,7 @@ const Navbar = () => {
             </div>
 
             {isOpen && (
-                <motion.div initial={{scale: 0, opacity:0, x: "-50%", y: "-50%"}} animate={{scale:1, opacity:1, transition: {duration: "0.2"}}} className='min-w-[70vw] flex justify-between items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col z-30 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32 gap-10'>
+                <motion.div initial={{scale: 0, opacity:0, x: "-50%", y: "-50%"}} animate={{scale:1, opacity:1, transition: {duration: "0.2"}}} className='min-w-[80vw] flex justify-between items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col z-30 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32 gap-10'>
                     <nav className='flex gap-4 items-center flex-col'>
                         <CustomMobileLink toggle={handleClick} href={"/"} title="Home" className='text-light dark:text-dark' />
                         <CustomMobileLink toggle={handleClick} href="/about" title="About" className='text-light dark:text-dark' />

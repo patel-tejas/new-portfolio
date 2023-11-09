@@ -7,7 +7,7 @@ const page = () => {
   return (
     <>
       <TransitionEffect />
-      
+
       <Form />
     </>
   )

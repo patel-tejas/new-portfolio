@@ -4,15 +4,15 @@
 
 @layer base {
     input {
-      @apply bg-gray-200/75 px-4 py-3 rounded-[8px];
+      @apply bg-gray-200/75 px-4 py-3 rounded-[8px] dark:text-black placeholder:dark:text-black/75;
     }
     textarea {
-      @apply bg-gray-200/75 px-4 py-3 rounded-[8px];
+      @apply bg-gray-200/75 px-4 py-3 rounded-[8px] dark:text-black placeholder:dark:text-black/75;
     }
     input:focus {
-        @apply outline outline-[1px] outline-dark 
+        @apply outline outline-[1px] outline-dark dark:outline-white
     }
     textarea:focus {
-        @apply outline outline-[1px] outline-dark 
+        @apply outline outline-[1px] outline-dark dark:outline-white
     }
   }

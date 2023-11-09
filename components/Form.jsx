@@ -20,7 +20,7 @@ const Form = () => {
 
     const onSubmit = async (data) => {
         try {
-            const formData = await axios.post("http://localhost:3000/api/contact", data)
+            const formData = await axios.post("/api/contact", data)
             toast.success('Message Sent Successfully', {
                 position: "top-right",
                 autoClose: 3000,

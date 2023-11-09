@@ -1,0 +1,19 @@
+.cursor_dot{
+    width: 5px;
+    height: 5px;
+}
+.cursor_outline{
+    width: 30px;
+    height: 30px;
+}
+
+.cursor_dot,
+.cursor_outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 100;
+    pointer-events: none
+}

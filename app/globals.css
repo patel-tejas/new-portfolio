@@ -2,3 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    input {
+      @apply bg-gray-200/75 px-4 py-3 rounded-[8px];
+    }
+    textarea {
+      @apply bg-gray-200/75 px-4 py-3 rounded-[8px];
+    }
+    input:focus {
+        @apply outline outline-[1px] outline-dark 
+    }
+    textarea:focus {
+        @apply outline outline-[1px] outline-dark 
+    }
+  }

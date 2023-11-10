@@ -54,7 +54,7 @@ const Form = () => {
     return (
         <div className='flex justify-center min-h-screen px-6'>
             <form className='w-[60vw] lg:w-[80vw] sm:w-full'>
-                <AnimatedText className="text-7xl lg:text-5xl xs:text-3xl py-8 text-left" text="Let's Talk!! 😙" />
+                <AnimatedText className="text-7xl lg:text-5xl xs:text-3xl py-8 text-left" text="Let's Talk!! 😊" />
                 <div className='flex flex-col gap-5 xs:text-[13px] dark:text-white'>
                     <div className='grid items-center justify-center grid-cols-2 gap-3 md:grid-cols-1'>
                         <div className='flex flex-col gap-1'>
@@ -102,6 +102,7 @@ const Form = () => {
                         <span><RiTwitterXFill /></span>
                     </Link>
 
+                    
                 </div>
             </form>
 

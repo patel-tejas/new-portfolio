@@ -13,7 +13,9 @@ const HeroText = () => {
                 ],
                 autoStart: true,
                 loop: true,
-                
+                delay: (70),
+                deleteSpeed: (60)
+            
             }} />
   )
 }

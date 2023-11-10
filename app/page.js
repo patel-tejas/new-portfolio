@@ -16,10 +16,10 @@ export default function Home() {
         <Layout className="pt-0 md:pt-16 xs:px-4">
           <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh]'>
             <div className='w-3/4 md:w-full h-full lg:flex justify-center'>
-              <Image alt="Yeah, it's me here" src={profilePic} className='w-full h-auto lg:hidden md:inline-block  md:h-[40vh] md:w-auto' />
+              <Image alt="Yeah, it's me here" src={profilePic} className='w-full h-auto lg:h-[50vh] lg:w-auto lg:mb-5 md:inline-block  md:h-[40vh] md:w-auto md:mb-1' />
             </div>
             <div className='w-full h-[60vh] lg:h-[80vh] md:h-[80vh] sm:h-[60vh] mx-5 flex flex-col md:mt-5'>
-              <div className='text-6xl xl:text-5xl lg:text-center lg:text-6xl md:text-5xl sm:text-3xl h-1/2 md:h-1/3 sm:h-1/2 font-bold flex  lg:w-full flex-col gap-2'>
+              <div className='text-6xl xl:text-5xl lg:text-center lg:text-6xl md:text-5xl sm:text-3xl h-1/2 md:h-1/3 sm:h-1/2 xs:h-[28vh] font-bold flex  lg:w-full flex-col gap-2'>
                 <span >Hello!</span>
                 <span>i'm <span className='text-orange-500 duration-200 '>Tejas Patel</span>.</span>
 

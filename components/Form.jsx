@@ -69,7 +69,7 @@ const Form = () => {
                     <div className=''>
                         <div className='flex flex-col gap-1'>
                             <label htmlFor="message">Message</label>
-                            <textarea name="message" rows={3} id='message' {...register("message")} placeholder="Your Message" className='w-full' />
+                            <textarea name="message" rows={5} id='message' {...register("message")} placeholder="Your Message" className='w-full' />
                         </div>
                     </div>
                     {errors.name && <span>This field is required</span>}

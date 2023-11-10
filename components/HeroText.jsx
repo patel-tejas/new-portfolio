@@ -8,15 +8,18 @@ const HeroText = () => {
     <TypewriterComponent
             options={{
                 strings: [
-                    'Hey👋 Welcome to my web world !',
-                    '"Elevating Digital ideas with Creative Code ..."',
+                    '"Turning ideas into reality, one line at a time."',
+                    '"Elevating Digital ideas with Creative Code"',
+                    '"Bridging the gap between imagination and reality.'
                 ],
                 autoStart: true,
                 loop: true,
                 delay: (70),
-                deleteSpeed: (60)
+                deleteSpeed: (40)
             
-            }} />
+            }} 
+            
+            />
   )
 }
 

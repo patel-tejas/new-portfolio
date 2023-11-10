@@ -52,7 +52,7 @@ const Form = () => {
         }
     }
     return (
-        <div className='flex justify-center min-h-screen px-6'>
+        <div className='flex justify-center min-h-screen px-6 mb-20'>
             <form className='w-[60vw] lg:w-[80vw] sm:w-full'>
                 <AnimatedText className="text-7xl lg:text-5xl xs:text-3xl py-5 text-left" text="Let's Talk!! 😊" />
                 <div className='flex flex-col gap-5 xs:text-[13px] dark:text-white'>

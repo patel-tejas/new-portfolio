@@ -58,17 +58,17 @@ const Form = () => {
                 <div className='flex flex-col gap-5 xs:text-[13px] dark:text-white'>
                     <div className='grid items-center justify-center grid-cols-2 gap-3 md:grid-cols-1'>
                         <div className='flex flex-col gap-1'>
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name" className='uppercase'>Name</label>
                             <input name="name" id='name' placeholder="Your Name" {...register("name")} className='' />
                         </div>
                         <div className='flex flex-col gap-1'>
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email" className='uppercase'>Email</label>
                             <input name="email" id='email' placeholder="Your email" {...register("email", { required: true })} />
                         </div>
                     </div>
                     <div className=''>
                         <div className='flex flex-col gap-1'>
-                            <label htmlFor="message">Message</label>
+                            <label htmlFor="message" className='uppercase'>Message</label>
                             <textarea name="message" rows={5} id='message' {...register("message")} placeholder="Your Message" className='w-full' />
                         </div>
                     </div>

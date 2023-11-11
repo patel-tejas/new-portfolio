@@ -17,8 +17,8 @@ const Expertise = () => {
                 <div className='flex flex-col items-center justify-center w-[50%] md:w-full gap-8'>
                     <div className=' h-max py-5  flex items-center text-center  w-full p-4 bg-light border border-solid border-dark rounded-2xl relative dark:bg-dark dark:border-light dark:text-light gap-5 md:flex-col md:h-max md:gap-2 group cursor-pointer '>
                         <div className='absolute top-1 -right-2 -z-10 w-[101%] h-[101%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-2xl rounded-tr-2xl' />
-                        <figure className='mb-0 md:h-1/4 md:w-auto w-[25%] h-auto p-4 flex items-center justify-center bg-gray-200 rounded-full'>
-                            <Image src={webDev2} className='w-full h-auto p-2 group-hover:-translate-y-1 group-hover:transition ease-out delay-150 duration-300' />
+                        <figure className='mb-0 md:h-1/4 md:w-auto w-[20%] h-full p-4 flex items-center justify-center bg-gray-200 rounded-full'>
+                            <Image src={webDev2} className=' p-2 group-hover:-translate-y-1 group-hover:transition ease-out delay-150 duration-300' />
                         </figure>
                         <div className='flex flex-col gap-2 w-[80%] md:w-full justify-center items-center '>
                             <h1 className='text-lg font-semibold text-left md:text-center w-full'>Web Development </h1>
@@ -28,7 +28,7 @@ const Expertise = () => {
                     </div>
                     <div className=' h-max py-5  flex items-center text-center  w-full p-4 bg-light border border-solid border-dark rounded-2xl relative dark:bg-dark dark:border-light dark:text-light gap-5 md:flex-col md:h-max md:gap-2 group cursor-pointer '>
                         <div className='absolute top-1 -right-2 -z-10 w-[101%] h-[101%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-2xl rounded-tr-2xl' />
-                        <figure className='mb-0 md:h-1/4 md:w-auto w-[25%] h-auto p-4 flex items-center justify-center bg-gray-200 rounded-full '>
+                        <figure className='mb-0 md:h-1/4 md:w-auto w-[20%] h-auto p-4 flex items-center justify-center bg-gray-200 rounded-full '>
                             <Image src={webDesign} className=' w-full h-auto p-2 group-hover:-translate-y-1 group-hover:transition ease-out delay-150 duration-300' />
                         </figure>
                         <div className='flex flex-col gap-2 w-[80%] md:w-full justify-center items-center '>

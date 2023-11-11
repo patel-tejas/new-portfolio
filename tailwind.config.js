@@ -17,7 +17,7 @@ module.exports = {
       },
       animation: {
         mover: "mover 1.5s infinite alternate",
-        moverfast: "mover 1.8s infinite alternate",
+        moverfast: "mover 1.8s infinite alternate ",
         moverfastfast: "mover 2s infinite alternate"
       },
       fontFamily: {
@@ -40,7 +40,7 @@ module.exports = {
       lg: { max: "1023px" },
       // => @media (max-width: 1023px) { ... }
   
-      md: { max: "767px" },
+      md: { max: "768px" },
       // => @media (max-width: 767px) { ... }
   
       sm: { max: "639px" },

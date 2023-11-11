@@ -21,7 +21,7 @@ export default function Home() {
       <main className='flex items-center text-dark w-full min-h-screen font-mont dark:text-light'>
         <Layout className="pt-0 md:pt-16 xs:px-4">
           <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh] relative'>
-            <div className='w-3/4 md:w-full h-full lg:flex justify-center relative'>
+            <div className='w-3/4 md:w-full h-full lg:flex justify-center relative '>
               <Image alt="Yeah, it's me here" src={profilePic} className='w-full h-auto lg:h-[50vh] lg:w-auto lg:mb-5 md:inline-block  md:h-[40vh] md:w-auto md:mb-1' />
               <Image src={img3} className='absolute h-[35px] sm:h-[30px] bottom-0 left-10 lg:left-5  w-auto sm:bottom-0 sm:left-3 animate-moverfast'/>
             </div>

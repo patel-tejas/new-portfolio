@@ -13,12 +13,17 @@ module.exports = {
         mover: {
           '0%': {transform: "translateY(0px)"},
           '100%': {transform: "translateY(20px)"}
+        },
+        ImageMover: {
+          '0%': {transform: "translateY(0px)"},
+          '100%': {transform: "translateY(20px)"}
         }
       },
       animation: {
         mover: "mover 1.5s infinite alternate",
         moverfast: "mover 1.8s infinite alternate ",
-        moverfastfast: "mover 2s infinite alternate"
+        moverfastfast: "mover 2s infinite alternate",
+        imageMover: "mover 0.5s"
       },
       fontFamily: {
         mont: ['var(--font-mont)'],

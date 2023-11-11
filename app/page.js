@@ -8,20 +8,27 @@ import Link from 'next/link'
 import { LinkArrow } from '@/components/Icons'
 import TransitionEffect from '@/components/TransitionEffect'
 import Expertise from '@/components/Expertise'
+
+import img1 from "@/public/half-circle.png"
+import img2 from "@/public/curn-icon.png"
+import img3 from "@/public/triangle-icon.png"
+
+
 export default function Home() {
   return (
     <>
       <TransitionEffect />
       <main className='flex items-center text-dark w-full min-h-screen font-mont dark:text-light'>
         <Layout className="pt-0 md:pt-16 xs:px-4">
-          <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh]'>
-            <div className='w-3/4 md:w-full h-full lg:flex justify-center'>
+          <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh] relative'>
+            <div className='w-3/4 md:w-full h-full lg:flex justify-center relative'>
               <Image alt="Yeah, it's me here" src={profilePic} className='w-full h-auto lg:h-[50vh] lg:w-auto lg:mb-5 md:inline-block  md:h-[40vh] md:w-auto md:mb-1' />
+              <Image src={img3} className='absolute h-[35px] sm:h-[30px] bottom-0 left-10 lg:left-5  w-auto animate-moverfast sm:bottom-0 sm:left-3 '/>
             </div>
             <div className='w-full h-[60vh] lg:h-[80vh] md:h-[80vh] sm:h-[60vh] mx-5 flex flex-col md:mt-5'>
               <div className='text-6xl xl:text-5xl lg:text-center lg:text-6xl md:text-5xl sm:text-3xl h-1/2 md:h-1/3 sm:h-1/2 xs:h-[26vh] font-bold flex  lg:w-full flex-col gap-2'>
                 <span >Hello!</span>
-                <span>i'm <span className='text-orange-500 duration-200 '>Tejas Patel</span>.</span>
+                <span>I'm <span className='text-orange-500 duration-200 '>Tejas Patel</span>.</span>
 
                 <span className='text-xl'><HeroText /></span>
               </div>
@@ -37,6 +44,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
+        
+            <Image src={img1} className='absolute h-[60px] w-auto top-10 right-10 sm:right-5 sm:h-[40px] sm:top-5 animate-mover'/>
+            <Image src={img2} className='absolute h-[40px] w-auto top-10 left-10  sm:top-5 sm:left-7 animate-moverfastfast'/>
+            
           </div>
 
           <Expertise />

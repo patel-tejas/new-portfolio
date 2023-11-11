@@ -8,6 +8,18 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+
+      keyframes:{
+        mover: {
+          '0%': {transform: "translateY(0px)"},
+          '100%': {transform: "translateY(20px)"}
+        }
+      },
+      animation: {
+        mover: "mover 1.5s infinite alternate",
+        moverfast: "mover 1.8s infinite alternate",
+        moverfastfast: "mover 2s infinite alternate"
+      },
       fontFamily: {
         mont: ['var(--font-mont)'],
       },

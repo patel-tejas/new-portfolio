@@ -19,7 +19,7 @@ const Expertise = () => {
                     <div className=' h-max py-5  flex items-center text-center  w-full p-4 bg-light border border-solid border-dark rounded-2xl relative dark:bg-dark dark:border-light dark:text-light gap-5 md:flex-col md:h-max md:gap-2 group cursor-pointer xs:w-[90%]'>
                         <div className='absolute top-1 -right-2 -z-10 w-[101%] h-[101%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-2xl rounded-tr-2xl' />
                         <figure className='mb-0 md:h-1/4 md:w-auto w-[20%] h-full p-4 flex items-center justify-center bg-gray-200 rounded-full'>
-                            <Image src={webDev2} className=' p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
+                            <Image src={webDev2} className=' w-full h-auto p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
                         </figure>
                         <div className='flex flex-col gap-5 w-[80%] md:w-full justify-center items-center '>
                         <h1 className='relative text-lg font-semibold text-left md:text-center w-full'>

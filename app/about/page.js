@@ -49,13 +49,13 @@ const page = () => {
               <Image src={pfp} alt='pfp' className='w-full h-auto rounded-2xl' />
             </div>
 
-            <div className='col-span-2 flex flex-col items-end justify-between xl:col-span-8 xl:flex-row xl:items-center md:order-3 '>
-              <div className='flex flex-col items-end justify-center xl:items-center'>
+            <div className='col-span-2 flex flex-col items-end justify-evenly xl:col-span-8 xl:flex-row xl:items-center md:order-3 '>
+              {/* <div className='flex flex-col items-end justify-center xl:items-center'>
                 <span className='text-7xl font-bold  inline-block md:text-6xl sm:text-5xl xs:text-3xl'>
                   <AnimatedNumbers value={50} />
                 </span>
                 <h2 className='text-xl font-medium dark:text-light/75 capitalize text-dark/75 xl:text-center md:text-lg sm:text-base xs:text-sm '>Satisfied Clients</h2>
-              </div>
+              </div> */}
               <div className='flex flex-col items-end justify-center'>
                 <span className='text-7xl font-bold  inline-block md:text-6xl sm:text-5xl xs:text-3xl'>
                   <AnimatedNumbers value={10} />

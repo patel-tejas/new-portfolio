@@ -10,7 +10,7 @@ const Details = ({ position, company, address, companyLink = "", time, work }) =
     return (
         <li className='my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between md:w-[80%]' ref={ref}>
             <LiIcon reference={ref} />
-            <motion.div initial={{y:100}} whileInView={{y:0}} transition={{duration:0.8, type:"spring"}}>
+            <motion.div initial={{y:100}} whileInView={{y:0}} transition={{duration:0.8, type:"spring"}} className='flex flex-col gap-2'>
                 <h3 className='capitalize font-bold text-2xl sm:text-xl xs:text-lg'>
                     {position}&nbsp;<a className="text-primary dark:text-secondary capitalize" target="_black" href={companyLink}>@{company}</a>
                 </h3>
@@ -54,23 +54,8 @@ const Experience = () => {
                         work="Worked with a team responsible for creating a web-app transorming form applications. Added auto-fill features and integrated backend and frontend while developing the project on NextJs"
                     />
 
-                    <Details
-                        position="SDE Intern"
-                        company="Yudiz Solutions"
-                        time="2023"
-                        companyLink='https://www.yudiz.com/'
-                        address="BSquare 2, Ahmedabad, IND"
-                        work="Worked with a team responsible for creating a web-app transorming form applications. Added auto-fill features and integrated backend and frontend while developing the project on NextJs"
-                    />
 
-                    <Details
-                        position="SDE Intern"
-                        company="Yudiz Solutions"
-                        time="2023"
-                        companyLink='https://www.yudiz.com/'
-                        address="BSquare 2, Ahmedabad, IND"
-                        work="Worked with a team responsible for creating a web-app transorming form applications. Added auto-fill features and integrated backend and frontend while developing the project on NextJs"
-                    />
+                    
                 </ul>
             </div>
         </div>

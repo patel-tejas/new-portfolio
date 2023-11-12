@@ -9,6 +9,7 @@ import sparkX from "@/public/sparkx.png"
 import prime from "@/public/prime.png"
 import expenseTrack from "@/public/Expense.png"
 import usability from "@/public/Usability.png"
+import portfolio from "@/public/portfolio.png"
 import ArticlesPage from '@/components/ArticlesPage'
 import TransitionEffect from '@/components/TransitionEffect'
 
@@ -92,15 +93,7 @@ const page = () => {
                 github="/"
               />
             </div>
-            <div className='col-span-6 sm:col-span-12'>
-              <Project
-                title="SparkX Generative AI"
-                link="https://spark-x-ai.vercel.app/"
-                type="Featured Project"
-                img={sparkX}
-                github="https://github.com/Techno-Tez/SparkX-AI"
-              />
-            </div>
+            
             <div className='col-span-6 sm:col-span-12'>
               <Project
                 title="Usability Hub- Clone"
@@ -119,6 +112,15 @@ const page = () => {
                 github="https://github.com/Techno-Tez/Prime-One-Cleaning"
               />
             </div>
+            <div className='col-span-6 sm:col-span-12'>
+              <Project
+                title="Old Portfolio"
+                link="https://tejaspatel-portfolio.netlify.app/"
+                type="Featured Project"
+                img={portfolio}
+                github="https://github.com/Techno-Tez/My-Portfolio"
+              />
+            </div>
 
             <div className='col-span-6 sm:col-span-12'>
               <Project
@@ -129,7 +131,16 @@ const page = () => {
                 github="https://github.com/Techno-Tez/Expense-Tracker"
               />
             </div>
-
+            <div className='col-span-12'>
+              <FeaturedProjects
+                title="SparkX Generative AI"
+                summary="A Web App used to generate text, images, videos, and audio using AI. Have used OpenAI's API services to generate text, code and image services. While for audio and video used Replicate AI's APIs."
+                link="https://spark-x-ai.vercel.app/"
+                type="Featured Project"e
+                img={sparkX}
+                github="https://github.com/Techno-Tez/SparkX-AI"
+              />
+            </div>
           </div>
         </Layout>
       </main>

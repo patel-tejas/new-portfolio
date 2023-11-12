@@ -5,6 +5,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import project1 from "@/public/Project1.png"
+import sparkX from "@/public/sparkx.png"
+import prime from "@/public/prime.png"
+import expenseTrack from "@/public/expense.png"
+import usability from "@/public/Usability.png"
 import ArticlesPage from '@/components/ArticlesPage'
 import TransitionEffect from '@/components/TransitionEffect'
 
@@ -45,7 +49,7 @@ const FeaturedProjects = ({ type, link, title, summary, img, github }) => {
 const Project = ({ title, type, img, link, github }) => {
   return (
     <article className='w-full flex flex-col items-center justify-center rounded-3xl rounded-br-2xl border border-solid border-dark shadow-2xl bg-light dark:bg-dark dark:border-light dark:text-light gap-4 p-4 relative xs:p-4'>
-       <div className='absolute top-1 -right-3 -z-10 w-[102%] h-[103%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-3xl xs:-right-2 sm:h-[102%] xs:w-[100%]  md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]' />
+      <div className='absolute top-1 -right-3 -z-10 w-[102%] h-[103%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-3xl xs:-right-2 sm:h-[102%] xs:w-[100%]  md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]' />
       <Link href={link} target='_blank' className='w-full cursor-pointer overflow-hidden rounded-lg'>
         <Image
           src={img}
@@ -62,7 +66,7 @@ const Project = ({ title, type, img, link, github }) => {
 
         <div className='w-full justify-between flex gap-4 mt-2 items-center'>
           <Link href={link} target='_blank' className='rounded-lg font-semibold text-dark/75 hover:underline underline-offset-4 hover:text-dark dark:text-light/75 md:text-base text-lg'>Visit</Link>
-          <Link href={github} target='_blank' className='w-10'><GithubIcon className="w-10 h-10 md:w-6"/></Link>
+          <Link href={github} target='_blank' className='w-10'><GithubIcon className="w-10 h-10 md:w-6" /></Link>
         </div>
       </div>
     </article>
@@ -72,7 +76,7 @@ const Project = ({ title, type, img, link, github }) => {
 const page = () => {
   return (
     <>
-    <TransitionEffect />
+      <TransitionEffect />
       <main className='w-full flex flex-col items-center justify-center'>
         <Layout className="pt-16 md:pt-8 sm:pd-4 xs:pt-2 sm:mb-10">
           <AnimatedText className="lg:text-7xl  sm:text-6xl xs:text-4xl py-8" text="Imagination trumphs Knowledge !" />
@@ -81,7 +85,7 @@ const page = () => {
             <div className='col-span-12'>
               <FeaturedProjects
                 title="OpenVerse - Blog App"
-                summary="A platform to share your views, knowledge, opinions and emotions to audience freely and openly. First social handle made by me."
+                summary="A platform to share your views, knowledge, opinions and emotions with people, freely and openly."
                 link="https://openverse-blog.vercel.app/"
                 type="Featured Project"
                 img={project1}
@@ -90,40 +94,42 @@ const page = () => {
             </div>
             <div className='col-span-6 sm:col-span-12'>
               <Project
-                title="OpenVerse - Blog App"
-                link="https://openverse-blog.vercel.app/"
+                title="SparkX Generative AI"
+                link="https://spark-x-ai.vercel.app/"
                 type="Featured Project"
-                img={project1}
-                github="/"
+                img={sparkX}
+                github="https://github.com/Techno-Tez/SparkX-AI"
               />
             </div>
             <div className='col-span-6 sm:col-span-12'>
-            <Project
-                title="OpenVerse - Blog App"
-                link="https://openverse-blog.vercel.app/"
+              <Project
+                title="Usability Hub- Clone"
+                link="https://techno-tez.github.io/Usability-Clone-1/"
                 type="Featured Project"
-                img={project1}
-                github="/"
+                img={usability}
+                github="https://github.com/Techno-Tez/Usability-Clone-1"
               />
             </div>
             <div className='col-span-6 sm:col-span-12'>
-            <Project
-                title="OpenVerse - Blog App"
-                link="https://openverse-blog.vercel.app/"
+              <Project
+                title="Cleaning Service Website"
+                link="https://primeonecleaning.netlify.app/"
                 type="Featured Project"
-                img={project1}
-                github="/"
+                img={prime}
+                github="https://github.com/Techno-Tez/Prime-One-Cleaning"
               />
             </div>
+
             <div className='col-span-6 sm:col-span-12'>
-            <Project
-                title="OpenVerse - Blog App"
-                link="https://openverse-blog.vercel.app/"
+              <Project
+                title="Expense Tracker"
+                link="https://github.com/Techno-Tez/Expense-Tracker"
                 type="Featured Project"
-                img={project1}
-                github="/"
+                img={expenseTrack}
+                github="https://github.com/Techno-Tez/Expense-Tracker"
               />
             </div>
+
           </div>
         </Layout>
       </main>

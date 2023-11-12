@@ -7,7 +7,7 @@ import React from 'react'
 import project1 from "@/public/Project1.png"
 import sparkX from "@/public/sparkx.png"
 import prime from "@/public/prime.png"
-import expenseTrack from "@/public/expense.png"
+import expenseTrack from "@/public/Expense.png"
 import usability from "@/public/Usability.png"
 import ArticlesPage from '@/components/ArticlesPage'
 import TransitionEffect from '@/components/TransitionEffect'

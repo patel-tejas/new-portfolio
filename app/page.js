@@ -12,6 +12,7 @@ import Expertise from '@/components/Expertise'
 import img1 from "@/public/half-circle.png"
 import img2 from "@/public/half-circle-right-icon.png"
 import img3 from "@/public/triangle-icon.png"
+import Form from '@/components/Form'
 
 
 export default function Home() {
@@ -51,7 +52,7 @@ export default function Home() {
           </div>
 
           <Expertise />
-
+          <Form className="px-0 mb-0 pb-0 !justify-start"/>
         </Layout>
         <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="techtez" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FD0" data-position="Right" data-x_margin="18" data-y_margin="18" defer></script>
       </main>

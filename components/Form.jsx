@@ -10,8 +10,9 @@ import { RiTwitterXFill } from 'react-icons/ri';
 import { GrLinkedinOption } from 'react-icons/gr';
 import { BiLogoInstagram } from 'react-icons/bi';
 import Link from 'next/link';
+import Layout from '@/components/Layout'
 
-const Form = () => {
+const Form = ({ className }) => {
 
     const deleteProduct = async () => {
 
@@ -24,7 +25,16 @@ const Form = () => {
     } = useForm()
 
     const onSubmit = async (data) => {
-        try {
+        try {toast.info('Sending', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
             const formData = await axios.post("/api/contact", data)
             toast.success('Message Sent Successfully', {
                 position: "top-right",
@@ -52,8 +62,8 @@ const Form = () => {
         }
     }
     return (
-        <div className='flex justify-center min-h-screen px-6 mb-20'>
-            <form className='w-[60vw] lg:w-[80vw] sm:w-full'>
+        <Layout className={`pt-16 min-h-screen flex justify-center ${className} w-full`}>
+            <form className='w-[60%] lg:w-[80%] sm:w-full'>
                 <AnimatedText className="text-7xl lg:text-5xl xs:text-3xl py-5 text-left" text="Let's Talk!! 😊" />
                 <div className='flex flex-col gap-5 xs:text-[13px] dark:text-white'>
                     <div className='grid items-center justify-center grid-cols-2 gap-3 md:grid-cols-1'>
@@ -87,26 +97,29 @@ const Form = () => {
                         </button>
                     </div>
                 </div>
-                <div className='flex flex-col gap-4 mt-10 items-center justify-center text-[18px] sm:text-[14px]'>
+                {!className && (
 
-                    {/* <Link href="https://www.instagram.com/_pateltejas_/" target='_blank' className='w-[60%] md:w-[80%] sm:w-full py-2 rounded-lg text-white bg-gradient-to-r from-purple-400 to-pink-600 flex items-center justify-center gap-2 hover:scale-105 duration-300 hover:shadow-2xl'>
-                        <span> Connect on Instagram </span>
-                        <span className=''><BiLogoInstagram /></span>
-                    </Link> */}
-                    <Link href="https://www.linkedin.com/in/techtez/"  target='_blank' className='w-[60%] md:w-[80%] sm:w-full py-2 rounded-lg text-white bg-blue-400 flex items-center justify-center gap-2 hover:scale-105 duration-300 hover:shadow-2xl'>
-                        <span > Connect on LinkedIn </span>
-                        <span ><GrLinkedinOption /></span>
-                    </Link>
-                    <Link href="https://twitter.com/tejaspatel1532"  target='_blank' className='w-[60%] md:w-[80%] sm:w-full py-2 rounded-lg text-white bg-dark/80 flex items-center justify-center gap-2 hover:scale-105 duration-300 hover:shadow-2xl dark:border border-white dark:bg-dark/20'>
-                        <span> Connect on Twitter</span>
-                        <span><RiTwitterXFill /></span>
-                    </Link>
+                    <div className='flex flex-col gap-4 mt-10 items-center justify-center text-[18px] sm:text-[14px]'>
 
-                    
-                </div>
+                        <Link href="https://www.linkedin.com/in/techtez/" target='_blank' className='w-[60%] md:w-[80%] sm:w-full py-2 rounded-lg text-white bg-blue-400 flex items-center justify-center gap-2 hover:scale-105 duration-300 hover:shadow-2xl'>
+                            <span > Connect on LinkedIn </span>
+                            <span ><GrLinkedinOption /></span>
+                        </Link>
+                        <Link href="https://twitter.com/tejaspatel1532" target='_blank' className='w-[60%] md:w-[80%] sm:w-full py-2 rounded-lg text-white bg-dark/80 flex items-center justify-center gap-2 hover:scale-105 duration-300 hover:shadow-2xl dark:border border-white dark:bg-dark/20'>
+                            <span> Connect on Twitter</span>
+                            <span><RiTwitterXFill /></span>
+                        </Link>
+                        <Link href="https://www.instagram.com/_pateltejas_/" target='_blank' className='w-[60%] md:w-[80%] sm:w-full py-2 rounded-lg text-white bg-gradient-to-r from-purple-400 to-pink-600 flex items-center justify-center gap-2 hover:scale-105 duration-300 hover:shadow-2xl'>
+                            <span> Connect on Instagram </span>
+                            <span className=''><BiLogoInstagram /></span>
+                        </Link>
+
+
+                    </div>
+                )}
             </form>
 
-        </div >
+        </Layout >
     )
 }
 

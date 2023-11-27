@@ -72,16 +72,16 @@ const Navbar = () => {
                 </nav>
 
                 <nav className='flex items-center justify-end flex-1 gap-3'>
-                    <MotionLink href="/https://twitter.com/tejaspatel1532" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <MotionLink href="https://twitter.com/tejaspatel1532" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <TwitterIcon />
                     </MotionLink>
                     <MotionLink href="https://github.com/Techno-Tez" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <GithubIcon />
                     </MotionLink>
-                    <MotionLink href="/https://www.linkedin.com/in/techtez/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <MotionLink href="https://www.linkedin.com/in/techtez/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <LinkedInIcon />
                     </MotionLink>
-                    <MotionLink href="/https://www.instagram.com/_pateltejas_/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <MotionLink href="https://www.instagram.com/_pateltejas_/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <InstagramIcon />
                     </MotionLink>
 
@@ -97,7 +97,7 @@ const Navbar = () => {
             </div>
 
             {isOpen && (
-                <motion.div initial={{scale: 0, opacity:0, x: "-50%", y: "-50%"}} animate={{scale:1, opacity:1, transition: {duration: "0.2"}}} className='min-w-[80vw] flex justify-between items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col z-30 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32 gap-10'>
+                <motion.div initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }} animate={{ scale: 1, opacity: 1, transition: { duration: "0.2" } }} className='min-w-[80vw] flex justify-between items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col z-30 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32 gap-10'>
                     <nav className='flex gap-4 items-center flex-col'>
                         <CustomMobileLink toggle={handleClick} href={"/"} title="Home" className='text-light dark:text-dark' />
                         <CustomMobileLink toggle={handleClick} href="/about" title="About" className='text-light dark:text-dark' />
@@ -105,27 +105,21 @@ const Navbar = () => {
                         <CustomMobileLink toggle={handleClick} href="/contact" title="Contact" className='text-light dark:text-dark' />
                     </nav>
 
-                    <nav className='flex items-center justify-end flex-1 gap-3 sm:gap-1  '>
-                        <MotionLink href="/1" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <nav className='flex items-center justify-end flex-1 gap-3 sm:gap-3  '>
+                        <MotionLink href="https://twitter.com/tejaspatel1532" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                             <TwitterIcon />
                         </MotionLink>
-                        <MotionLink href="/2" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank' className='bg-light dark:bg-dark rounded-full '>
+                        <MotionLink href="https://github.com/Techno-Tez" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank' className='bg-light dark:bg-dark rounded-full '>
                             <GithubIcon />
                         </MotionLink>
-                        <MotionLink href="/3" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                        <MotionLink href="https://www.linkedin.com/in/techtez/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                             <LinkedInIcon />
                         </MotionLink>
-                        <MotionLink href="/4" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank' className='bg-dark  rounded-full'>
+                        <MotionLink href="https://www.instagram.com/_pateltejas_/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank' className='bg-dark  rounded-full'>
                             <InstagramIcon />
                         </MotionLink>
 
-                        <button onClick={() => setMode(mode === "light" ? "dark" : "light")} className={`ml-3 flex items-center justify-center rounded-full p-1 ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}`}>
-                            {
-                                mode === "dark" ?
-                                    <SunIcon className="fill-dark" /> :
-                                    <MoonIcon className="fill-dark" />
-                            }
-                        </button>
+
 
                     </nav>
                 </motion.div>
@@ -136,6 +130,15 @@ const Navbar = () => {
                 <nav className='absolute left-[50%] translate-x-[-50%] top-2'>
                     <Logo />
                 </nav>
+            </div>
+            <div>
+                <button onClick={() => setMode(mode === "light" ? "dark" : "light")} className={`ml-3 flex items-center justify-center rounded-full p-1 ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}`}>
+                    {
+                        mode === "dark" ?
+                            <SunIcon className="fill-dark" /> :
+                            <MoonIcon className="fill-dark" />
+                    }
+                </button>
             </div>
         </header>
     )

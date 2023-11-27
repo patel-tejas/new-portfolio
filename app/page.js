@@ -10,7 +10,7 @@ import TransitionEffect from '@/components/TransitionEffect'
 import Expertise from '@/components/Expertise'
 
 import img1 from "@/public/half-circle.png"
-import img2 from "@/public/half-circle-right-icon.png"
+// import img2 from "@/public/half-circle-right-icon.png"
 import img3 from "@/public/triangle-icon.png"
 import Form from '@/components/Form'
 
@@ -38,10 +38,10 @@ export default function Home() {
                 <p className='w-full text-[18px] md:text-sm sm:text-xs font-light'>As a skilled software engineer working towards development of web-apps through the use of modern framework- NextJS. Explore my latest projects and articles, showcasing my expertise in React.js and web development.
                 </p>
                 <div className='flex gap-5 mt-10 lg:self-center sm:gap-4 sm:mt-6'>
-                  <Link href="/Tejas Patel Resume.pdf" target='_black' className='flex items-center bg-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light hover:text-dark border border-solid border-dark hover:border-dark duration-200 dark:hover:bg-dark dark:border-light dark:bg-light dark:text-dark dark:hover:text-light md:p-2 md:px-4 md:text-base sm:text-sm'>
+                  <Link href="/Tejas Patel Resume.pdf" target='_black' className='flex items-center bg-dark text-light p-2.5 px-6 text-lg font-semibold hover:bg-light hover:text-dark border border-solid border-dark hover:border-dark duration-200 dark:hover:bg-dark dark:border-light dark:bg-light dark:text-dark dark:hover:text-light md:p-2 md:px-4 md:text-base sm:text-sm'>
                     Resume <LinkArrow className="w-6 ml-2" />
                   </Link>
-                  <Link href="mailto:techtezofficial@gmail.com" className='flex items-center bg-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light hover:text-dark border border-solid border-dark hover:border-dark duration-200 dark:hover:bg-dark dark:border-light dark:bg-light dark:text-dark dark:hover:text-light md:p-2 md:px-4 md:text-base sm:text-sm'>Mail</Link>
+                  <Link href="mailto:techtezofficial@gmail.com" className='flex items-center bg-dark text-light p-2.5 px-6 text-lg font-semibold hover:bg-light hover:text-dark border border-solid border-dark hover:border-dark duration-200 dark:hover:bg-dark dark:border-light dark:bg-light dark:text-dark dark:hover:text-light md:p-2 md:px-4 md:text-base sm:text-sm'>Mail</Link>
                 </div>
               </div>
             </div>

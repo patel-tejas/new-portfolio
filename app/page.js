@@ -52,7 +52,10 @@ export default function Home() {
           </div>
 
           <Expertise />
-          <Form className="px-0 mb-0 pb-10 !justify-start sm:!min-h-max"/>
+          <div>
+            <Form className="px-0 mb-0 pb-10 !justify-end sm:!min-h-max" />
+
+          </div>
         </Layout>
         <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="techtez" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FD0" data-position="Right" data-x_margin="18" data-y_margin="18" defer></script>
       </main>

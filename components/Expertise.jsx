@@ -10,7 +10,7 @@ import seo from "@/public/service-icon4.png"
 
 const Expertise = () => {
     return (
-        <div className='mt-[80px] sm:mt-[30px] xs:mt-[20px] relative mb-10'>
+        <div className='mt-[0px] sm:mt-[0px] xs:mt-[20px] relative mb-10'>
             <h2 className='uppercase w-full text-center text-yellow-600 font-semibold text-xl'>What I do</h2>
             <AnimatedText text="My Expertise" className="uppercase sm:text-4xl" />
             <Image src={img1} className='absolute h-[40px] w-auto top-10 right-10 sm:right-4 sm:h-[20px] md:top-[100px] animate-mover' />

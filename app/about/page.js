@@ -64,7 +64,7 @@ const page = () => {
               </div>
               <div className='flex flex-col items-end justify-center'>
                 <span className='text-7xl font-bold  inline-block md:text-6xl sm:text-5xl xs:text-3xl'>
-                  <AnimatedNumbers value={1.5} decimal={1}/>
+                  <AnimatedNumbers value={1} decimal={0}/>
                 </span>
                 <h2 className='text-xl font-medium dark:text-light/75 capitalize text-dark/75 xl:text-center md:text-lg sm:text-base xs:text-sm '>Years of Expierence</h2>
               </div>

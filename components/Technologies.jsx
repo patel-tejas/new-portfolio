@@ -73,7 +73,7 @@ const Technologies = () => {
         effect={'cards'}
         grabCursor={true}
         modules={[EffectCards, Autoplay]}
-        className="w-[60vw] sm:h-[33vh] mt-10 bg-transparent shadow-2xl rounded-3xl !hidden sm:!block"
+        className="w-[60vw] sm:h-[33vh] mt-10 bg-transparent shadow-2xl rounded-3xl  sm:!block"
         autoplay={{
           disableOnInteraction: false,
         }}

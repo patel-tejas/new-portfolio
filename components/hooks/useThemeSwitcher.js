@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 const useThemeSwitcher = () => {
 
-    const preferDarkQuery = "(prefer-color-scheme: dark)";
+    const preferDarkQuery = "(prefer-color-scheme: light)";
     const [mode, setMode] = useState('')
 
     useEffect(() => {
@@ -13,7 +13,7 @@ const useThemeSwitcher = () => {
 
         const handleChange = () => {
             if (userPref) {
-                let check = userPref === "dark" ? "dark" : "light"
+                let check = userPref === "light" ? "light" : "dark"
                 setMode(check)
 
                 if (check === "dark") {

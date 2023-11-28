@@ -13,7 +13,6 @@ import img1 from "@/public/half-circle.png"
 // import img2 from "@/public/half-circle-right-icon.png"
 import img3 from "@/public/triangle-icon.png"
 import Form from '@/components/Form'
-import Technologies from '@/components/Technologies'
 
 
 export default function Home() {
@@ -53,7 +52,6 @@ export default function Home() {
           </div>
 
           <Expertise />
-          <Technologies />
           <div>
           <Image src={img1} className=' animate-mover' />
             

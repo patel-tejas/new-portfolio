@@ -13,7 +13,7 @@ import img1 from "@/public/half-circle.png"
 // import img2 from "@/public/half-circle-right-icon.png"
 import img3 from "@/public/triangle-icon.png"
 import Form from '@/components/Form'
-import Technologies from '@/components/Technologies'
+import MobileTechnologies from '@/components/Mobile_Technologies'
 
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <TransitionEffect />
       <main className='flex items-center text-dark w-full min-h-screen font-mont dark:text-light'>
-        <Layout className="pt-0 md:pt-16 xs:px-4">
+        <Layout className="pt-0 md:pt-16 ">
           <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh] relative'>
             <div className='w-3/4 md:w-full h-full lg:flex justify-center relative '>
               <Image alt="Yeah, it's me here" src={profilePic} className='w-full h-auto lg:h-[50vh] lg:w-auto lg:mb-5 md:inline-block  md:h-[40vh] md:w-auto md:mb-1' />
@@ -53,7 +53,7 @@ export default function Home() {
           </div>
 
           <Expertise />
-          <Technologies />
+          <MobileTechnologies className="hidden sm:block " />
           <div>
           <Image src={img1} className=' animate-mover' />
             

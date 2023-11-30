@@ -24,7 +24,7 @@ const Expertise = () => {
                         <div className='flex flex-col gap-5 w-[80%] md:w-full justify-center items-center '>
                         <h1 className='relative text-lg font-semibold text-left md:text-center w-full'>
                                 <span>Web Development</span>
-                                <span className={`md:hidden h-[1px] flex absolute left-0 -bottom-0.5  bg-dark w-0 group-hover:w-[50%] transition-[width] ease duration-500 dark:bg-dark`}>&nbsp;</span>
+                                <span className={`md:hidden h-[1px] flex absolute left-0 -bottom-0.5  bg-dark w-0 group-hover:w-[50%] transition-[width] ease duration-500 dark:bg-white`}>&nbsp;</span>
                             </h1>
                             <p className='text-left text-sm font-light md:text-center'>I am specialized in proficient web development services with agile and scalable methodologies.</p>
                         </div>
@@ -39,7 +39,7 @@ const Expertise = () => {
 
                             <h1 className='relative text-lg font-semibold text-left md:text-center w-full'>
                                 <span>Web Designing</span>
-                                <span className={`md:hidden h-[1px] inline-block absolute left-0 -bottom-0.5  bg-dark w-0 group-hover:w-[50%] transition-[width] ease duration-500 dark:bg-dark`}>&nbsp;</span>
+                                <span className={`md:hidden h-[1px] inline-block absolute left-0 -bottom-0.5  bg-dark w-0 group-hover:w-[50%] transition-[width] ease duration-500 dark:bg-white`}>&nbsp;</span>
                             </h1>
 
                             <p className='text-left text-sm font-light md:text-center'>I deliver top-notch web development solutions with sleek design and seamless functionality.</p>
@@ -55,7 +55,7 @@ const Expertise = () => {
 
                             <h1 className='relative text-lg font-semibold text-left md:text-center w-full'>
                                 <span>SEO Optimization</span>
-                                <span className={`md:hidden h-[1px] inline-block absolute left-0 -bottom-0.5  bg-dark w-0 group-hover:w-[50%] transition-[width] ease duration-500 dark:bg-dark`}>&nbsp;</span>
+                                <span className={`md:hidden h-[1px] inline-block absolute left-0 -bottom-0.5  bg-dark w-0 group-hover:w-[50%] transition-[width] ease duration-500 dark:bg-white`}>&nbsp;</span>
                             </h1>
 
                             <p className='text-left text-sm font-light md:text-center'>I deliver impactful SEO solutions and engaging content to boost your brand's visibility and drive success.</p>

@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <TransitionEffect />
-      <main className='flex items-center text-dark w-full min-h-screen font-mont dark:text-light'>
+      <main className='flex  text-dark w-full min-h-screen font-mont dark:text-light'>
         <Layout className="pt-0 md:pt-16 ">
           <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh] relative'>
             <div className='w-3/4 md:w-full h-full lg:flex justify-center relative '>
@@ -55,12 +55,14 @@ export default function Home() {
           <Expertise />
           <MobileTechnologies className="hidden sm:block " />
           <div>
-          <Image src={img1} className=' animate-mover' />
-            
-            <Form className="px-0 mb-0 pb-10 !hidden sm:!block sm:!min-h-max" />
+            <Image src={img1} className=' animate-mover' />
+
+            <Form className="px-0 mb-0 pb-10 xs:pb-0 !hidden sm:!block sm:!min-h-max" />
           </div>
+          
         </Layout>
         <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="techtez" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FD0" data-position="Right" data-x_margin="18" data-y_margin="18" defer></script>
+
       </main>
     </>
   )

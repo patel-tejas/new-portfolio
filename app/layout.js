@@ -8,6 +8,7 @@ import CursorEffect from '@/components/CursorEffect'
 import { ToastContainer } from 'react-toastify'
 const inter = Inter({ subsets: ['latin'] })
 import 'react-toastify/dist/ReactToastify.css'
+import Layout from '@/components/Layout'
 
 
 const montserrat = Montserrat({
@@ -57,7 +58,15 @@ export default function RootLayout({ children }) {
         <Navbar />
         {/* <CursorEffect /> */}
         {children}
-        
+        <div className='flex xs:flex-col mt-32 xs:mt-10 gap-10 xs:gap-5 sm:mt-10 font-mont max-w-5xl mx-32 mb-20 xs:mx-7'>
+          <div className='w-full flex flex-col gap-5 xs:items-center'>
+            <h1 className='xs:hidden inline-block text-dark dark:text-light font-bold xs:text-center capitalize text-5xl sm:text-3xl'>We got same taste? 😉</h1>
+            <h3 className='text-left xs:text-center text-yellow-600 font-semibold text-xl'>Let the music play as you explore !.</h3>
+          </div>
+          <div className='w-full'>
+            <iframe src="https://open.spotify.com/embed/playlist/1pWsZ0u92q0IjBIyGwHZOc?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        </div>
         <Footer />
       </body>
     </html>

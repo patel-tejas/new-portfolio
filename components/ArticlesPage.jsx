@@ -88,11 +88,11 @@ const ArticlesPage = () => {
                     />
 
                     <FeaturedArticle
-                        title="Redux: Mastering State Management for Seamless Development"
-                        time="5 min read"
+                        title="Scraping NEET 2024 Results (DOS attack on NEET website)"
+                        time="7 min read"
                         img={neetArticle}
                         link="https://medium.com/@pateltejas.2005/scraping-neet-2024-results-dos-attack-on-neet-result-website-78f2a578b321"
-                        summary="Article on managing state management in React using Redux which is widely used by professional devs these days."
+                        summary="Article on how to scrape data from websites through nodejs."
                     />
                 </ul>
 

@@ -82,7 +82,7 @@ const page = () => {
         <Layout className="pt-16 md:pt-8 sm:pd-4 xs:pt-2">
           <AnimatedText className="lg:text-7xl  sm:text-6xl xs:text-4xl py-8" text="Imagination trumphs Knowledge !" />
 
-          <div className='grid grid-cols-12 gap-24 xl:gap-x-16 lg:gap-x-8 sm:gap-x-0 md:gap-y-16'>
+          <div className='grid grid-cols-12 gap-24 xl:gap-x-16 lg:gap-x-8 sm:gap-x-0 md:gap-y-16 mb-10'>
             <div className='col-span-12'>
               <FeaturedProjects
                 title="OpenVerse - Blog App"

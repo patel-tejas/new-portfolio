@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.14.0",
     "axios": "^1.6.1",
     "framer-motion": "^10.16.4",
     "mongoose": "^8.0.0",

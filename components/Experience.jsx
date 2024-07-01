@@ -34,7 +34,7 @@ const Experience = () => {
     )
 
     return (
-        <div className='my-64 sm:my-32'>
+        <div className='my-32'>
             <h2 className='font-bold text-8xl mb-32 w-full text-center md:text-6xl xs:text-4xl md:mb-16'>
                 Experience
             </h2>

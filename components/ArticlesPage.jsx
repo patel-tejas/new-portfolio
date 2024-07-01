@@ -5,9 +5,9 @@ import Layout from './Layout'
 import AnimatedText from './AnimatedText'
 import Link from 'next/link'
 import Image from 'next/image'
-import article1 from "@/public/art1.webp"
-import article2 from "@/public/art2.webp"
-import neetArticle from "@/public/neet-blog.webp"
+import article1 from "../public/art1.webp"
+import article2 from "../public/art2.webp"
+import neetArticle from "../public/neet-blog.webp"
 import { motion, useMotionValue } from 'framer-motion'
 
 const FramerImage = motion(Image)

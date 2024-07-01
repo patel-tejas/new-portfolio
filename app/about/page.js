@@ -1,14 +1,14 @@
-import AnimatedText from '@/components/AnimatedText'
-import Layout from '@/components/Layout'
+import AnimatedText from '../../components/AnimatedText'
+import Layout from '../../components/Layout'
 import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
-import pfp from "@/public/pfp2.png"
+import pfp from "../../public/pfp2.png"
 import { Montserrat } from 'next/font/google'
 import AnimatedNumbers from './AnimatedNumbers'
-import Experience from '@/components/Experience'
-import Education from '@/components/Education'
-import TransitionEffect from '@/components/TransitionEffect'
+import Experience from '../../components/Experience'
+import Education from '../../components/Education'
+import TransitionEffect from '../../components/TransitionEffect'
 
 const montserrat = Montserrat({
   subsets: ["latin"],

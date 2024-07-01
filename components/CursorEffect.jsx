@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "@/app/layoutStyles.module.css"
+import styles from "../app/layoutStyles.module.css"
 
 
 const CursorEffect = () => {

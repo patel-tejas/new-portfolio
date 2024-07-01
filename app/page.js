@@ -1,26 +1,27 @@
-import Layout from '@/components/Layout'
+import Layout from '../components/Layout'
 import Image from 'next/image'
 // import profilePic from "../public/pfp.png"
 // import profilePic from "../public/developer-pic-1.webp"
 import profilePic from "../public/pfp3.png"
-import HeroText from '@/components/HeroText'
+import HeroText from '../components/HeroText'
 import Link from 'next/link'
-import { LinkArrow } from '@/components/Icons'
-import TransitionEffect from '@/components/TransitionEffect'
-import Expertise from '@/components/Expertise'
+import { LinkArrow } from '../components/Icons'
+import TransitionEffect from '../components/TransitionEffect'
+import Expertise from '../components/Expertise'
 
-import img1 from "@/public/half-circle.png"
+import img1 from "../public/half-circle.png"
 // import img2 from "@/public/half-circle-right-icon.png"
-import img3 from "@/public/triangle-icon.png"
-import Form from '@/components/Form'
-import MobileTechnologies from '@/components/Mobile_Technologies'
+import img3 from "../public/triangle-icon.png"
+import Form from '../components/Form'
+import MobileTechnologies from '../components/Mobile_Technologies'
+import Chatbot from '../components/Chatbot'
 
 
 export default function Home() {
   return (
     <>
       <TransitionEffect />
-      <main className='flex  text-dark w-full min-h-screen font-mont dark:text-light'>
+      <main className='flex text-dark w-full min-h-screen font-mont dark:text-light relative'>
         <Layout className="pt-0 md:pt-16 ">
           <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh] relative'>
             <div className='w-3/4 md:w-full h-full lg:flex justify-center relative '>
@@ -59,10 +60,10 @@ export default function Home() {
 
             <Form className="px-0 mb-0 pb-10 xs:pb-0 !hidden sm:!block sm:!min-h-max" />
           </div>
-          
         </Layout>
-        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="techtez" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FD0" data-position="Right" data-x_margin="18" data-y_margin="18" defer></script>
+        {/* <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="techtez" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FD0" data-position="Right" data-x_margin="18" data-y_margin="18" defer ></script> */}
 
+        
       </main>
     </>
   )

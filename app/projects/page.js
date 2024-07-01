@@ -1,17 +1,17 @@
-import AnimatedText from '@/components/AnimatedText'
-import { GithubIcon } from '@/components/Icons'
-import Layout from '@/components/Layout'
+import AnimatedText from '../../components/AnimatedText'
+import { GithubIcon } from '../../components/Icons'
+import Layout from '../../components/Layout'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import project1 from "@/public/Project1.png"
-import sparkX from "@/public/sparkx.png"
-import prime from "@/public/prime.png"
-import expenseTrack from "@/public/Expense.png"
-import usability from "@/public/Usability.png"
-import portfolio from "@/public/portfolio.png"
-import ArticlesPage from '@/components/ArticlesPage'
-import TransitionEffect from '@/components/TransitionEffect'
+import project1 from "../../public/Project1.png"
+import sparkX from "../../public/sparkx.png"
+import prime from "../../public/prime.png"
+import expenseTrack from "../../public/Expense.png"
+import usability from "../../public/Usability.png"
+import portfolio from "../../public/portfolio.png"
+import ArticlesPage from '../../components/ArticlesPage'
+import TransitionEffect from '../../components/TransitionEffect'
 
 export const metadata = {
   title: 'Tejas Patel | Projects',

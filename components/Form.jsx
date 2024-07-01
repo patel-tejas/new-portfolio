@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useForm } from "react-hook-form"
-import AnimatedText from '@/components/AnimatedText'
+import AnimatedText from '../components/AnimatedText'
 import axios from "axios";
 import { toast } from 'react-toastify';
 import { InstagramIcon, LinkedInIcon, TwitterIcon } from './Icons';
@@ -10,7 +10,7 @@ import { RiTwitterXFill } from 'react-icons/ri';
 import { GrLinkedinOption } from 'react-icons/gr';
 import { BiLogoInstagram } from 'react-icons/bi';
 import Link from 'next/link';
-import Layout from '@/components/Layout'
+import Layout from '../components/Layout'
 
 const Form = ({ className }) => {
 

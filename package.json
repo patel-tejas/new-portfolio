@@ -24,6 +24,7 @@
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
+    "@types/react": "18.3.3",
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "13.5.5",

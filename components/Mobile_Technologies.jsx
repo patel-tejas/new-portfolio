@@ -2,17 +2,17 @@
 
 import AnimatedText from './AnimatedText'
 import Image from 'next/image'
-import tailwind from "@/public/tailwind.png"
-import react from "@/public/react.png"
-import nextjs from "@/public/nextjs.png"
-import html from "@/public/html.png"
-import node from "@/public/node.png"
-import js from "@/public/javascript.png"
-import github from "@/public/github.png"
-import python from "@/public/python.png"
-import java from "@/public/java.png"
+import tailwind from "../public/tailwind.png"
+import react from "../public/react.png"
+import nextjs from "../public/nextjs.png"
+import html from "../public/html.png"
+import node from "../public/node.png"
+import js from "../public/javascript.png"
+import github from "../public/github.png"
+import python from "../public/python.png"
+import java from "../public/java.png"
 
-import "@/components/technologies.module.css"
+import "../components/technologies.module.css"
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';

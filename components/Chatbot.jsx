@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 const {
     GoogleGenerativeAI,
-    HarmCategory,
-    HarmBlockThreshold,
 } = require("@google/generative-ai");
-
+import { IoChatboxOutline, IoClose } from "react-icons/io5";
+import { FaRobot } from "react-icons/fa";
+import Image from 'next/image';
+import robot from "../public/195.jpg";
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 // console.log(apiKey);
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -28,20 +29,23 @@ export default function Chatbot() {
 
     const [input, setInput] = useState("");
     const [history, setHistory] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    async function handleSend() {
+    const handleSend = async () => {
         // console.log("Input: ", input);
 
-        const chatSession = model.startChat({
-            generationConfig,
-            history
-        });
-
         try {
+            setInput("");
+            setLoading(true);
+            const chatSession = model.startChat({
+                generationConfig,
+                history
+            });
             const result = await chatSession.sendMessage(input);
             const responseText = await result.response.text();
             // console.log("Response: ", responseText);
-
+            // console.log("History: ", history);
             const user_input = {
                 role: "user",
                 parts: [{ text: input }]
@@ -51,43 +55,75 @@ export default function Chatbot() {
                 parts: [{ text: responseText }]
             };
 
-            setHistory(prevHistory => [
-                ...prevHistory,
-                user_input,
-                model_output
-            ]);
+            setHistory(prevHistory => {
+                // console.log("History: ", prevHistory);
+                return [...prevHistory];
+            });
 
-            setInput("");
+            
+            setLoading(false);
             // console.log("History: ", history);
         } catch (error) {
             console.error("Error: ", error);
+            setLoading(false);
         }
     }
 
-    const renderResponse = () => {
-        return (
-            <div>
-                {history.map((chat, index) => (
-                    <div key={index}>
-                        <p><strong>{chat.role === 'user' ? 'User' : 'Tez'}:</strong> {chat.parts[0].text}</p>
-                    </div>
-                ))}
-            </div>
-        )
-    }
+
     return (
-        <div className='w-full px-2'>
-            {renderResponse()}
-            <div className='flex gap-1'>
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask a question..."
-                    className='flex-1'
-                />
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={handleSend}>Send</button>
+        <>
+            {isOpen && (
+                <>
+                    <div className='fixed inset-0 bg-black bg-opacity-50 z-40' onClick={() => setIsOpen(false)}></div>
+                    <div className='fixed bottom-[15%] left-[60%] xs:left-[0vw] xs:w-[100vw] md:left-[30vw] md:w-[60vw] w-[30vw] h-[70vh] bg-white px-3 py-3 flex flex-col justify-between rounded-lg text-sm z-50 animate-slide-in    ai-chat'>
+                        <div className='overflow-scroll flex flex-col flex-1 stroke-secondary overflow-x-hidden overflow-y-visible gap-4'>
+                            <div className='flex flex-col items-center'>
+                                <h3 className='text-center text-xl font-bold text-blue-500'> <span className='text-orange-500'>Tez</span> here !</h3>
+                                <h3 className='text-center text-xl font-bold text-blue-500'> Tejas's Personal Chatbot 🥷</h3>
+                            </div>
+                            {history.map((chat, index) => (
+                                <div key={index}>
+                                    {chat.role === "user" && (
+                                        <div className='flex justify-end w-full'>
+                                            <p className='text-right inline-block mx-2 bg-blue-400 text-white px-3 py-1 rounded-lg'>{chat.parts[0].text}</p>
+                                        </div>
+                                    )}
+                                    {chat.role === "model" && (
+                                        <p className='text-left flex gap-1'>
+                                            <FaRobot className='text-3xl px-1 py-1 bg-orange-400 rounded-full text-white ' />
+                                            <span className='flex-1 mx-2 bg-gray-200 px-3 py-1 rounded-lg'>{chat.parts[0].text}</span>
+                                        </p>
+                                    )}
+                                </div>
+                            ))}
+                            {
+                                loading && (
+                                    <h3 className='flex items-center justify-center'>Loading...</h3>
+                                )
+                            }
+                        </div>
+                        <div className='flex gap-1 mt-2'>
+                            <input
+                                type="text"
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                placeholder="Ask a question..."
+                                className='flex-1 outline-none focus:outline-none focus:ring-0'
+                            />
+                            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg duration-200' onClick={handleSend}>Send</button>
+                        </div>
+                    </div>
+                </>
+            )}
+
+            <div className='w-[60px] fixed bottom-[5%] left-[90%] xs:left-[75vw] md:left-[89vw] h-[60px] bg-blue-500 flex items-center justify-center rounded-full cursor-pointer group hover:bg-blue-600 duration-200 hover:scale-110 hover:shadow-lg group' onClick={() => setIsOpen(!isOpen)}>
+                <p className='w-[10vw] absolute hidden xs:group-hover:hidden group-hover:inline-block text-center left-[-160px] text-black'>AI assistant to help you 👋</p>
+                <button >
+                    {
+                        isOpen ? <IoClose className='text-3xl text-white' /> : <IoChatboxOutline className='text-3xl text-white' />
+                    }
+                </button>
             </div>
-        </div>
+        </>
     );
 }

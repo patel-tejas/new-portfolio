@@ -1,4 +1,4 @@
-import Chatbot from '@/components/Chatbot'
+import Chatbot from '../../components/Chatbot'
 import React from 'react'
 
 const page = () => {

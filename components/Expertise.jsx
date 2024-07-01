@@ -2,11 +2,11 @@ import React from 'react'
 import HeroText from './HeroText'
 import AnimatedText from './AnimatedText'
 import Image from 'next/image'
-import heroImg from "@/public/heroImg3.png"
-import img1 from "@/public/half-circle.png"
-import webDev2 from "@/public/service-icon3.png"
-import webDesign from "@/public/service-icon2.png"
-import seo from "@/public/service-icon4.png"
+import heroImg from "../public/heroImg3.png"
+import img1 from "../public/half-circle.png"
+import webDev2 from "../public/service-icon3.png"
+import webDesign from "../public/service-icon2.png"
+import seo from "../public/service-icon4.png"
 
 const Expertise = () => {
     return (

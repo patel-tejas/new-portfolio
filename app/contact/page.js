@@ -1,5 +1,5 @@
-import Form from '@/components/Form'
-import TransitionEffect from '@/components/TransitionEffect'
+import Form from '../../components/Form'
+import TransitionEffect from '../../components/TransitionEffect'
 import React from 'react'
 export const metadata = {
   title: 'Tejas Patel | Contact',

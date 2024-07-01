@@ -1,5 +1,5 @@
-import { db } from "@/db/db";
-import Portfolio_Form from "@/models/Portfolio_Form";
+import { db } from "../../../db/db";
+import Portfolio_Form from "../../../models/Portfolio_Form";
 import { NextResponse } from "next/server";
 
 export async function POST(req, res) {

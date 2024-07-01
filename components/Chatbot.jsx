@@ -7,7 +7,8 @@ const {
 import { IoChatboxOutline, IoClose } from "react-icons/io5";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { FaRobot } from "react-icons/fa";
-import chatBot from "../public/bot1.jpg";
+import chatBot from "../public/robot1.png";
+import { IoArrowForwardCircleSharp } from "react-icons/io5";
 import Image from 'next/image';
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 // console.log(apiKey);
@@ -70,8 +71,8 @@ export default function Chatbot() {
         <>
             {isOpen && (
                 <>
-                    <div className='fixed inset-0 bg-black bg-opacity-50 z-40' onClick={() => setIsOpen(false)}></div>
-                    <div className='fixed bottom-[15%] left-[60%] xs:left-[5vw] xs:w-[90vw] md:left-[30vw] md:w-[60vw] w-[30vw] h-[70vh] bg-white px-3 py-3 flex flex-col justify-between rounded-lg text-sm z-50 animate-slide-in'>
+                    <div className='fixed inset-0 bg-black bg-opacity-50 z-40 dark:bg-gray-500/50' onClick={() => setIsOpen(false)}></div>
+                    <div className='fixed bottom-[15%] left-[60%] xs:left-[5vw] xs:w-[90vw] md:left-[30vw] md:w-[60vw] w-[30vw] h-[70vh] bg-white px-6 py-5 xs:px-3  xs:py-3 flex flex-col justify-between rounded-xl text-sm z-50 animate-slide-in dark:bg-slate-900'>
                         <div className='overflow-scroll flex flex-col flex-1 overflow-x-hidden overflow-y-visible gap-4' ref={chatContainerRef}>
                             <div className='flex flex-col items-center'>
                                 <Image src={chatBot} alt="chatbot" width={100} height={100} className='w-[100px] h-[100px]' />
@@ -84,7 +85,7 @@ export default function Chatbot() {
                                 <div key={index}>
                                     {chat.role === "user" && (
                                         <div className='flex justify-end w-full'>
-                                            <p className='text-right inline-block mx-2 bg-orange-400 text-white px-3 py-1 rounded-lg'>{chat.parts[0].text}</p>
+                                            <p className='text-right inline-block mx-2 bg-orange-400 dark:bg-orange-500 text-white px-3 py-1 rounded-lg'>{chat.parts[0].text}</p>
                                         </div>
                                     )}
                                     {(chat.role === "model") &&
@@ -100,9 +101,9 @@ export default function Chatbot() {
                             {loading && (
                                 <p className='text-left flex gap-1 items-center'>
                                     <FaRobot className='text-3xl px-1 py-1 bg-blue-400 rounded-full text-white mr-3' />
-                                    <div class='h-2 w-2 bg-black rounded-full animate-bounce [animation-delay:-0.3s]'></div>
-                                    <div class='h-2 w-2 bg-black rounded-full animate-bounce [animation-delay:-0.15s]'></div>
-                                    <div class='h-2 w-2 bg-black rounded-full animate-bounce'></div>
+                                    <div class='h-2 w-2 bg-black dark:bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+                                    <div class='h-2 w-2 bg-black dark:bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+                                    <div class='h-2 w-2 bg-black dark:bg-white  rounded-full animate-bounce'></div>
                                 </p>
                             )}
                         </div>
@@ -112,9 +113,15 @@ export default function Chatbot() {
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 placeholder="Ask a question..."
-                                className='flex-1 outline-none focus:outline-none focus:ring-0'
+                                className='flex-1 outline-none focus:outline-0 focus:ring-0'
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {handleSend()}
+                                }} 
                             />
-                            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg duration-200' onClick={handleSend}>Send</button>
+                            <IoArrowForwardCircleSharp className='w-[50px] h-full text-blue-500  dark:text-white font-bold rounded-full hover:scale-110 hover:text-blue-600 duration-200 cursor-pointer dark:hover:text-blue-300' onClick={handleSend} 
+                            />
+
+                           
                         </div>
                     </div>
                 </>

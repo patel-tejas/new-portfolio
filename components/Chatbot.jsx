@@ -15,12 +15,12 @@ const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+    model: "gemini-1.5-pro",
     systemInstruction: "You are an AI Assistant for my portfolio website. Your name is Tez. You need to answer questions based on me. I am Tejas Patel a full stack web developer based on Ahmedabad. The tech stack I use is Nextjs based on MERN stack. (Mongodb, Express, React and Nodejs). I also use Prisma ORM to work with multiple databases while using only single code system for all of them. My portfolio website has 4 pages (Home, Contact, Projects, and About Me). I have done Diploma in Information Technology and currently pursuing Bachelors. Along with that, I know Java and Python along with Javascript. I am doing DSA (Data structures and Algorithm in java). Have solved more than 100 problems on Leetcode. If anyone asks about contacting me give my gmail id: techtezoffficial@gmail.com and give a nice message to hit me up. Well along with the skill side I love reading books and binge series and movies for Entertainment. My favorite music genre is pop. tell user to explore the music player (Spotify music embed) which I have attached at the end of every page in the site to explore my taste. Well you can add your slight taste to every message but it should be user friendly and sarcastic sometimes. Every respond should be short like 2-3 sentences (some can be long depend on the question). Well if someone ask question outside of my arena or anything that doesn't revolve around me and things I mentioned then give a user friendly message that you cannot reply to such questions cause my developer (ofc me) hasn't trained you to do that. If anyone asks about projects which I have done tell him that I have done full-fledged projects containing all CRUD operations and relations. Have built a SaaS AI software using OpenAI. Built a Blog app containing every functionality. Have made Event app where user can create events, join events with tickets and stripe integrations. Well for other skills i also know Firebase, Prisma, Redux, Recoil, Zustand and more. If anyone asks you who made you or created you tell its Tejas. No mention of Google should be there. Tell your are an LLM model trained by tejas.\n",
 });
 
 const generationConfig = {
-    temperature: 1,
+    temperature: 0.7,
     topP: 0.95,
     topK: 64,
     maxOutputTokens: 8192,
@@ -42,16 +42,16 @@ export default function Chatbot() {
                 generationConfig,
                 history
             });
-            const result = await chatSession.sendMessage(input);
-            const responseText = await result.response.text();
-            const user_input = {
-                role: "user",
-                parts: [{ text: input }]
-            };
-            const model_output = {
-                role: "model",
-                parts: [{ text: responseText }]
-            };
+            await chatSession.sendMessage(input);
+            // const responseText = await result.response.text();
+            // const user_input = {
+            //     role: "user",
+            //     parts: [{ text: input }]
+            // };
+            // const model_output = {
+            //     role: "model",
+            //     parts: [{ text: responseText }]
+            // };
 
             setHistory(prevHistory => [...prevHistory]);
             setLoading(false);
@@ -85,7 +85,7 @@ export default function Chatbot() {
                                 <div key={index}>
                                     {chat.role === "user" && (
                                         <div className='flex justify-end w-full'>
-                                            <p className='text-right inline-block mx-2 bg-orange-400 dark:bg-orange-500 text-white px-3 py-1 rounded-lg'>{chat.parts[0].text}</p>
+                                            <p className='text-right inline-block mx-2 bg-blue-700 dark:bg-blue-500 text-white px-3 py-1 rounded-lg'>{chat.parts[0].text}</p>
                                         </div>
                                     )}
                                     {(chat.role === "model") &&
@@ -101,9 +101,9 @@ export default function Chatbot() {
                             {loading && (
                                 <p className='text-left flex gap-1 items-center'>
                                     <FaRobot className='text-3xl px-1 py-1 bg-blue-400 rounded-full text-white mr-3' />
-                                    <div class='h-2 w-2 bg-black dark:bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
-                                    <div class='h-2 w-2 bg-black dark:bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
-                                    <div class='h-2 w-2 bg-black dark:bg-white  rounded-full animate-bounce'></div>
+                                    <div class='h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+                                    <div class='h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+                                    <div class='h-2 w-2 bg-white  rounded-full animate-bounce'></div>
                                 </p>
                             )}
                         </div>
@@ -118,7 +118,7 @@ export default function Chatbot() {
                                     if (e.key === 'Enter') { handleSend() }
                                 }}
                             />
-                            <IoArrowForwardCircleSharp className='w-[50px] h-full text-white  dark:text-white font-bold rounded-full hover:scale-110 hover:text-orange-300 duration-200 cursor-pointer dark:hover:text-blue-300' onClick={handleSend}
+                            <IoArrowForwardCircleSharp className='w-[50px] h-full text-white  dark:text-white font-bold rounded-full hover:scale-110 dark:hover:text-blue-400 duration-200 cursor-pointer' onClick={handleSend}
                             />
 
 

@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
             </h3>
           </div>
           <div className='w-1/2 sm:w-full'>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5ABHKGoOzxkaa28ttQV9sE?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe src="https://open.spotify.com/embed/playlist/1pWsZ0u92q0IjBIyGwHZOc?utm_source=generator&theme=0" width="100%" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
         </div>
         <Footer />

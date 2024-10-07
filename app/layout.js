@@ -61,10 +61,10 @@ export default function RootLayout({ children }) {
           <div className='flex-col xs:gap-2 gap-5 md:items-center w-full md:justify-center'>
             <h1 className='lg:text-4xl text-dark dark:text-light font-bold xs:text-center capitalize text-5xl mb-5 sm:mb-5 md:text-center sm:text-lg xs:text-[22px]'>how about some Music? 😉</h1>
             <h3 className='text-left xs:text-center md:text-center sm:text-sm text-yellow-600 font-semibold text-xl'>Let the music play while you explore ! 
-            <br />(depressed spotify playlist 🫠)</h3>
+            </h3>
           </div>
-          <div className='w-1/2 sm:w-full'>
-            <iframe src="https://open.spotify.com/embed/playlist/1pWsZ0u92q0IjBIyGwHZOc?utm_source=generator&theme=0" width="100%" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div className='w-2/3 md:w-full'>
+            <iframe src="https://open.spotify.com/embed/playlist/5ABHKGoOzxkaa28ttQV9sE?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
         </div>
         <Footer />

@@ -17,7 +17,7 @@ const Details = ({ type, time, place, info }) => {
                 <span className='dark:text-light/75 capitalize font-medium text-dark/75 xs:text-sm'>
                     {time} | {place}
                 </span>
-                <p className='font-medium w-full  md:text-sm'>
+                <p className='font-medium w-full  md:text-sm dark:text-gray-400'>
                     {info}
                 </p>
             </motion.div>
@@ -57,6 +57,12 @@ const Education = () => {
                         time="2021-2024"
                         place="R.C Technical Institute"
                         info="Currently enrolled in the Diploma in Information Technology program spanning from 2021 to 2024. This course is equipping me with comprehensive knowledge and practical skills in the dynamic field of Information Technology, preparing me for a successful career in the rapidly evolving tech landscape."
+                    />
+                    <Details
+                        type="Bachelor of Technology in Computer Science & Engineering (B.Tech. CSE)"
+                        time="2024-2027"
+                        place="Pandit Deendayal Energy University (PDPU)"
+                        info="I am currently pursuing my B.Tech in Computer Science & Engineering at Pandit Deendayal Energy University, with a focus on building a solid foundation in the latest technologies and innovations within the tech industry. This program is providing me with in-depth knowledge of computer systems, programming, data structures, and emerging fields like AI and ML, preparing me to thrive in a constantly evolving technological environment. I’m excited to continue growing my expertise in software development, algorithms, and other key areas that are shaping the future of the tech landscape."
                     />
 
 

@@ -43,7 +43,7 @@ export default function Chatbot() {
                 history
             });
             await chatSession.sendMessage(input);
-            // const responseText = await result.response.text();
+            const responseText = await result.response.text();
             // const user_input = {
             //     role: "user",
             //     parts: [{ text: input }]

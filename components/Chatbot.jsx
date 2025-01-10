@@ -3,6 +3,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 const {
     GoogleGenerativeAI,
+    HarmCategory,
+  HarmBlockThreshold,
 } = require("@google/generative-ai");
 import { IoChatboxOutline, IoClose } from "react-icons/io5";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
@@ -44,6 +46,7 @@ export default function Chatbot() {
             });
             await chatSession.sendMessage(input);
             const responseText = await result.response.text();
+            console.log(responseText);
             // const user_input = {
             //     role: "user",
             //     parts: [{ text: input }]

@@ -14,7 +14,6 @@ const Portfolio_Form = new Schema({
         type: String,
         required: true
     }
-
 })
 
 module.exports = mongoose.models.portfolio_form || mongoose.model('portfolio_form', Portfolio_Form)

@@ -13,13 +13,13 @@ const Expertise = () => {
         <div className='mt-[80px] sm:mt-[0px] xs:mt-[20px] relative mb-10'>
             <h2 className='uppercase w-full text-center text-yellow-600 font-semibold text-xl'>What I do</h2>
             <AnimatedText text="My Expertise" className="uppercase sm:text-4xl" />
-            <Image src={img1} className='absolute h-[40px] w-auto top-10 right-10 sm:right-4 sm:h-[20px] md:top-[100px] animate-mover' />
+            <Image alt='Design' src={img1} className='absolute h-[40px] w-auto top-10 right-10 sm:right-4 sm:h-[20px] md:top-[100px] animate-mover' />
             <div className='flex gap-2 justify-between md:flex-col-reverse md:justify-center items-center md:gap-4 xs:gap-0'>
                 <div className='flex flex-col items-center justify-center w-[50%] md:w-full gap-8 mt-10'>
                     <div className=' h-max py-5  flex items-center text-center  w-full p-4 bg-light border border-solid border-dark rounded-2xl relative dark:bg-dark dark:border-light dark:text-light gap-5 md:flex-col md:h-max md:gap-2 group cursor-pointer xs:w-[90%]'>
                         <div className='absolute top-1 -right-2 -z-10 w-[101%] h-[101%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-2xl rounded-tr-2xl' />
                         <figure className='mb-0 md:h-1/4 md:w-auto w-[20%] h-auto p-4 flex items-center justify-center bg-gray-200 rounded-full'>
-                            <Image src={webDev2} className=' w-full h-auto p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
+                            <Image alt='Design' src={webDev2} className=' w-full h-auto p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
                         </figure>
                         <div className='flex flex-col gap-5 w-[80%] md:w-full justify-center items-center '>
                         <h1 className='relative text-lg font-semibold text-left md:text-center w-full'>
@@ -33,7 +33,7 @@ const Expertise = () => {
                     <div className=' h-max py-5  flex items-center text-center  w-full p-4 bg-light border border-solid border-dark rounded-2xl relative dark:bg-dark dark:border-light dark:text-light gap-5 md:flex-col md:h-max md:gap-2 group cursor-pointer xs:w-[90%]'>
                         <div className='absolute top-1 -right-2 -z-10 w-[101%] h-[101%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-2xl rounded-tr-2xl' />
                         <figure className='mb-0 md:h-1/4 md:w-auto w-[20%] h-auto p-4 flex items-center justify-center bg-gray-200 rounded-full '>
-                            <Image src={webDesign} className=' w-full h-auto p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
+                            <Image alt='Web Design Img' src={webDesign} className=' w-full h-auto p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
                         </figure>
                         <div className='flex flex-col gap-5 w-[80%] md:w-full justify-center items-center '>
 
@@ -49,7 +49,7 @@ const Expertise = () => {
                     <div className=' h-max py-5  flex items-center text-center  w-full p-4 bg-light border border-solid border-dark rounded-2xl relative dark:bg-dark dark:border-light dark:text-light gap-5 md:flex-col md:h-max md:gap-2 group cursor-pointer xs:w-[90%]'>
                         <div className='absolute top-1 -right-2 -z-10 w-[101%] h-[101%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-2xl rounded-tr-2xl' />
                         <figure className='mb-0 md:h-1/4 md:w-auto w-[20%] h-auto p-4 flex items-center justify-center bg-gray-200 rounded-full '>
-                            <Image src={seo} className=' w-full h-auto p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
+                            <Image alt='SEO Img' src={seo} className=' w-full h-auto p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
                         </figure>
                         <div className='flex flex-col gap-5 w-[80%] md:w-full justify-center items-center '>
 

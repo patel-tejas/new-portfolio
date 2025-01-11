@@ -1,3 +1,4 @@
+
 import Layout from '../components/Layout'
 import Image from 'next/image'
 // import profilePic from "../public/pfp.png"
@@ -26,7 +27,7 @@ export default function Home() {
           <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh] relative'>
             <div className='w-3/4 md:w-full h-full lg:flex justify-center relative '>
               <Image alt="Yeah, it's me here" src={profilePic} className='w-full h-auto lg:h-[50vh] lg:w-auto lg:mb-5 md:inline-block  md:h-[40vh] md:w-auto md:mb-1' />
-              <Image src={img3} className='absolute h-[35px] sm:h-[30px] bottom-0 left-10 lg:left-5  w-auto sm:bottom-0 sm:left-3 animate-moverfast' />
+              <Image alt='Design' src={img3} className='absolute h-[35px] sm:h-[30px] bottom-0 left-10 lg:left-5  w-auto sm:bottom-0 sm:left-3 animate-moverfast' />
             </div>
             <div className='w-full h-[60vh] lg:h-[80vh] md:h-[80vh] sm:h-[60vh] mx-5 flex flex-col md:mt-5'>
               <div className='text-6xl xl:text-5xl lg:text-center lg:text-6xl md:text-5xl sm:text-3xl h-1/2 md:h-1/3 sm:h-1/2 xs:h-[26vh] font-bold flex  lg:w-full flex-col gap-2'>
@@ -48,7 +49,7 @@ export default function Home() {
               </div>
             </div>
 
-            <Image src={img1} className='absolute h-[60px] w-auto top-10 right-10 sm:right-5 sm:h-[40px] sm:top-5 animate-mover' />
+            <Image alt='Design' src={img1} className='absolute h-[60px] w-auto top-10 right-10 sm:right-5 sm:h-[40px] sm:top-5 animate-mover' />
             {/* <Image src={img2} className='absolute h-[40px] w-auto top-10 left-10  sm:top-5 sm:left-7 animate-moverfastfast'/> */}
 
           </div>
@@ -56,7 +57,7 @@ export default function Home() {
           <Expertise />
           <MobileTechnologies className="hidden sm:block " />
           <div>
-            <Image src={img1} className=' animate-mover' />
+            <Image alt='Design' src={img1} className=' animate-mover' />
 
             <Form className="px-0 mb-0 pb-10 xs:pb-0 !hidden sm:!block sm:!min-h-max" />
           </div>

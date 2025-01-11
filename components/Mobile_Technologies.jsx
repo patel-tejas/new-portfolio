@@ -80,39 +80,39 @@ const MobileTechnologies = () => {
 
       >
         <SwiperSlide className=' !flex !items-center !justify-center flex-col font-semibold gap-5 w-full h-full rounded-3xl bg-gradient-to-br from-blue-500 to-purple-600 text-white'>
-          <Image src={react} className='w-[10vh] h-auto' />
+          <Image alt="TechImg" src={react} className='w-[10vh] h-auto' />
           <h2>React</h2>
         </SwiperSlide>
         <SwiperSlide className=' !flex !items-center !justify-center flex-col font-semibold gap-5 w-full h-full rounded-3xl bg-gradient-to-br from-gray-800 to-black text-white'>
-          <Image src={nextjs} className='w-[10vh] h-auto ' />
+          <Image alt="TechImg" src={nextjs} className='w-[10vh] h-auto ' />
           <h2>Next.Js</h2>
         </SwiperSlide>
         <SwiperSlide className=' !flex !items-center !justify-center flex-col font-semibold gap-5 w-full h-full rounded-3xl bg-gradient-to-br from-green-500 to-lime-900 text-white'>
-          <Image src={node} className='w-[10vh] h-auto' />
+          <Image alt="TechImg" src={node} className='w-[10vh] h-auto' />
           <h2>Node.Js</h2>
         </SwiperSlide>
 
 
 
         <SwiperSlide className=' !flex !items-center !justify-center flex-col font-semibold gap-5 w-full h-full rounded-3xl bg-gradient-to-br from-orange-400 to-yellow-500 text-white'>
-          <Image src={js} className='w-[10vh] h-auto rounded-xl shadow-2xl' />
+          <Image alt="TechImg" src={js} className='w-[10vh] h-auto rounded-xl shadow-2xl' />
           <h2>JavaScript</h2>
 
         </SwiperSlide>
         <SwiperSlide className=' !flex !items-center !justify-center flex-col font-semibold gap-5 w-full h-full rounded-3xl bg-gradient-to-br from-gray-500 to-slate-800 text-white'>
-          <Image src={github} className='w-[10vh] h-auto shadow-2xl rounded-full' />
+          <Image alt="TechImg" src={github} className='w-[10vh] h-auto shadow-2xl rounded-full' />
           <h2>Github</h2>
         </SwiperSlide>
         <SwiperSlide className=' !flex !items-center !justify-center flex-col font-semibold gap-5 w-full h-full rounded-3xl bg-gradient-to-br from-blue-600 to-purple-800 text-white'>
-          <Image src={tailwind} className='w-[10vh] h-auto text-white ' />
+          <Image alt="TechImg" src={tailwind} className='w-[10vh] h-auto text-white ' />
           <h2>Tailwind</h2>
         </SwiperSlide>
         <SwiperSlide className=' !flex !items-center !justify-center flex-col font-semibold gap-5 w-full h-full rounded-3xl bg-gradient-to-br from-gray-600 to-black text-white'>
-          <Image src={python} className='w-[10vh] h-auto' />
+          <Image alt="TechImg" src={python} className='w-[10vh] h-auto' />
           <h2>Python</h2>
         </SwiperSlide>
         <SwiperSlide className=' !flex !items-center !justify-center flex-col font-semibold gap-5 w-full h-full rounded-3xl bg-gradient-to-br from-red-500 to-gray-900 dark:to-orange-950 text-white'>
-          <Image src={java} className='w-[10vh] h-auto' />
+          <Image alt="TechImg" src={java} className='w-[10vh] h-auto' />
           <h2>Java</h2>
         </SwiperSlide>
       </Swiper>

@@ -15,13 +15,13 @@ import img1 from "../public/half-circle.png"
 import img3 from "../public/triangle-icon.png"
 import Form from '../components/Form'
 import MobileTechnologies from '../components/Mobile_Technologies'
-import Chatbot from '../components/Chatbot'
-
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 export default function Home() {
   return (
     <>
       <TransitionEffect />
+
       <main className='flex text-dark w-full min-h-screen font-mont dark:text-light relative'>
         <Layout className="pt-0 md:pt-16 ">
           <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh] relative'>
@@ -63,8 +63,8 @@ export default function Home() {
           </div>
         </Layout>
         {/* <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="techtez" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FD0" data-position="Right" data-x_margin="18" data-y_margin="18" defer ></script> */}
-
-        
+        <SpeedInsights />
+        <Analytics />
       </main>
     </>
   )

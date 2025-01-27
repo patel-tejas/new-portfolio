@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import project1 from "../../public/Project1.png"
+import zenlect from "../../public/zenlect.png"
 import sparkX from "../../public/sparkx.png"
 import prime from "../../public/prime.png"
 import expenseTrack from "../../public/Expense.png"
@@ -90,7 +91,17 @@ const page = () => {
                 link="https://openverse-blog.vercel.app/"
                 type="Featured Project"
                 img={project1}
-                github="/"
+                github="https://github.com/patel-tejas/openverse-blog"
+              />
+            </div>
+            <div className='col-span-12'>
+              <FeaturedProjects
+                title="Zenlect"
+                summary="Worked with Zenlect to create a web-app for their product."
+                link="https://zenlect.com"
+                type="A Client Project"
+                img={zenlect}
+                github="https://github.com/patel-tejas/Zenlect"
               />
             </div>
             
@@ -100,7 +111,7 @@ const page = () => {
                 link="https://techno-tez.github.io/Usability-Clone-1/"
                 type="Featured Project"
                 img={usability}
-                github="https://github.com/Techno-Tez/Usability-Clone-1"
+                github="https://github.com/patel-tejas/Usability-Clone-1"
               />
             </div>
             <div className='col-span-6 sm:col-span-12'>
@@ -109,7 +120,7 @@ const page = () => {
                 link="https://primeonecleaning.netlify.app/"
                 type="Featured Project"
                 img={prime}
-                github="https://github.com/Techno-Tez/Prime-One-Cleaning"
+                github="https://github.com/patel-tejas/Prime-One-Cleaning"
               />
             </div>
             <div className='col-span-6 sm:col-span-12'>
@@ -118,17 +129,17 @@ const page = () => {
                 link="https://tejaspatel-portfolio.netlify.app/"
                 type="Featured Project"
                 img={portfolio}
-                github="https://github.com/Techno-Tez/My-Portfolio"
+                github="https://github.com/patel-tejas/My-Portfolio"
               />
             </div>
 
             <div className='col-span-6 sm:col-span-12'>
               <Project
                 title="Expense Tracker"
-                link="https://github.com/Techno-Tez/Expense-Tracker"
+                link="https://github.com/patel-tejas/Expense-Tracker"
                 type="Featured Project"
                 img={expenseTrack}
-                github="https://github.com/Techno-Tez/Expense-Tracker"
+                github="https://github.com/patel-tejas/Expense-Tracker"
               />
             </div>
             <div className='col-span-12'>
@@ -138,7 +149,7 @@ const page = () => {
                 link="https://spark-x-ai.vercel.app/"
                 type="Featured Project"e
                 img={sparkX}
-                github="https://github.com/Techno-Tez/SparkX-AI"
+                github="https://github.com/patel-tejas/SparkX-AI"
               />
             </div>
           </div>

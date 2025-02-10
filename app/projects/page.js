@@ -13,7 +13,7 @@ import usability from "../../public/Usability.png"
 import portfolio from "../../public/portfolio.png"
 import ArticlesPage from '../../components/ArticlesPage'
 import TransitionEffect from '../../components/TransitionEffect'
-
+import urlshortener from "../../public/urlshortener.png"
 export const metadata = {
   title: 'Tejas Patel | Projects',
   description: 'This page contains all the projects created by Tejas Patel.',
@@ -142,6 +142,7 @@ const page = () => {
                 github="https://github.com/patel-tejas/Expense-Tracker"
               />
             </div>
+            
             <div className='col-span-12'>
               <FeaturedProjects
                 title="SparkX Generative AI"
@@ -150,6 +151,16 @@ const page = () => {
                 type="Featured Project"e
                 img={sparkX}
                 github="https://github.com/patel-tejas/SparkX-AI"
+              />
+            </div>
+            <div className='col-span-12'>
+              <FeaturedProjects
+                title="URL Shortener"
+                summary="Your URL shortener web app lets users quickly shorten long URLs into compact, shareable links. Built with Next.js and MongoDB."
+                link="https://squeezeurl.vercel.app/"
+                type="Featured Project"e
+                img={urlshortener}
+                github="https://github.com/patel-tejas/URLShortener"
               />
             </div>
           </div>

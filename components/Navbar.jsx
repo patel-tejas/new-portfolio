@@ -109,7 +109,7 @@ const Navbar = () => {
                         <MotionLink href="https://twitter.com/tejaspatel1532" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                             <TwitterIcon />
                         </MotionLink>
-                        <MotionLink href="https://github.com/Techno-Tez" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank' className='bg-light dark:bg-dark rounded-full '>
+                        <MotionLink href="https://github.com/patel-tejas" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank' className='bg-light dark:bg-dark rounded-full '>
                             <GithubIcon />
                         </MotionLink>
                         <MotionLink href="https://www.linkedin.com/in/techtez/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>

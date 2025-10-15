@@ -4,7 +4,7 @@ import Image from 'next/image'
 // import profilePic from "../public/pfp.png"
 // import profilePic from "../public/developer-pic-1.webp"
 import profilePic from "../public/pfp3.png"
-import pfp from "../public/pfp.png"
+// import pfp from "../public/pfp.png"
 import HeroText from '../components/HeroText'
 import Link from 'next/link'
 import { LinkArrow } from '../components/Icons'
@@ -27,7 +27,7 @@ export default function Home() {
         <Layout className="pt-0 md:pt-16 ">
           <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh] relative'>
             <div className='w-3/4 md:w-full h-full lg:flex justify-center relative '>
-              <Image alt="Yeah, it's me here" src={pfp} className='w-full h-auto lg:h-[50vh] lg:w-auto lg:mb-5 md:inline-block  md:h-[40vh] md:w-auto md:mb-1' />
+              <Image alt="Yeah, it's me here" src={profilePic} className='w-full h-auto lg:h-[50vh] lg:w-auto lg:mb-5 md:inline-block  md:h-[40vh] md:w-auto md:mb-1' />
               <Image alt='Design' src={img3} className='absolute h-[35px] sm:h-[30px] bottom-[-40px] left-10 lg:left-5  w-auto sm:bottom-0 sm:left-3 animate-moverfast' />
             </div>
             <div className='w-full h-[60vh] lg:h-[80vh] md:h-[80vh] sm:h-[60vh] mx-5 flex flex-col md:mt-5'>

@@ -78,7 +78,7 @@ const Navbar = () => {
                     <MotionLink href="https://github.com/patel-tejas" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <GithubIcon />
                     </MotionLink>
-                    <MotionLink href="https://www.linkedin.com/in/techtez/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <MotionLink href="https://www.linkedin.com/in/pateltejas2005/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <LinkedInIcon />
                     </MotionLink>
                     <MotionLink href="https://www.instagram.com/_me.tez_/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
@@ -112,10 +112,10 @@ const Navbar = () => {
                         <MotionLink href="https://github.com/patel-tejas" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank' className='bg-light dark:bg-dark rounded-full '>
                             <GithubIcon />
                         </MotionLink>
-                        <MotionLink href="https://www.linkedin.com/in/techtez/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                        <MotionLink href="https://www.linkedin.com/in/pateltejas2005/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                             <LinkedInIcon />
                         </MotionLink>
-                        <MotionLink href="https://www.instagram.com/_pateltejas_/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank' className='bg-dark  rounded-full'>
+                        <MotionLink href="https://www.instagram.com/_me.tez_/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank' className='bg-dark  rounded-full'>
                             <InstagramIcon />
                         </MotionLink>
 

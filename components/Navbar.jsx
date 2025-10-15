@@ -81,7 +81,7 @@ const Navbar = () => {
                     <MotionLink href="https://www.linkedin.com/in/techtez/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <LinkedInIcon />
                     </MotionLink>
-                    <MotionLink href="https://www.instagram.com/_pateltejas_/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
+                    <MotionLink href="https://www.instagram.com/_me.tez_/" whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }} target='_blank'>
                         <InstagramIcon />
                     </MotionLink>
 

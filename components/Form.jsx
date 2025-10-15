@@ -109,7 +109,7 @@ const Form = ({ className }) => {
                             <span> Connect on Twitter</span>
                             <span><RiTwitterXFill /></span>
                         </Link>
-                        <Link href="https://www.instagram.com/_pateltejas_/" target='_blank' className='w-[60%] md:w-[80%] sm:w-full py-2 rounded-lg text-white bg-gradient-to-r from-purple-400 to-pink-600 flex items-center justify-center gap-2 hover:scale-105 duration-300 hover:shadow-2xl'>
+                        <Link href="https://www.instagram.com/_me.tez_/" target='_blank' className='w-[60%] md:w-[80%] sm:w-full py-2 rounded-lg text-white bg-gradient-to-r from-purple-400 to-pink-600 flex items-center justify-center gap-2 hover:scale-105 duration-300 hover:shadow-2xl'>
                             <span> Connect on Instagram </span>
                             <span className=''><BiLogoInstagram /></span>
                         </Link>

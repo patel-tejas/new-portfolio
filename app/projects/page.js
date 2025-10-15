@@ -97,7 +97,7 @@ const page = () => {
             <div className='col-span-12'>
               <FeaturedProjects
                 title="Zenlect"
-                summary="Worked with Zenlect to create a web-app for their product."
+                summary="Worked with Zenlect to create a web-app for their company."
                 link="https://zenlect.com"
                 type="A Client Project"
                 img={zenlect}

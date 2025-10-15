@@ -65,3 +65,47 @@
   width: 5px;
   height: 5px;
 }
+
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Increased z-index */
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(164, 54, 54, 0.9); /* Changed to a solid color */
+  mix-blend-mode: color-burn;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s, opacity 0.15s;
+  box-shadow: 0 0 15px rgba(218, 32, 32, 0.3); /* Added visibility helper */
+}
+
+a{
+  cursor: none !important;
+}
+
+body {
+  cursor: none;
+}
+
+/* Add media query for mobile */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+  
+  body {
+    cursor: auto;
+  }
+}
+
+.cursor-text{
+  font-size: 5px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  display: none;
+}
+

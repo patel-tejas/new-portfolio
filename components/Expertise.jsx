@@ -1,5 +1,4 @@
 import React from 'react'
-import HeroText from './HeroText'
 import AnimatedText from './AnimatedText'
 import Image from 'next/image'
 import heroImg from "../public/heroImg3.png"
@@ -22,7 +21,7 @@ const Expertise = () => {
                             <Image alt='Design' src={webDev2} className=' w-full h-auto p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
                         </figure>
                         <div className='flex flex-col gap-5 w-[80%] md:w-full justify-center items-center '>
-                        <h1 className='relative text-lg font-semibold text-left md:text-center w-full'>
+                            <h1 className='relative text-lg font-semibold text-left md:text-center w-full'>
                                 <span>Web Development</span>
                                 <span className={`md:hidden h-[1px] flex absolute left-0 -bottom-0.5  bg-dark w-0 group-hover:w-[50%] transition-[width] ease duration-500 dark:bg-white`}>&nbsp;</span>
                             </h1>
@@ -36,7 +35,6 @@ const Expertise = () => {
                             <Image alt='Web Design Img' src={webDesign} className=' w-full h-auto p-2 group-hover:-translate-y-2 group-hover:transition ease-out delay-150 duration-300' />
                         </figure>
                         <div className='flex flex-col gap-5 w-[80%] md:w-full justify-center items-center '>
-
                             <h1 className='relative text-lg font-semibold text-left md:text-center w-full'>
                                 <span>Web Designing</span>
                                 <span className={`md:hidden h-[1px] inline-block absolute left-0 -bottom-0.5  bg-dark w-0 group-hover:w-[50%] transition-[width] ease duration-500 dark:bg-white`}>&nbsp;</span>
@@ -57,17 +55,14 @@ const Expertise = () => {
                                 <span>SEO Optimization</span>
                                 <span className={`md:hidden h-[1px] inline-block absolute left-0 -bottom-0.5  bg-dark w-0 group-hover:w-[50%] transition-[width] ease duration-500 dark:bg-white`}>&nbsp;</span>
                             </h1>
-
                             <p className='text-left text-sm font-light md:text-center'>I deliver impactful SEO solutions and engaging content to boost your brand's visibility and drive success.</p>
                         </div>
-
                     </div>
                 </div>
                 <div className='h-[60vh] w-auto relative xs:h-max'>
                     {/* <Image src={heroImg} width={1000} height={1000} className='absolute'/>
-                 */}
+             */}
                     <Image alt="Yeah, it's me here" src={heroImg} className='w-auto h-full sm:h-[50vh] xs:h-[35vh] inline-block xs:mt-5' />
-
                 </div>
             </div>
         </div>

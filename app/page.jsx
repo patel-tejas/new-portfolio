@@ -15,6 +15,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import MarketTicker from '../components/MarketTicker';
 import ClientOnly from '../components/ClientOnly';
+import AchievementPath, { Achievement } from '../components/Achievement';
+import AchievementMemoryThread from '../components/Achievement';
+import HackathonMemories from '../components/Achievement';
 
 // --- NEW: Terminal Background Component ---
 const TerminalBackground = () => (
@@ -129,7 +132,7 @@ export default function Home() {
               {/* Performance Stats */}
               <div className='flex-grow mb-8'>
                 <p className='text-[18px] md:text-sm sm:text-xs font-light mb-6 text-gray-700 dark:text-gray-300'>
-                 I’m a full-stack developer focused on building fast, scalable, and reliable web applications. I work with modern frameworks, design systems, and clean architectures to turn ideas into products that actually work. Wondering the theme behind my portfolio? Well I am into finance too making me a FinTech enthusiast!
+                  I’m a full-stack developer focused on building fast, scalable, and reliable web applications. I work with modern frameworks, design systems, and clean architectures to turn ideas into products that actually work. Wondering the theme behind my portfolio? Well I am into finance too making me a FinTech enthusiast!
                 </p>
 
                 {/* Metric Cards */}
@@ -263,14 +266,19 @@ export default function Home() {
           </div>
 
           <Expertise />
-
+          
           <ClientOnly>
             <MobileTechnologies className="hidden sm:block" />
           </ClientOnly>
+          {/* <ClientOnly>
+            <HackathonMemories />
+          </ClientOnly> */}
           <div className="mt-20">
             <Form className="px-0 mb-0 pb-10 xs:pb-0 !hidden sm:!block sm:!min-h-max" />
           </div>
         </Layout>
+
+
 
         <ClientOnly>
           <SpeedInsights />

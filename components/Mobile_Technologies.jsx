@@ -21,7 +21,7 @@ const MobileTechnologies = () => {
   const [startX, setStartX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
   const [dragDirection, setDragDirection] = useState(0);
-  
+
   const carouselRef = useRef(null);
   const touchStartX = useRef(0);
   const autoScrollInterval = useRef(null);
@@ -40,16 +40,16 @@ const MobileTechnologies = () => {
 
     updateVisibleCards();
     window.addEventListener('resize', updateVisibleCards);
-    
+
     return () => window.removeEventListener('resize', updateVisibleCards);
   }, []);
 
   const techAssets = [
-    { 
+    {
       id: 1,
-      icon: react, 
-      name: "React", 
-      ticker: "RCT", 
+      icon: react,
+      name: "React",
+      ticker: "RCT",
       description: "Frontend library for building user interfaces",
       level: "Expert",
       experience: "3+ years",
@@ -62,11 +62,11 @@ const MobileTechnologies = () => {
       chipColor: "from-blue-400 to-cyan-300",
       hologram: "radial-gradient(circle at 30% 30%, rgba(97, 218, 251, 0.15) 0%, transparent 60%)"
     },
-    { 
+    {
       id: 2,
-      icon: nextjs, 
-      name: "Next.js", 
-      ticker: "NXT", 
+      icon: nextjs,
+      name: "Next.js",
+      ticker: "NXT",
       description: "Full-stack React framework for production",
       level: "Advanced",
       experience: "2+ years",
@@ -79,11 +79,11 @@ const MobileTechnologies = () => {
       chipColor: "from-gray-300 to-gray-100",
       hologram: "radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 60%)"
     },
-    { 
+    {
       id: 3,
-      icon: node, 
-      name: "Node.js", 
-      ticker: "NOD", 
+      icon: node,
+      name: "Node.js",
+      ticker: "NOD",
       description: "JavaScript runtime for server-side applications",
       level: "Advanced",
       experience: "3+ years",
@@ -96,11 +96,11 @@ const MobileTechnologies = () => {
       chipColor: "from-green-400 to-emerald-300",
       hologram: "radial-gradient(circle at 50% 50%, rgba(51, 153, 51, 0.15) 0%, transparent 60%)"
     },
-    { 
+    {
       id: 4,
-      icon: js, 
-      name: "JavaScript", 
-      ticker: "JS", 
+      icon: js,
+      name: "JavaScript",
+      ticker: "JS",
       description: "Programming language of the web",
       level: "Expert",
       experience: "4+ years",
@@ -113,11 +113,11 @@ const MobileTechnologies = () => {
       chipColor: "from-yellow-400 to-amber-300",
       hologram: "radial-gradient(circle at 20% 70%, rgba(247, 223, 30, 0.15) 0%, transparent 60%)"
     },
-    { 
+    {
       id: 5,
-      icon: tailwind, 
-      name: "Tailwind CSS", 
-      ticker: "TWD", 
+      icon: tailwind,
+      name: "Tailwind CSS",
+      ticker: "TWD",
       description: "Utility-first CSS framework",
       level: "Expert",
       experience: "2+ years",
@@ -130,11 +130,11 @@ const MobileTechnologies = () => {
       chipColor: "from-cyan-400 to-teal-300",
       hologram: "radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 60%)"
     },
-    { 
+    {
       id: 6,
-      icon: github, 
-      name: "GitHub", 
-      ticker: "GH", 
+      icon: github,
+      name: "GitHub",
+      ticker: "GH",
       description: "Version control and collaboration platform",
       level: "Advanced",
       experience: "4+ years",
@@ -147,11 +147,11 @@ const MobileTechnologies = () => {
       chipColor: "from-purple-400 to-violet-300",
       hologram: "radial-gradient(circle at 40% 40%, rgba(240, 246, 252, 0.1) 0%, transparent 60%)"
     },
-    { 
+    {
       id: 7,
-      icon: python, 
-      name: "Python", 
-      ticker: "PY", 
+      icon: python,
+      name: "Python",
+      ticker: "PY",
       description: "High-level programming language",
       level: "Intermediate",
       experience: "2+ years",
@@ -164,11 +164,11 @@ const MobileTechnologies = () => {
       chipColor: "from-blue-500 to-sky-400",
       hologram: "radial-gradient(circle at 60% 30%, rgba(55, 118, 171, 0.15) 0%, transparent 60%)"
     },
-    { 
+    {
       id: 8,
-      icon: java, 
-      name: "Java", 
-      ticker: "JV", 
+      icon: java,
+      name: "Java",
+      ticker: "JV",
       description: "Object-oriented programming language",
       level: "Intermediate",
       experience: "2+ years",
@@ -181,11 +181,11 @@ const MobileTechnologies = () => {
       chipColor: "from-indigo-400 to-blue-300",
       hologram: "radial-gradient(circle at 30% 60%, rgba(0, 115, 150, 0.15) 0%, transparent 60%)"
     },
-    { 
+    {
       id: 9,
-      icon: html, 
-      name: "HTML/CSS", 
-      ticker: "WEB", 
+      icon: html,
+      name: "HTML/CSS",
+      ticker: "WEB",
       description: "Core technologies for web pages",
       level: "Expert",
       experience: "5+ years",
@@ -253,21 +253,21 @@ const MobileTechnologies = () => {
     if (!isDragging) return;
     const currentTouchX = e.touches[0].clientX;
     setCurrentX(currentTouchX);
-    
+
     const diff = currentTouchX - startX;
     setDragDirection(diff > 0 ? 1 : -1);
-    
+
     // Prevent default to avoid page scroll during swipe
     e.preventDefault();
   }, [isDragging, startX]);
 
   const handleTouchEnd = useCallback((e) => {
     if (!isDragging) return;
-    
+
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchEndX - touchStartX.current;
     const threshold = 50; // Minimum swipe distance
-    
+
     if (Math.abs(diff) > threshold) {
       if (diff > 0) {
         prevCard(); // Swipe right - go previous
@@ -275,7 +275,7 @@ const MobileTechnologies = () => {
         nextCard(); // Swipe left - go next
       }
     }
-    
+
     setIsDragging(false);
     setDragDirection(0);
     setStartX(0);
@@ -299,10 +299,10 @@ const MobileTechnologies = () => {
 
   const handleMouseUp = useCallback(() => {
     if (!isDragging || visibleCards > 1) return;
-    
+
     const diff = currentX - startX;
     const threshold = 50;
-    
+
     if (Math.abs(diff) > threshold) {
       if (diff > 0) {
         prevCard();
@@ -310,7 +310,7 @@ const MobileTechnologies = () => {
         nextCard();
       }
     }
-    
+
     setIsDragging(false);
     setDragDirection(0);
     setStartX(0);
@@ -322,7 +322,7 @@ const MobileTechnologies = () => {
     if (visibleCards === 1) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
-      
+
       return () => {
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
@@ -333,7 +333,7 @@ const MobileTechnologies = () => {
   // Get cards that should be visible based on activeIndex and visibleCards
   const getVisibleCards = useCallback(() => {
     const cards = [];
-    
+
     for (let i = 0; i < visibleCards; i++) {
       const cardIndex = (activeIndex + i) % techAssets.length;
       cards.push({
@@ -342,7 +342,7 @@ const MobileTechnologies = () => {
         position: i
       });
     }
-    
+
     return cards;
   }, [activeIndex, visibleCards, techAssets]);
 
@@ -351,26 +351,26 @@ const MobileTechnologies = () => {
     const isMobile = visibleCards === 1;
     const isTablet = visibleCards === 2;
     const isDesktop = visibleCards === 3;
-    
+
     // Calculate drag offset for mobile swipe animation
     const dragOffset = isDragging && isMobile ? (currentX - startX) * 0.5 : 0;
-    const opacityDuringDrag = isDragging && isMobile ? 
+    const opacityDuringDrag = isDragging && isMobile ?
       Math.max(0.7, 1 - Math.abs(dragOffset) / 200) : 1;
-    
+
     if (isMobile) {
       // Mobile: single card with swipe animation
       return {
         transform: `translateX(${dragOffset}px) scale(${1 - Math.abs(dragOffset) / 1000})`,
         zIndex: 30,
         opacity: opacityDuringDrag,
-        filter: isDragging 
+        filter: isDragging
           ? `drop-shadow(${dragOffset > 0 ? '-' : ''}${Math.abs(dragOffset) / 20}px 20px 30px rgba(0, 255, 106, 0.3))`
           : 'drop-shadow(0 20px 40px rgba(0, 255, 106, 0.4))',
         transition: isDragging ? 'none' : 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
         cursor: isDragging ? 'grabbing' : 'grab',
       };
     }
-    
+
     if (isTablet) {
       // Tablet: 2 cards side by side
       if (position === 0) {
@@ -391,7 +391,7 @@ const MobileTechnologies = () => {
         };
       }
     }
-    
+
     if (isDesktop) {
       // Desktop: 3 cards with center highlighted
       if (position === 0) {
@@ -420,7 +420,7 @@ const MobileTechnologies = () => {
         };
       }
     }
-    
+
     return {
       transform: 'scale(0.8)',
       zIndex: 1,
@@ -430,13 +430,11 @@ const MobileTechnologies = () => {
     };
   }, [visibleCards, isDragging, currentX, startX]);
 
-  // Get responsive card width (credit card dimensions)
+  // Get responsive card width
   const getCardWidth = useCallback(() => {
-    // Standard credit card dimensions: 3.375" x 2.125" (85.6mm x 53.98mm)
-    // Using 3:2 aspect ratio
-    if (visibleCards === 1) return 'w-[290px] h-[213px]'; // Mobile: 3:2 aspect ratio
-    if (visibleCards === 2) return 'w-[300px] h-[200px] md:w-[340px] md:h-[227px]'; // Tablet
-    return 'w-[480px] h-[240px] lg:w-[320px] lg:h-[213px] xl:w-[360px] xl:h-[240px]'; // Desktop
+    if (visibleCards === 1) return 'w-[280px] h-[200px] sm:w-[295px] sm:h-[230px]'; // Mobile
+    if (visibleCards === 2) return 'w-[420px] h-[156px] md:w-[380px] md:h-[175px]'; // Tablet
+    return 'w-[460px] h-[204px] lg:w-[360px] lg:h-[162px] xl:w-[280px] xl:h-[175px]'; // Desktop
   }, [visibleCards]);
 
   const visibleCardData = getVisibleCards();
@@ -448,32 +446,32 @@ const MobileTechnologies = () => {
         <div className='inline-flex items-center gap-3 mb-4'>
           <div className='flex gap-1'>
             <div className='w-2 h-2 rounded-full bg-green-500 dark:bg-[#00FF6A] animate-pulse'></div>
-            <div className='w-2 h-2 rounded-full bg-blue-500 animate-pulse' style={{animationDelay: '0.2s'}}></div>
-            <div className='w-2 h-2 rounded-full bg-purple-500 animate-pulse' style={{animationDelay: '0.4s'}}></div>
+            <div className='w-2 h-2 rounded-full bg-blue-500 animate-pulse' style={{ animationDelay: '0.2s' }}></div>
+            <div className='w-2 h-2 rounded-full bg-purple-500 animate-pulse' style={{ animationDelay: '0.4s' }}></div>
           </div>
           <h2 className='font-mono text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest'>
             PREMIUM
           </h2>
         </div>
-        
+
         <div className='text-6xl xl:text-5xl lg:text-center lg:text-6xl md:text-5xl sm:text-3xl font-bold mb-4'>
           <span className='block text-gray-900 dark:text-white'>TECHNOLOGY</span>
           <span className='block'>
             <span className='text-green-600 dark:text-[#00FF6A] font-mono'>"SKILL CARDS"</span>
           </span>
         </div>
-        
+
         <p className='text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg font-light'>
-          {visibleCards === 1 
-            ? 'Swipe left/right to explore cards • Auto-rotates every 3s' 
+          {visibleCards === 1
+            ? 'Swipe left/right to explore cards • Auto-rotates every 3s'
             : visibleCards === 2
-            ? 'Hover on corners to see the magic :)'
-            : 'Hover on corners to see the magic :)'}
+              ? 'Hover on corners to see the magic :)'
+              : 'Hover on corners to see the magic :)'}
         </p>
       </div>
 
       {/* Carousel Container */}
-      <div 
+      <div
         className="relative max-w-7xl mx-auto"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
@@ -482,9 +480,8 @@ const MobileTechnologies = () => {
         {/* Navigation Arrows - Hidden on mobile */}
         <button
           onClick={prevCard}
-          className={`absolute left-0 md:-left-4 lg:-left-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-black/60 hover:border-white/40 transition-all duration-300 group shadow-2xl ${
-            visibleCards === 1 ? 'flex sm:hidden' : 'flex'
-          }`}
+          className={`absolute left-0 md:-left-4 lg:-left-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-black/60 hover:border-white/40 transition-all duration-300 group shadow-2xl ${visibleCards === 1 ? 'flex sm:hidden' : 'flex'
+            }`}
           aria-label="Previous cards"
         >
           <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -494,9 +491,8 @@ const MobileTechnologies = () => {
 
         <button
           onClick={nextCard}
-          className={`absolute right-0 md:-right-4 lg:-right-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-black/60 hover:border-white/40 transition-all duration-300 group shadow-2xl ${
-            visibleCards === 1 ? 'flex sm:hidden' : 'flex'
-          }`}
+          className={`absolute right-0 md:-right-4 lg:-right-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-black/60 hover:border-white/40 transition-all duration-300 group shadow-2xl ${visibleCards === 1 ? 'flex sm:hidden' : 'flex'
+            }`}
           aria-label="Next cards"
         >
           <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -505,12 +501,11 @@ const MobileTechnologies = () => {
         </button>
 
         {/* Carousel Cards Container */}
-        <div 
-          className={`relative h-[300px] flex items-center justify-center ${
-            visibleCards === 1 ? 'px-4 touch-none select-none' : 
-            visibleCards === 2 ? 'px-8 md:px-16' : 
-            'px-4 lg:px-8 xl:px-16'
-          }`}
+        <div
+          className={`relative h-[220px] sm:h-[240px] flex items-center justify-center ${visibleCards === 1 ? 'px-4 touch-none select-none' :
+            visibleCards === 2 ? 'px-8 md:px-16' :
+              'px-4 lg:px-8 xl:px-16'
+            }`}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -538,11 +533,10 @@ const MobileTechnologies = () => {
           {/* Drag direction indicator */}
           {isDragging && visibleCards === 1 && dragDirection !== 0 && (
             <div className={`absolute top-4 ${dragDirection > 0 ? 'left-4' : 'right-4'} z-40`}>
-              <div className={`px-3 py-1.5 rounded-full backdrop-blur-md ${
-                dragDirection > 0 
-                  ? 'bg-green-500/20 border border-green-500/30' 
-                  : 'bg-blue-500/20 border border-blue-500/30'
-              }`}>
+              <div className={`px-3 py-1.5 rounded-full backdrop-blur-md ${dragDirection > 0
+                ? 'bg-green-500/20 border border-green-500/30'
+                : 'bg-blue-500/20 border border-blue-500/30'
+                }`}>
                 <span className="text-xs font-mono text-white">
                   {dragDirection > 0 ? '← Previous' : 'Next →'}
                 </span>
@@ -553,9 +547,8 @@ const MobileTechnologies = () => {
           {visibleCardData.map((tech, positionIndex) => (
             <div
               key={`${tech.id}-${positionIndex}`}
-              className={`absolute ${getCardWidth()} transition-all duration-300 cursor-pointer ${
-                isDragging && visibleCards === 1 ? 'active:scale-95' : ''
-              }`}
+              className={`absolute ${getCardWidth()} transition-all duration-300 cursor-pointer ${isDragging && visibleCards === 1 ? 'active:scale-95' : ''
+                }`}
               style={getCardStyle(positionIndex)}
               onClick={(e) => {
                 // Prevent click during drag
@@ -570,137 +563,172 @@ const MobileTechnologies = () => {
                 className="w-full h-full"
               >
                 {/* Premium Credit Card Container */}
-                <div className={`relative rounded-2xl overflow-hidden w-full h-full transition-all duration-300 ${
-                  visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)
-                    ? 'ring-2 ring-green-500/50 dark:ring-[#00FF6A]/50 shadow-2xl' 
-                    : 'ring-1 ring-white/10 shadow-lg'
-                }`} style={{ aspectRatio: '3/2' }}>
-                  
+                <div className={`relative rounded-2xl overflow-hidden w-full h-full transition-all duration-300 ${visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)
+                  ? 'ring-2 ring-green-500/50 dark:ring-[#00FF6A]/50 shadow-2xl'
+                  : 'ring-1 ring-white/10 shadow-lg'
+                  }`} style={{ aspectRatio: '16/10' }}>
+
                   {/* Card Background with Gradient */}
-                  <div 
+                  <div
                     className="absolute inset-0"
                     style={{ background: tech.cardGradient }}
                   />
-                  
+
                   {/* Holographic Overlay */}
-                  <div 
+                  <div
                     className="absolute inset-0 mix-blend-overlay opacity-30"
                     style={{ background: tech.hologram }}
                   />
-                  
+
                   {/* Subtle Pattern */}
                   <div className="absolute inset-0 opacity-5 bg-[linear-gradient(45deg,transparent_45%,rgba(255,255,255,0.3)_50%,transparent_55%)]"></div>
-                  
+
                   {/* Embossed Effect */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10"></div>
-                  
-                  {/* Card Content */}
-                  <div className="relative h-full p-6 flex flex-col justify-between">
-                    
+
+                  {/* Card Content - Optimized for mobile */}
+                  <div className="relative h-full sm:p-3 p-4 flex flex-col justify-between">
+
                     {/* Card Header - Top Section */}
                     <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center sm:gap-2 gap-3">
                         {/* Tech Logo */}
                         <div className="relative">
-                          <div className="p-2 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20">
-                            <div className="relative w-8 h-8">
-                              <Image 
-                                src={tech.icon} 
+                          <div className="sm:p-1 p-2 sm:rounded-lg rounded-xl bg-black/40 backdrop-blur-sm border border-white/20">
+                            <div className="relative sm:w-4 sm:h-4 w-8 h-8">
+                              <Image
+                                src={tech.icon}
                                 alt={tech.name}
                                 fill
                                 className="object-contain"
+                                sizes="(max-width: 640px) 24px, 32px"
                               />
                             </div>
                           </div>
                         </div>
-                        
+
                         {/* Card Title */}
-                        <div>
-                          <div className="text-xs font-mono text-gray-400 tracking-widest">
+                        <>
+                          <div className="sm:text-[8px] text-xs font-mono text-gray-400 tracking-widest">
                             {tech.ticker}
                           </div>
-                          <div className="text-lg font-bold text-white mt-1">
+                          <div className="sm:text-[12px] text-lg font-bold text-white sm:mt-0.5 mt-1">
                             {tech.name}
                           </div>
-                          <div className="text-xs text-gray-400 mt-1">
+                          <div className="sm:text-[8px] text-xs text-gray-400 mt-0.5">
                             {tech.category}
                           </div>
-                        </div>
+                        </>
                       </div>
-                      
+
                       {/* Premium Chip */}
                       <div className="relative">
-                        <div className={`w-10 h-7 rounded-lg bg-gradient-to-br ${tech.chipColor} relative overflow-hidden`}>
+                        <div className={`sm:w-8 sm:h-5 w-10 h-7 sm:rounded-md rounded-lg bg-gradient-to-br ${tech.chipColor} relative overflow-hidden`}>
                           <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent"></div>
                           <div className="absolute top-1/2 left-0 right-0 h-px bg-white/40"></div>
                           <div className="absolute top-0 left-1/2 h-full w-px bg-white/40"></div>
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Tech Stats Section - Middle */}
-                    <div className="mt-4">
+                    <div className="sm:mt-1 mt-3">
                       {/* Growth Indicator */}
-                      <div className="flex items-center justify-between mb-4">
+                      <div className="sm:hidden flex items-center justify-between sm:mb-2 mb-3">
                         <div className="text-left">
-                          <div className="text-xs font-mono text-gray-400 mb-1">GROWTH</div>
-                          <div className={`text-xl font-bold ${
-                            tech.trend.startsWith('+') 
-                              ? 'text-green-400' 
-                              : 'text-red-400'
-                          }`}>
+                          <div className="sm:text-[10px] text-xs font-mono text-gray-400 mb-0.5">GROWTH</div>
+                          <div className={`text-base sm:text-xs font-bold ${tech.trend.startsWith('+')
+                            ? 'text-green-400'
+                            : 'text-red-400'
+                            }`}>
                             {tech.trend}
                           </div>
                         </div>
-                        
+
                         {/* Skill Level */}
-                        <div className="text-right">
-                          <div className="text-xs font-mono text-gray-400 mb-1">SKILL LEVEL</div>
-                          <div className="px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-sm border border-white/20">
-                            <span className="text-sm font-bold text-white">{tech.level}</span>
+                        <div className="sm:hidden text-right">
+                          <div className="sm:text-[10px] text-xs font-mono text-gray-400 mb-0.5">SKILL LEVEL</div>
+                          <div className="sm:px-2 sm:py-1 px-3 py-1.5 sm:rounded-md rounded-lg bg-black/60 backdrop-blur-sm border border-white/20">
+                            <span className="sm:text-[10px] text-sm font-bold text-white">{tech.level}</span>
                           </div>
                         </div>
                       </div>
-                      
-                      {/* Card Number (Tech ID) */}
-                      <div className="font-mono text-lg tracking-[0.25em] text-white text-center">
-                        •••• •••• •••• {tech.ticker.padStart(4, '0')}
+
+                      {/* Card Number (Tech ID) - Golden Style */}
+                      <div className="font-mono sm:text-xs text-lg sm:tracking-[0.15em] tracking-[0.25em] text-center sm:mb-1 mb-3">
+                        <span className="text-lg sm:text-xs bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 bg-clip-text text-transparent">
+                          •••• •••• •••• {tech.ticker.padStart(4, '0')}
+                        </span>
                       </div>
-                      
+
                       {/* Experience Info */}
-                      <div className="flex items-center justify-between mt-4">
+                      <div className="flex items-center justify-between">
                         <div>
-                          <div className="text-xs font-mono text-gray-400 mb-1">EXPERIENCE</div>
-                          <div className="text-sm font-semibold text-white">{tech.experience}</div>
+                          <div className="sm:text-[10px] text-xs font-mono text-gray-400 mb-0.5">EXPERIENCE</div>
+                          <div className="sm:text-sm text-base font-semibold bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 bg-clip-text text-transparent">
+                            {tech.experience}
+                          </div>
                         </div>
-                        <div className="text-right">
-                          <div className="text-xs font-mono text-gray-400 mb-1">PERFORMANCE</div>
-                          <div className={`text-sm font-semibold ${
-                            parseInt(tech.performance) >= 98 
-                              ? 'text-green-400' 
-                              : 'text-amber-400'
-                          }`}>
+                         <div className="text-left hidden sm:inline">
+                          <div className="sm:text-[10px] text-xs font-mono text-gray-400 mb-0.5">GROWTH</div>
+                          <div className={`text-base sm:text-xs font-bold ${tech.trend.startsWith('+')
+                            ? 'text-green-400'
+                            : 'text-red-400'
+                            }`}>
+                            {tech.trend}
+                          </div>
+                        </div>
+                        <div className="text-right sm:hidden">
+                          <div className="sm:text-[10px] text-xs font-mono text-gray-400 mb-0.5">PERFORMANCE</div>
+                          <div className={`sm:text-sm text-base font-semibold ${parseInt(tech.performance) >= 98
+                            ? 'text-green-400'
+                            : 'text-amber-400'
+                            }`}>
                             {tech.performance}
                           </div>
                         </div>
                       </div>
                     </div>
-                    
-                   
-                    
+
+                    {/* Tech Network Logo */}
+                    <div className="flex items-center justify-between pt-3 border-t border-white/20">
+  {/* Card Holder Name - Silver Shiny Style */}
+  <div className="text-left">
+    <div className="sm:text-[9px] text-[10px] font-mono text-gray-400 dark:text-gray-500 mb-1 uppercase tracking-[0.1em]">
+      CARD HOLDER
+    </div>
+    <div className="text-sm sm:text-base font-mono font-medium 
+      bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 
+      bg-clip-text text-transparent 
+      drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
+      TEJAS PATEL
+    </div>
+  </div>
+  
+  {/* Category */}
+  <div className="text-right">
+    <div className="text-[9px] sm:text-[10px] font-mono text-gray-400 dark:text-gray-500 mb-1 uppercase tracking-[0.1em]">
+      CATEGORY
+    </div>
+    <div className="text-sm sm:text-base font-mono font-medium text-white">
+      {tech.category}
+    </div>
+  </div>
+</div>
+
                     {/* Active Indicator */}
                     {(visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)) && (
-                      <div className="absolute top-4 right-4">
+                      <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
                         <div className="relative">
-                          <div className="w-3 h-3 rounded-full bg-green-500 dark:bg-[#00FF6A]"></div>
+                          <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500 dark:bg-[#00FF6A]"></div>
                           <div className="absolute inset-0 animate-ping rounded-full bg-green-500/40 dark:bg-[#00FF6A]/40"></div>
                         </div>
                       </div>
                     )}
-                    
-                    {/* Tech Expertise Indicator (replaces contactless symbol) */}
-                 
-                    
+
+                    {/* Tech Expertise Indicator */}
+
+
                     {/* Metallic Accent Lines */}
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
                     <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
@@ -712,20 +740,19 @@ const MobileTechnologies = () => {
         </div>
 
         {/* Carousel Indicators */}
-        <div className="flex justify-center mt-10 md:mt-12 space-x-2 md:space-x-3">
+        <div className="flex justify-center mt-8 sm:mt-10 md:mt-12 space-x-2 sm:space-x-3">
           {Array.from({ length: Math.ceil(techAssets.length / visibleCards) }).map((_, groupIndex) => {
             const startIndex = groupIndex * visibleCards;
             const isActive = activeIndex >= startIndex && activeIndex < startIndex + visibleCards;
-            
+
             return (
               <button
                 key={groupIndex}
                 onClick={() => goToCard(startIndex)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  isActive 
-                    ? 'bg-green-500 dark:bg-[#00FF6A] w-6 md:w-8' 
-                    : 'bg-gray-400 dark:bg-gray-600 hover:bg-gray-500'
-                }`}
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${isActive
+                  ? 'bg-green-500 dark:bg-[#00FF6A] w-5 sm:w-6 md:w-8'
+                  : 'bg-gray-400 dark:bg-gray-600 hover:bg-gray-500'
+                  }`}
                 aria-label={`Go to group ${groupIndex + 1}`}
               />
             );
@@ -733,11 +760,11 @@ const MobileTechnologies = () => {
         </div>
 
         {/* Center Card Details - Only show for center card on desktop/tablet */}
-    
+
       </div>
 
       {/* Control Instructions - Responsive */}
-    
+
     </div>
   );
 };

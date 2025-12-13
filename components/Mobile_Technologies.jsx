@@ -214,7 +214,7 @@ const MobileTechnologies = () => {
         const nextIndex = prevIndex + visibleCards;
         return nextIndex >= techAssets.length ? 0 : nextIndex;
       });
-    }, 3000); // Changed from 4000ms to 3000ms
+    }, 3000);
 
     return () => {
       if (autoScrollInterval.current) {
@@ -430,11 +430,13 @@ const MobileTechnologies = () => {
     };
   }, [visibleCards, isDragging, currentX, startX]);
 
-  // Get responsive card width
+  // Get responsive card width (credit card dimensions)
   const getCardWidth = useCallback(() => {
-    if (visibleCards === 1) return 'w-[90%] max-w-[320px]';
-    if (visibleCards === 2) return 'w-[280px] md:w-[300px]';
-    return 'w-[250px] lg:w-[280px] xl:w-[300px]';
+    // Standard credit card dimensions: 3.375" x 2.125" (85.6mm x 53.98mm)
+    // Using 3:2 aspect ratio
+    if (visibleCards === 1) return 'w-[290px] h-[213px]'; // Mobile: 3:2 aspect ratio
+    if (visibleCards === 2) return 'w-[300px] h-[200px] md:w-[340px] md:h-[227px]'; // Tablet
+    return 'w-[480px] h-[240px] lg:w-[320px] lg:h-[213px] xl:w-[360px] xl:h-[240px]'; // Desktop
   }, [visibleCards]);
 
   const visibleCardData = getVisibleCards();
@@ -504,7 +506,7 @@ const MobileTechnologies = () => {
 
         {/* Carousel Cards Container */}
         <div 
-          className={`relative h-[400px] flex items-center justify-center ${
+          className={`relative h-[300px] flex items-center justify-center ${
             visibleCards === 1 ? 'px-4 touch-none select-none' : 
             visibleCards === 2 ? 'px-8 md:px-16' : 
             'px-4 lg:px-8 xl:px-16'
@@ -568,11 +570,11 @@ const MobileTechnologies = () => {
                 className="w-full h-full"
               >
                 {/* Premium Credit Card Container */}
-                <div className={`relative rounded-2xl overflow-hidden h-full min-h-[350px] transition-all duration-300 ${
+                <div className={`relative rounded-2xl overflow-hidden w-full h-full transition-all duration-300 ${
                   visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)
                     ? 'ring-2 ring-green-500/50 dark:ring-[#00FF6A]/50 shadow-2xl' 
                     : 'ring-1 ring-white/10 shadow-lg'
-                }`}>
+                }`} style={{ aspectRatio: '3/2' }}>
                   
                   {/* Card Background with Gradient */}
                   <div 
@@ -589,16 +591,19 @@ const MobileTechnologies = () => {
                   {/* Subtle Pattern */}
                   <div className="absolute inset-0 opacity-5 bg-[linear-gradient(45deg,transparent_45%,rgba(255,255,255,0.3)_50%,transparent_55%)]"></div>
                   
+                  {/* Embossed Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10"></div>
+                  
                   {/* Card Content */}
-                  <div className="relative h-full p-5 md:p-6 flex flex-col">
+                  <div className="relative h-full p-6 flex flex-col justify-between">
                     
-                    {/* Card Header */}
-                    <div className="flex items-start justify-between mb-6 md:mb-8">
-                      <div className="flex items-center gap-3 md:gap-4">
+                    {/* Card Header - Top Section */}
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-3">
                         {/* Tech Logo */}
                         <div className="relative">
-                          <div className="p-2 md:p-3 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20">
-                            <div className="relative w-8 h-8 md:w-10 md:h-10">
+                          <div className="p-2 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20">
+                            <div className="relative w-8 h-8">
                               <Image 
                                 src={tech.icon} 
                                 alt={tech.name}
@@ -614,7 +619,7 @@ const MobileTechnologies = () => {
                           <div className="text-xs font-mono text-gray-400 tracking-widest">
                             {tech.ticker}
                           </div>
-                          <div className="text-xl md:text-2xl font-bold text-white mt-1">
+                          <div className="text-lg font-bold text-white mt-1">
                             {tech.name}
                           </div>
                           <div className="text-xs text-gray-400 mt-1">
@@ -625,7 +630,7 @@ const MobileTechnologies = () => {
                       
                       {/* Premium Chip */}
                       <div className="relative">
-                        <div className={`w-8 h-5 md:w-10 md:h-7 rounded-lg bg-gradient-to-br ${tech.chipColor} relative overflow-hidden`}>
+                        <div className={`w-10 h-7 rounded-lg bg-gradient-to-br ${tech.chipColor} relative overflow-hidden`}>
                           <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent"></div>
                           <div className="absolute top-1/2 left-0 right-0 h-px bg-white/40"></div>
                           <div className="absolute top-0 left-1/2 h-full w-px bg-white/40"></div>
@@ -633,13 +638,44 @@ const MobileTechnologies = () => {
                       </div>
                     </div>
                     
-                    {/* Performance Section */}
-                    <div className="flex-1 flex items-center justify-between mb-4 md:mb-6">
-                      {/* Performance Badge */}
-                      <div className="relative">
-                        <div className="px-3 py-2 md:px-4 md:py-3 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20">
-                          <div className="text-xs font-mono text-gray-400 mb-1">PERF</div>
-                          <div className={`text-xl md:text-2xl font-bold ${
+                    {/* Tech Stats Section - Middle */}
+                    <div className="mt-4">
+                      {/* Growth Indicator */}
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="text-left">
+                          <div className="text-xs font-mono text-gray-400 mb-1">GROWTH</div>
+                          <div className={`text-xl font-bold ${
+                            tech.trend.startsWith('+') 
+                              ? 'text-green-400' 
+                              : 'text-red-400'
+                          }`}>
+                            {tech.trend}
+                          </div>
+                        </div>
+                        
+                        {/* Skill Level */}
+                        <div className="text-right">
+                          <div className="text-xs font-mono text-gray-400 mb-1">SKILL LEVEL</div>
+                          <div className="px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-sm border border-white/20">
+                            <span className="text-sm font-bold text-white">{tech.level}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Card Number (Tech ID) */}
+                      <div className="font-mono text-lg tracking-[0.25em] text-white text-center">
+                        •••• •••• •••• {tech.ticker.padStart(4, '0')}
+                      </div>
+                      
+                      {/* Experience Info */}
+                      <div className="flex items-center justify-between mt-4">
+                        <div>
+                          <div className="text-xs font-mono text-gray-400 mb-1">EXPERIENCE</div>
+                          <div className="text-sm font-semibold text-white">{tech.experience}</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-xs font-mono text-gray-400 mb-1">PERFORMANCE</div>
+                          <div className={`text-sm font-semibold ${
                             parseInt(tech.performance) >= 98 
                               ? 'text-green-400' 
                               : 'text-amber-400'
@@ -647,59 +683,23 @@ const MobileTechnologies = () => {
                             {tech.performance}
                           </div>
                         </div>
-                        
-                        {/* Level Badge */}
-                        <div className="absolute -bottom-1 -right-1 md:-bottom-2 md:-right-2">
-                          <div className="px-2 py-1 md:px-3 md:py-1.5 rounded-lg bg-black/60 backdrop-blur-sm border border-white/20">
-                            <span className="text-xs font-bold text-white">{tech.level}</span>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Trend Indicator */}
-                      <div className="text-right">
-                        <div className="text-xs font-mono text-gray-400 mb-1">GROWTH</div>
-                        <div className={`text-xl md:text-2xl font-bold ${
-                          tech.trend.startsWith('+') 
-                            ? 'text-green-400' 
-                            : 'text-red-400'
-                        }`}>
-                          {tech.trend}
-                        </div>
                       </div>
                     </div>
                     
-                    {/* Card Details */}
-                    <div className="pt-3 md:pt-4 border-t border-white/20">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-xs font-mono text-gray-400 mb-1">EXP</div>
-                          <div className="text-base md:text-lg font-semibold text-white">{tech.experience}</div>
-                        </div>
-                        
-                        <div className="text-right">
-                          <div className="text-xs font-mono text-gray-400 mb-1">VALID</div>
-                          <div className="text-base md:text-lg font-semibold text-white">12/29</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Card Number */}
-                    <div className="mt-3 md:mt-4">
-                      <div className="font-mono text-xs md:text-sm tracking-[0.15em] md:tracking-[0.2em] text-white/80">
-                        •••• •••• •••• {tech.ticker.padStart(4, '0')}
-                      </div>
-                    </div>
+                   
                     
                     {/* Active Indicator */}
                     {(visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)) && (
-                      <div className="absolute top-3 md:top-4 right-3 md:right-4">
+                      <div className="absolute top-4 right-4">
                         <div className="relative">
-                          <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-500 dark:bg-[#00FF6A]"></div>
+                          <div className="w-3 h-3 rounded-full bg-green-500 dark:bg-[#00FF6A]"></div>
                           <div className="absolute inset-0 animate-ping rounded-full bg-green-500/40 dark:bg-[#00FF6A]/40"></div>
                         </div>
                       </div>
                     )}
+                    
+                    {/* Tech Expertise Indicator (replaces contactless symbol) */}
+                 
                     
                     {/* Metallic Accent Lines */}
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
@@ -733,18 +733,7 @@ const MobileTechnologies = () => {
         </div>
 
         {/* Center Card Details - Only show for center card on desktop/tablet */}
-        {visibleCards > 1 && visibleCardData[1] && (
-          <div className="mt-10 md:mt-12 text-center">
-            <div className="inline-block px-4 py-3 md:px-6 md:py-3 rounded-full bg-black/20 backdrop-blur-sm border border-white/10">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">
-                {visibleCardData[1].name} <span className="text-green-400">(Center Card)</span>
-              </h3>
-              <p className="text-sm md:text-base text-gray-300 max-w-xl mx-auto">
-                {visibleCardData[1].description}
-              </p>
-            </div>
-          </div>
-        )}
+    
       </div>
 
       {/* Control Instructions - Responsive */}

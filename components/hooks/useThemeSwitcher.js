@@ -1,61 +1,42 @@
+// hooks/useThemeSwitcher.js
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const useThemeSwitcher = () => {
+export default function useThemeSwitcher() {
+  const [mode, setMode] = useState('light')
 
-    const preferDarkQuery = "(prefer-color-scheme: light)";
-    const [mode, setMode] = useState('')
+  useEffect(() => {
+    // Get theme from localStorage or system preference
+    const storedTheme = localStorage.getItem('theme')
+    
+    if (storedTheme) {
+      setMode(storedTheme)
+      applyTheme(storedTheme)
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setMode('dark')
+      applyTheme('dark')
+    }
+  }, [])
 
-    useEffect(() => {
-        const mediaQuery = window.matchMedia(preferDarkQuery)
-        const userPref = window.localStorage.getItem("theme")
+  const applyTheme = (theme) => {
+    const root = document.documentElement
+    
+    // Remove both classes
+    root.classList.remove('light', 'dark')
+    
+    // Add the current theme class
+    root.classList.add(theme)
+    
+    // Store in localStorage
+    localStorage.setItem('theme', theme)
+  }
 
-        const handleChange = () => {
-            if (userPref) {
-                let check = userPref === "light" ? "light" : "dark"
-                setMode(check)
+  const toggleTheme = () => {
+    const newMode = mode === 'light' ? 'dark' : 'light'
+    setMode(newMode)
+    applyTheme(newMode)
+  }
 
-                if (check === "dark") {
-                    document.documentElement.classList.add("dark")
-                }
-                else {
-                    document.documentElement.classList.remove("dark")
-                }
-            } else {
-                let check = mediaQuery.matches ? "dark" : "light"
-                setMode(check)
-
-
-                if (check === "dark") {
-                    document.documentElement.classList.add("dark")
-                }
-                else {
-                    document.documentElement.classList.remove("dark")
-                }
-            }
-
-        }
-        handleChange();
-
-        mediaQuery.addEventListener("change", handleChange)
-
-
-        return () => mediaQuery.removeEventListener("change", handleChange)
-    }, [])
-
-    useEffect(() => {
-        if (mode === "dark") {
-            window.localStorage.setItem("theme", "dark")
-            document.documentElement.classList.add("dark")
-        } else {
-            window.localStorage.setItem("theme", "light")
-            document.documentElement.classList.remove("dark")
-        }
-
-    }, [mode])
-
-    return [mode, setMode]
+  return [mode, toggleTheme]
 }
-
-export default useThemeSwitcher

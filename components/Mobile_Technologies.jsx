@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { CometCard } from "@/components/ui/comet-card";
 import tailwind from "../public/tailwind.png";
@@ -14,8 +14,36 @@ import python from "../public/python.png";
 import java from "../public/java.png";
 
 const MobileTechnologies = () => {
-  const [activeTech, setActiveTech] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const [visibleCards, setVisibleCards] = useState(3);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
+  const [dragDirection, setDragDirection] = useState(0);
   
+  const carouselRef = useRef(null);
+  const touchStartX = useRef(0);
+  const autoScrollInterval = useRef(null);
+
+  // Update visible cards based on screen size
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (window.innerWidth >= 1280) {
+        setVisibleCards(3);
+      } else if (window.innerWidth >= 768) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(1);
+      }
+    };
+
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+    
+    return () => window.removeEventListener('resize', updateVisibleCards);
+  }, []);
+
   const techAssets = [
     { 
       id: 1,
@@ -172,10 +200,249 @@ const MobileTechnologies = () => {
     }
   ];
 
+  // Auto-scroll functionality - reduced to 3s
+  useEffect(() => {
+    if (isHovering || isDragging) {
+      if (autoScrollInterval.current) {
+        clearInterval(autoScrollInterval.current);
+      }
+      return;
+    }
+
+    autoScrollInterval.current = setInterval(() => {
+      setActiveIndex((prevIndex) => {
+        const nextIndex = prevIndex + visibleCards;
+        return nextIndex >= techAssets.length ? 0 : nextIndex;
+      });
+    }, 3000); // Changed from 4000ms to 3000ms
+
+    return () => {
+      if (autoScrollInterval.current) {
+        clearInterval(autoScrollInterval.current);
+      }
+    };
+  }, [isHovering, isDragging, techAssets.length, visibleCards]);
+
+  const nextCard = useCallback(() => {
+    setActiveIndex((prevIndex) => {
+      const nextIndex = prevIndex + visibleCards;
+      return nextIndex >= techAssets.length ? 0 : nextIndex;
+    });
+  }, [visibleCards, techAssets.length]);
+
+  const prevCard = useCallback(() => {
+    setActiveIndex((prevIndex) => {
+      const nextIndex = prevIndex - visibleCards;
+      return nextIndex < 0 ? techAssets.length - visibleCards : nextIndex;
+    });
+  }, [visibleCards, techAssets.length]);
+
+  const goToCard = useCallback((index) => {
+    setActiveIndex(index);
+  }, []);
+
+  // Touch and drag handlers
+  const handleTouchStart = useCallback((e) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX);
+    setCurrentX(e.touches[0].clientX);
+  }, []);
+
+  const handleTouchMove = useCallback((e) => {
+    if (!isDragging) return;
+    const currentTouchX = e.touches[0].clientX;
+    setCurrentX(currentTouchX);
+    
+    const diff = currentTouchX - startX;
+    setDragDirection(diff > 0 ? 1 : -1);
+    
+    // Prevent default to avoid page scroll during swipe
+    e.preventDefault();
+  }, [isDragging, startX]);
+
+  const handleTouchEnd = useCallback((e) => {
+    if (!isDragging) return;
+    
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchEndX - touchStartX.current;
+    const threshold = 50; // Minimum swipe distance
+    
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        prevCard(); // Swipe right - go previous
+      } else {
+        nextCard(); // Swipe left - go next
+      }
+    }
+    
+    setIsDragging(false);
+    setDragDirection(0);
+    setStartX(0);
+    setCurrentX(0);
+  }, [isDragging, nextCard, prevCard]);
+
+  // Mouse drag handlers for desktop testing
+  const handleMouseDown = useCallback((e) => {
+    if (visibleCards > 1) return; // Only enable swipe on mobile
+    setIsDragging(true);
+    setStartX(e.clientX);
+    setCurrentX(e.clientX);
+  }, [visibleCards]);
+
+  const handleMouseMove = useCallback((e) => {
+    if (!isDragging || visibleCards > 1) return;
+    setCurrentX(e.clientX);
+    const diff = e.clientX - startX;
+    setDragDirection(diff > 0 ? 1 : -1);
+  }, [isDragging, startX, visibleCards]);
+
+  const handleMouseUp = useCallback(() => {
+    if (!isDragging || visibleCards > 1) return;
+    
+    const diff = currentX - startX;
+    const threshold = 50;
+    
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        prevCard();
+      } else {
+        nextCard();
+      }
+    }
+    
+    setIsDragging(false);
+    setDragDirection(0);
+    setStartX(0);
+    setCurrentX(0);
+  }, [isDragging, currentX, startX, nextCard, prevCard, visibleCards]);
+
+  // Add global mouse event listeners
+  useEffect(() => {
+    if (visibleCards === 1) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [handleMouseMove, handleMouseUp, visibleCards]);
+
+  // Get cards that should be visible based on activeIndex and visibleCards
+  const getVisibleCards = useCallback(() => {
+    const cards = [];
+    
+    for (let i = 0; i < visibleCards; i++) {
+      const cardIndex = (activeIndex + i) % techAssets.length;
+      cards.push({
+        ...techAssets[cardIndex],
+        index: cardIndex,
+        position: i
+      });
+    }
+    
+    return cards;
+  }, [activeIndex, visibleCards, techAssets]);
+
+  // Calculate card styles with drag/swipe animation
+  const getCardStyle = useCallback((position) => {
+    const isMobile = visibleCards === 1;
+    const isTablet = visibleCards === 2;
+    const isDesktop = visibleCards === 3;
+    
+    // Calculate drag offset for mobile swipe animation
+    const dragOffset = isDragging && isMobile ? (currentX - startX) * 0.5 : 0;
+    const opacityDuringDrag = isDragging && isMobile ? 
+      Math.max(0.7, 1 - Math.abs(dragOffset) / 200) : 1;
+    
+    if (isMobile) {
+      // Mobile: single card with swipe animation
+      return {
+        transform: `translateX(${dragOffset}px) scale(${1 - Math.abs(dragOffset) / 1000})`,
+        zIndex: 30,
+        opacity: opacityDuringDrag,
+        filter: isDragging 
+          ? `drop-shadow(${dragOffset > 0 ? '-' : ''}${Math.abs(dragOffset) / 20}px 20px 30px rgba(0, 255, 106, 0.3))`
+          : 'drop-shadow(0 20px 40px rgba(0, 255, 106, 0.4))',
+        transition: isDragging ? 'none' : 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        cursor: isDragging ? 'grabbing' : 'grab',
+      };
+    }
+    
+    if (isTablet) {
+      // Tablet: 2 cards side by side
+      if (position === 0) {
+        return {
+          transform: 'translateX(-25%) scale(0.95)',
+          zIndex: 20,
+          opacity: 0.9,
+          filter: 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3))',
+          transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        };
+      } else if (position === 1) {
+        return {
+          transform: 'translateX(25%) scale(0.95)',
+          zIndex: 20,
+          opacity: 0.9,
+          filter: 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3))',
+          transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        };
+      }
+    }
+    
+    if (isDesktop) {
+      // Desktop: 3 cards with center highlighted
+      if (position === 0) {
+        return {
+          transform: 'translateX(-60%) scale(0.85)',
+          zIndex: 10,
+          opacity: 0.8,
+          filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2))',
+          transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        };
+      } else if (position === 1) {
+        return {
+          transform: 'scale(1.1) translateY(-15px)',
+          zIndex: 30,
+          opacity: 1,
+          filter: 'drop-shadow(0 25px 50px rgba(0, 255, 106, 0.5))',
+          transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        };
+      } else if (position === 2) {
+        return {
+          transform: 'translateX(60%) scale(0.85)',
+          zIndex: 10,
+          opacity: 0.8,
+          filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2))',
+          transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        };
+      }
+    }
+    
+    return {
+      transform: 'scale(0.8)',
+      zIndex: 1,
+      opacity: 0.3,
+      filter: 'none',
+      transition: 'all 0.5s ease',
+    };
+  }, [visibleCards, isDragging, currentX, startX]);
+
+  // Get responsive card width
+  const getCardWidth = useCallback(() => {
+    if (visibleCards === 1) return 'w-[90%] max-w-[320px]';
+    if (visibleCards === 2) return 'w-[280px] md:w-[300px]';
+    return 'w-[250px] lg:w-[280px] xl:w-[300px]';
+  }, [visibleCards]);
+
+  const visibleCardData = getVisibleCards();
+
   return (
-    <div className='mt-24 mb-24 px-4'>
-      {/* Header - Matching your page theme */}
-      <div className='text-center mb-12'>
+    <div className='mt-24 mb-24 px-4 relative'>
+      {/* Header */}
+      <div className='text-center mb-16'>
         <div className='inline-flex items-center gap-3 mb-4'>
           <div className='flex gap-1'>
             <div className='w-2 h-2 rounded-full bg-green-500 dark:bg-[#00FF6A] animate-pulse'></div>
@@ -191,33 +458,120 @@ const MobileTechnologies = () => {
           <span className='block text-gray-900 dark:text-white'>TECHNOLOGY</span>
           <span className='block'>
             <span className='text-green-600 dark:text-[#00FF6A] font-mono'>{"CREDIT CARDS"}</span>
-            
           </span>
         </div>
         
         <p className='text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg font-light'>
-          Exclusive premium technology cards with verified expertise and unlimited potential.
+          {visibleCards === 1 
+            ? 'Swipe left/right to explore cards • Auto-rotates every 3s' 
+            : visibleCards === 2
+            ? 'Viewing 2 premium technology cards'
+            : 'Viewing 3 premium technology cards with center focus'}
         </p>
       </div>
 
-      {/* Cards Grid */}
-      <div className='max-w-7xl mx-auto'>
-        <div className='grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-10'>
-          {techAssets.map((tech, index) => (
+      {/* Carousel Container */}
+      <div 
+        className="relative max-w-7xl mx-auto"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        ref={carouselRef}
+      >
+        {/* Navigation Arrows - Hidden on mobile */}
+        <button
+          onClick={prevCard}
+          className={`absolute left-0 md:-left-4 lg:-left-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-black/60 hover:border-white/40 transition-all duration-300 group shadow-2xl ${
+            visibleCards === 1 ? 'flex sm:hidden' : 'flex'
+          }`}
+          aria-label="Previous cards"
+        >
+          <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button
+          onClick={nextCard}
+          className={`absolute right-0 md:-right-4 lg:-right-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-black/60 hover:border-white/40 transition-all duration-300 group shadow-2xl ${
+            visibleCards === 1 ? 'flex sm:hidden' : 'flex'
+          }`}
+          aria-label="Next cards"
+        >
+          <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        {/* Carousel Cards Container */}
+        <div 
+          className={`relative h-[400px] flex items-center justify-center ${
+            visibleCards === 1 ? 'px-4 touch-none select-none' : 
+            visibleCards === 2 ? 'px-8 md:px-16' : 
+            'px-4 lg:px-8 xl:px-16'
+          }`}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onMouseDown={visibleCards === 1 ? handleMouseDown : undefined}
+          style={{ userSelect: visibleCards === 1 ? 'none' : 'auto' }}
+        >
+          {/* Swipe hint overlay for mobile */}
+          {visibleCards === 1 && !isDragging && (
+            <div className="absolute top-1/2 left-4 right-4 flex justify-between items-center pointer-events-none z-10 opacity-60">
+              <div className="flex items-center gap-2 animate-pulse">
+                <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <span className="text-sm font-mono text-green-400 hidden sm:inline">Swipe</span>
+              </div>
+              <div className="flex items-center gap-2 animate-pulse">
+                <span className="text-sm font-mono text-green-400 hidden sm:inline">Swipe</span>
+                <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          )}
+
+          {/* Drag direction indicator */}
+          {isDragging && visibleCards === 1 && dragDirection !== 0 && (
+            <div className={`absolute top-4 ${dragDirection > 0 ? 'left-4' : 'right-4'} z-40`}>
+              <div className={`px-3 py-1.5 rounded-full backdrop-blur-md ${
+                dragDirection > 0 
+                  ? 'bg-green-500/20 border border-green-500/30' 
+                  : 'bg-blue-500/20 border border-blue-500/30'
+              }`}>
+                <span className="text-xs font-mono text-white">
+                  {dragDirection > 0 ? '← Previous' : 'Next →'}
+                </span>
+              </div>
+            </div>
+          )}
+
+          {visibleCardData.map((tech, positionIndex) => (
             <div
-              key={tech.id}
-              className='relative'
-              onClick={() => setActiveTech(index)}
-              onMouseEnter={() => setActiveTech(index)}
+              key={`${tech.id}-${positionIndex}`}
+              className={`absolute ${getCardWidth()} transition-all duration-300 cursor-pointer ${
+                isDragging && visibleCards === 1 ? 'active:scale-95' : ''
+              }`}
+              style={getCardStyle(positionIndex)}
+              onClick={(e) => {
+                // Prevent click during drag
+                if (!isDragging || Math.abs(currentX - startX) < 10) {
+                  goToCard(tech.index);
+                }
+              }}
             >
               <CometCard
-                rotateDepth={12}
-                translateDepth={15}
+                rotateDepth={visibleCards === 1 ? 12 : positionIndex === 1 ? 12 : 6}
+                translateDepth={visibleCards === 1 ? 15 : positionIndex === 1 ? 20 : 10}
                 className="w-full h-full"
               >
                 {/* Premium Credit Card Container */}
-                <div className={`relative rounded-2xl overflow-hidden h-full min-h-[300px] transition-all duration-300 ${
-                  activeTech === index ? 'ring-2 ring-green-500/30 dark:ring-[#00FF6A]/30' : ''
+                <div className={`relative rounded-2xl overflow-hidden h-full min-h-[350px] transition-all duration-300 ${
+                  visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)
+                    ? 'ring-2 ring-green-500/50 dark:ring-[#00FF6A]/50 shadow-2xl' 
+                    : 'ring-1 ring-white/10 shadow-lg'
                 }`}>
                   
                   {/* Card Background with Gradient */}
@@ -236,15 +590,15 @@ const MobileTechnologies = () => {
                   <div className="absolute inset-0 opacity-5 bg-[linear-gradient(45deg,transparent_45%,rgba(255,255,255,0.3)_50%,transparent_55%)]"></div>
                   
                   {/* Card Content */}
-                  <div className="relative h-full p-6 flex flex-col">
+                  <div className="relative h-full p-5 md:p-6 flex flex-col">
                     
-                    {/* Card Header - American Express Style */}
-                    <div className="flex items-start justify-between mb-8">
-                      <div className="flex items-center gap-4">
-                        {/* Tech Logo in Card Style */}
+                    {/* Card Header */}
+                    <div className="flex items-start justify-between mb-6 md:mb-8">
+                      <div className="flex items-center gap-3 md:gap-4">
+                        {/* Tech Logo */}
                         <div className="relative">
-                          <div className="p-3 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20">
-                            <div className="relative w-10 h-10">
+                          <div className="p-2 md:p-3 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20">
+                            <div className="relative w-8 h-8 md:w-10 md:h-10">
                               <Image 
                                 src={tech.icon} 
                                 alt={tech.name}
@@ -260,7 +614,7 @@ const MobileTechnologies = () => {
                           <div className="text-xs font-mono text-gray-400 tracking-widest">
                             {tech.ticker}
                           </div>
-                          <div className="text-2xl font-bold text-white mt-1">
+                          <div className="text-xl md:text-2xl font-bold text-white mt-1">
                             {tech.name}
                           </div>
                           <div className="text-xs text-gray-400 mt-1">
@@ -271,7 +625,7 @@ const MobileTechnologies = () => {
                       
                       {/* Premium Chip */}
                       <div className="relative">
-                        <div className={`w-10 h-7 rounded-lg bg-gradient-to-br ${tech.chipColor} relative overflow-hidden`}>
+                        <div className={`w-8 h-5 md:w-10 md:h-7 rounded-lg bg-gradient-to-br ${tech.chipColor} relative overflow-hidden`}>
                           <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent"></div>
                           <div className="absolute top-1/2 left-0 right-0 h-px bg-white/40"></div>
                           <div className="absolute top-0 left-1/2 h-full w-px bg-white/40"></div>
@@ -280,12 +634,12 @@ const MobileTechnologies = () => {
                     </div>
                     
                     {/* Performance Section */}
-                    <div className="flex-1 flex items-center justify-between mb-6">
+                    <div className="flex-1 flex items-center justify-between mb-4 md:mb-6">
                       {/* Performance Badge */}
                       <div className="relative">
-                        <div className="px-4 py-3 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20">
-                          <div className="text-xs text-gray-400 font-mono mb-1">PERFORMANCE</div>
-                          <div className={`text-2xl font-bold ${
+                        <div className="px-3 py-2 md:px-4 md:py-3 rounded-xl bg-black/40 backdrop-blur-sm border border-white/20">
+                          <div className="text-xs font-mono text-gray-400 mb-1">PERF</div>
+                          <div className={`text-xl md:text-2xl font-bold ${
                             parseInt(tech.performance) >= 98 
                               ? 'text-green-400' 
                               : 'text-amber-400'
@@ -295,8 +649,8 @@ const MobileTechnologies = () => {
                         </div>
                         
                         {/* Level Badge */}
-                        <div className="absolute -bottom-2 -right-2">
-                          <div className="px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-sm border border-white/20">
+                        <div className="absolute -bottom-1 -right-1 md:-bottom-2 md:-right-2">
+                          <div className="px-2 py-1 md:px-3 md:py-1.5 rounded-lg bg-black/60 backdrop-blur-sm border border-white/20">
                             <span className="text-xs font-bold text-white">{tech.level}</span>
                           </div>
                         </div>
@@ -304,8 +658,8 @@ const MobileTechnologies = () => {
                       
                       {/* Trend Indicator */}
                       <div className="text-right">
-                        <div className="text-xs text-gray-400 font-mono mb-1">GROWTH</div>
-                        <div className={`text-2xl font-bold ${
+                        <div className="text-xs font-mono text-gray-400 mb-1">GROWTH</div>
+                        <div className={`text-xl md:text-2xl font-bold ${
                           tech.trend.startsWith('+') 
                             ? 'text-green-400' 
                             : 'text-red-400'
@@ -315,33 +669,33 @@ const MobileTechnologies = () => {
                       </div>
                     </div>
                     
-                    {/* Card Details Section */}
-                    <div className="pt-4 border-t border-white/20">
+                    {/* Card Details */}
+                    <div className="pt-3 md:pt-4 border-t border-white/20">
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="text-xs text-gray-400 font-mono mb-1">EXPERIENCE</div>
-                          <div className="text-lg font-semibold text-white">{tech.experience}</div>
+                          <div className="text-xs font-mono text-gray-400 mb-1">EXP</div>
+                          <div className="text-base md:text-lg font-semibold text-white">{tech.experience}</div>
                         </div>
                         
                         <div className="text-right">
-                          <div className="text-xs text-gray-400 font-mono mb-1">VALID THRU</div>
-                          <div className="text-lg font-semibold text-white">12/29</div>
+                          <div className="text-xs font-mono text-gray-400 mb-1">VALID</div>
+                          <div className="text-base md:text-lg font-semibold text-white">12/29</div>
                         </div>
                       </div>
                     </div>
                     
-                    {/* Card Number - American Express Style */}
-                    <div className="mt-4">
-                      <div className="font-mono text-sm tracking-[0.2em] text-white/80">
-                         ••••  ••••  ••••  {tech.ticker.padStart(4, '0')}
+                    {/* Card Number */}
+                    <div className="mt-3 md:mt-4">
+                      <div className="font-mono text-xs md:text-sm tracking-[0.15em] md:tracking-[0.2em] text-white/80">
+                        •••• •••• •••• {tech.ticker.padStart(4, '0')}
                       </div>
                     </div>
                     
                     {/* Active Indicator */}
-                    {activeTech === index && (
-                      <div className="absolute top-4 right-4">
+                    {(visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)) && (
+                      <div className="absolute top-3 md:top-4 right-3 md:right-4">
                         <div className="relative">
-                          <div className="w-3 h-3 rounded-full bg-green-500 dark:bg-[#00FF6A]"></div>
+                          <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-500 dark:bg-[#00FF6A]"></div>
                           <div className="absolute inset-0 animate-ping rounded-full bg-green-500/40 dark:bg-[#00FF6A]/40"></div>
                         </div>
                       </div>
@@ -357,12 +711,44 @@ const MobileTechnologies = () => {
           ))}
         </div>
 
-        {/* Selected Card Details */}
-        
+        {/* Carousel Indicators */}
+        <div className="flex justify-center mt-10 md:mt-12 space-x-2 md:space-x-3">
+          {Array.from({ length: Math.ceil(techAssets.length / visibleCards) }).map((_, groupIndex) => {
+            const startIndex = groupIndex * visibleCards;
+            const isActive = activeIndex >= startIndex && activeIndex < startIndex + visibleCards;
+            
+            return (
+              <button
+                key={groupIndex}
+                onClick={() => goToCard(startIndex)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  isActive 
+                    ? 'bg-green-500 dark:bg-[#00FF6A] w-6 md:w-8' 
+                    : 'bg-gray-400 dark:bg-gray-600 hover:bg-gray-500'
+                }`}
+                aria-label={`Go to group ${groupIndex + 1}`}
+              />
+            );
+          })}
+        </div>
 
-        {/* Status Bar */}
-       
+        {/* Center Card Details - Only show for center card on desktop/tablet */}
+        {visibleCards > 1 && visibleCardData[1] && (
+          <div className="mt-10 md:mt-12 text-center">
+            <div className="inline-block px-4 py-3 md:px-6 md:py-3 rounded-full bg-black/20 backdrop-blur-sm border border-white/10">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">
+                {visibleCardData[1].name} <span className="text-green-400">(Center Card)</span>
+              </h3>
+              <p className="text-sm md:text-base text-gray-300 max-w-xl mx-auto">
+                {visibleCardData[1].description}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* Control Instructions - Responsive */}
+    
     </div>
   );
 };

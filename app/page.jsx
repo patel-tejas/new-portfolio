@@ -115,7 +115,7 @@ export default function Home() {
                 <h1 className='text-6xl xl:text-5xl lg:text-center lg:text-6xl md:text-5xl sm:text-3xl font-bold'>
                   <span className='block'>HELLO,</span>
                   <span className='block'>
-                    I'M <span className='text-green-600 dark:text-[#00FF6A] font-mono'>TEJAS PATEL</span>.
+                    I'M <span className='text-green-600 dark:text-[#00FF6A] font-mono'>TEJAS</span>.
                   </span>
                 </h1>
 

@@ -129,14 +129,14 @@ export default function Home() {
               {/* Performance Stats */}
               <div className='flex-grow mb-8'>
                 <p className='text-[18px] md:text-sm sm:text-xs font-light mb-6 text-gray-700 dark:text-gray-300'>
-                  As a skilled software engineer working towards development of web-apps through the use of modern framework- NextJS. Explore my latest projects and articles, showcasing my expertise in React.js and web development.
+                 I’m a full-stack developer focused on building fast, scalable, and reliable web applications. I work with modern frameworks, design systems, and clean architectures to turn ideas into products that actually work. Wondering the theme behind my portfolio? Well I am into finance too making me a FinTech enthusiast!
                 </p>
 
                 {/* Metric Cards */}
                 <div className='grid grid-cols-3 gap-4 mb-6'>
                   <div className='text-center p-3 bg-white dark:bg-[#1A1A1A] rounded-lg border border-gray-300 dark:border-gray-700'>
                     <div className='text-2xl font-bold font-mono text-green-600 dark:text-[#00FF6A]'>100%</div>
-                    <div className='text-xs text-gray-500 dark:text-gray-400 mt-1'>PROJECT SUCCESS</div>
+                    <div className='text-xs text-gray-500 dark:text-gray-400 mt-1 uppercase'>Project Delivery Rate</div>
                   </div>
                   <div className='text-center p-3 bg-white dark:bg-[#1A1A1A] rounded-lg border border-gray-300 dark:border-gray-700'>
                     <div className='text-2xl font-bold font-mono text-amber-600 dark:text-amber-400'>24/7</div>
@@ -144,13 +144,13 @@ export default function Home() {
                   </div>
                   <div className='text-center p-3 bg-white dark:bg-[#1A1A1A] rounded-lg border border-gray-300 dark:border-gray-700'>
                     <div className='text-2xl font-bold font-mono text-blue-600 dark:text-blue-400'>∞</div>
-                    <div className='text-xs text-gray-500 dark:text-gray-400 mt-1'>INNOVATION</div>
+                    <div className='text-xs text-gray-500 dark:text-gray-400 mt-1'>Iteration Mindset</div>
                   </div>
                 </div>
               </div>
 
               {/* Action Buttons as Trading Orders */}
-              <div className='flex flex-wrap gap-4 md:gap-3 sm:gap-3 sm:mt-0 mt-10 w-full justify-center md:justify-center sm:justify-center'>
+              <div className='flex flex-wrap gap-4 md:gap-3 sm:gap-3 sm:mt-0 w-full justify-center md:justify-center sm:justify-center'>
                 {/* Resume Button */}
                 <Link
                   href="/Tejas Patel Resume.pdf"

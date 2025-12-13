@@ -50,14 +50,14 @@ const Expertise = () => {
         {
             id: 3,
             title: "Problem Solving",
-            techStack: ["Algorithms", "Data Structures", "Python", "System Design"],
+            techStack: ["Algorithms", "Data Structures", "System Design"],
             description: "Solving complex problems with optimized algorithms and efficient computational thinking.",
             icon: leetcodeIcon,
             metrics: { 
-                problems: "250+", 
-                contestRating: "1850", 
-                efficiency: "99.3%",
-                streak: "120 days"
+                problems: "100+ LeetCode Problem Solved", 
+              
+                efficiency: "O(log n)-O(n^2)",
+                streak: "Trying to keep it alive!"
             },
             chartData: [75, 78, 82, 85, 88, 90, 92, 95],
             color: "from-amber-600 to-orange-800",

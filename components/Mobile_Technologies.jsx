@@ -452,14 +452,14 @@ const MobileTechnologies = () => {
             <div className='w-2 h-2 rounded-full bg-purple-500 animate-pulse' style={{animationDelay: '0.4s'}}></div>
           </div>
           <h2 className='font-mono text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest'>
-            PREMIUM TECH CARDS
+            PREMIUM
           </h2>
         </div>
         
         <div className='text-6xl xl:text-5xl lg:text-center lg:text-6xl md:text-5xl sm:text-3xl font-bold mb-4'>
           <span className='block text-gray-900 dark:text-white'>TECHNOLOGY</span>
           <span className='block'>
-            <span className='text-green-600 dark:text-[#00FF6A] font-mono'>{"CREDIT CARDS"}</span>
+            <span className='text-green-600 dark:text-[#00FF6A] font-mono'>"SKILL CARDS"</span>
           </span>
         </div>
         
@@ -467,8 +467,8 @@ const MobileTechnologies = () => {
           {visibleCards === 1 
             ? 'Swipe left/right to explore cards • Auto-rotates every 3s' 
             : visibleCards === 2
-            ? 'Viewing 2 premium technology cards'
-            : 'Viewing 3 premium technology cards with center focus'}
+            ? 'Hover on corners to see the magic :)'
+            : 'Hover on corners to see the magic :)'}
         </p>
       </div>
 

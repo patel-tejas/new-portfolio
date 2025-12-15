@@ -24,6 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} ${montserrat.variable} bg-light dark:bg-dark min-h-screen w-full font-mont relative`}>
+        {/* Toast container with lower z-index */}
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -35,15 +36,16 @@ export default function RootLayout({ children }) {
           draggable
           pauseOnHover
           theme="light"
+          style={{ zIndex: 40 }} // Lower than navbar but higher than content
         />
 
+        {/* Navbar with controlled z-index */}
         <Navbar />
 
         {/* Main content with proper top padding for fixed navbar */}
-        <main className="pt-[83px]">
+        <main className="pt-[83px] relative z-10">
           {children}
           <Layout>
-
             <div className='flex h-full md:flex-col py-10'>
               <div className='flex-col xs:gap-2 gap-5 md:items-center w-full md:justify-center'>
                 {/* Terminal-style header indicator */}
@@ -87,7 +89,11 @@ export default function RootLayout({ children }) {
         </main>
 
         <Footer />
-        <Chatbot />
+        
+        {/* Chatbot with highest z-index */}
+        <div className="fixed z-50">
+          <Chatbot />
+        </div>
       </body>
     </html>
   )

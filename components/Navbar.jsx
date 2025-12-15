@@ -157,7 +157,7 @@ const Navbar = () => {
   // Prevent hydration mismatch
   if (!mounted) {
     return (
-      <header className={`fixed top-0 left-0 w-full z-50
+      <header className={`fixed top-0 left-0 w-full z-30
         bg-white/95 dark:bg-[#0D0D0D]/95
         border-b border-gray-200 dark:border-[#2C2C2C]
         backdrop-blur-sm

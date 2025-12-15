@@ -262,19 +262,53 @@ export default function Home() {
                   </svg>
                   <span className="truncate">[ SEND MAIL ]</span>
                 </Link>
+               
               </div>
 
             </div>
           </div>
 
           <Expertise />
-          
+
           <ClientOnly>
             <MobileTechnologies className="hidden sm:block" />
           </ClientOnly>
           <ClientOnly>
             <HackathonSection />
           </ClientOnly>
+          <div className='flex items-center justify-center w-full py-10' >
+       
+               <Link
+                  href="/projects"
+                  className='
+      flex items-center justify-center 
+      bg-green-600 dark:bg-[#00FF6A] 
+      hover:bg-green-700 dark:hover:bg-[#00FF6A]/90 
+      text-white 
+      py-3 px-6 
+      md:py-2.5 md:px-5 
+      sm:py-2 sm:px-4 
+      xs:py-2 xs:px-4 
+      text-lg md:text-base sm:text-sm xs:text-sm 
+      font-semibold 
+      border-0 
+      rounded-lg 
+      font-mono 
+      group 
+      transition-all duration-300 
+      hover:scale-[1.02] hover:shadow-xl hover:shadow-green-500/30 
+      active:scale-95
+      w-full max-w-xs 
+      md:max-w-[180px] 
+      sm:max-w-[160px] 
+      xs:max-w-[190px]
+      text-center
+    '>
+                
+                  <span className="truncate">[ SEE MY PROJECTS ]</span>
+                </Link>
+ 
+          </div>
           <div className="mt-20">
             <Form className="px-0 mb-0 pb-10 xs:pb-0 " />
           </div>

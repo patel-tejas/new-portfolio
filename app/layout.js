@@ -47,17 +47,17 @@ export default function RootLayout({ children }) {
             <div className='flex h-full md:flex-col py-10'>
               <div className='flex-col xs:gap-2 gap-5 md:items-center w-full md:justify-center'>
                 {/* Terminal-style header indicator */}
-                <div className='flex items-center gap-2 mb-2'>
+                <div className='flex items-center gap-2 justify-start sm:justify-center mb-2'>
                   <div className='w-2 h-2 rounded-full bg-green-600 dark:bg-[#00FF6A] animate-pulse'></div>
-                  <span className='font-mono text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider'>
+                  <span className='text-left sm:text-center font-mono text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider'>
                     AUDIO_STREAM
                   </span>
                 </div>
 
-                <h1 className='lg:text-4xl text-gray-900 dark:text-white font-bold xs:text-center capitalize text-5xl mb-3 sm:mb-5 md:text-center sm:text-lg xs:text-[22px] font-mont'>
+                <h1 className='lg:text-4xl text-gray-900 dark:text-white font-bold xs:text-center capitalize text-5xl md:text-center sm:text-lg xs:text-[16px] font-mont'>
                   how about some Music? 😉
                 </h1>
-                <h3 className='text-left xs:text-center md:text-center sm:text-sm text-green-600 dark:text-[#00FF6A] font-semibold text-xl font-mono'>
+                <h3 className='text-left xs:text-center md:text-center sm:text-[10px] text-green-600 dark:text-[#00FF6A] font-semibold text-xl font-mono'>
                   $ Let the music play while you explore !
                 </h3>
               </div>

@@ -186,7 +186,7 @@ const Navbar = () => {
         initial={{ y: 0 }}
         animate={{ y: isVisible ? 0 : -100 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`fixed top-0 left-0 w-full z-50
+        className={`fixed top-0 left-0 w-full z-20
         bg-white/95 dark:bg-[#0D0D0D]/95
         border-b border-gray-200 dark:border-[#2C2C2C]
         backdrop-blur-sm

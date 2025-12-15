@@ -26,7 +26,6 @@ export default function Chatbot() {
     "What's your tech stack?",
     "Finance experience?",
     "Hackathon achievements",
-    "Show me your best work",
   ];
 
   // Handle message send
@@ -254,7 +253,7 @@ export default function Chatbot() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed bottom-24 right-8 w-[420px] h-[560px] z-[60]"
+              className="fixed xs:right-2 xs:w-[300px] bottom-24 right-8 w-[420px] h-[560px] z-[60]"
             >
               {/* Terminal Window */}
               <div className="relative w-full h-full bg-gradient-to-b from-[#0A0A0A] to-[#0D0D0D] border border-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col font-mono">
@@ -336,7 +335,7 @@ export default function Chatbot() {
                       <span className="text-xs text-gray-500">@terminal:/tez_ai</span>
                     </div>
                     <div className="text-gray-300 pl-1 border-l-2 border-green-500/30">
-                      <span className="text-green-400">{introText}</span>
+                      <span className="xs:text-xs text-sm text-green-400">{introText}</span>
                       {introText.length < introMessage.length && (
                         <motion.span
                           animate={{ opacity: [1, 0, 1] }}
@@ -370,7 +369,7 @@ export default function Chatbot() {
                             </div>
                             <div className="inline-block max-w-[85%]">
                               <div className="px-4 py-2.5 rounded-2xl rounded-tr-none bg-gradient-to-r from-blue-500/20 to-cyan-500/10 border border-blue-500/30">
-                                <p className="text-gray-100 text-sm leading-relaxed">
+                                <p className="text-gray-100 xs:text-xs text-sm leading-relaxed">
                                   {chat.parts[0].text}
                                 </p>
                               </div>

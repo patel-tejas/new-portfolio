@@ -432,7 +432,7 @@ const MobileTechnologies = () => {
 
   // Get responsive card width
   const getCardWidth = useCallback(() => {
-    if (visibleCards === 1) return 'w-[480px] h-[200px] sm:w-[275px] sm:h-[230px]'; // Mobile
+    if (visibleCards === 1) return 'w-[480px] h-[200px] sm:w-[305px] sm:h-[230px]'; // Mobile
     if (visibleCards === 2) return 'w-[420px] h-[156px] md:w-[380px] md:h-[175px]'; // Tablet
     return 'w-[460px] h-[204px] lg:w-[360px] lg:h-[162px] xl:w-[280px] xl:h-[175px]'; // Desktop
   }, [visibleCards]);

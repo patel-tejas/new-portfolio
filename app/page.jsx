@@ -18,6 +18,8 @@ import ClientOnly from '../components/ClientOnly';
 import AchievementPath, { Achievement } from '../components/Achievement';
 import AchievementMemoryThread from '../components/Achievement';
 import HackathonMemories from '../components/Achievement';
+import HackathonChart from '../components/Achievement';
+import HackathonSection from '../components/Achievement';
 
 // --- NEW: Terminal Background Component ---
 const TerminalBackground = () => (
@@ -270,9 +272,9 @@ export default function Home() {
           <ClientOnly>
             <MobileTechnologies className="hidden sm:block" />
           </ClientOnly>
-          {/* <ClientOnly>
-            <HackathonMemories />
-          </ClientOnly> */}
+          <ClientOnly>
+            <HackathonSection />
+          </ClientOnly>
           <div className="mt-20">
             <Form className="px-0 mb-0 pb-10 xs:pb-0 !hidden sm:!block sm:!min-h-max" />
           </div>

@@ -138,7 +138,7 @@ const MobileTechnologies = () => {
       description: "Version control and collaboration platform",
       level: "Advanced",
       experience: "4+ years",
-      category: "DevOps",
+      category: "Version Control",
       trend: "+15.6%",
       performance: "100%",
       color: "#181717",
@@ -432,7 +432,7 @@ const MobileTechnologies = () => {
 
   // Get responsive card width
   const getCardWidth = useCallback(() => {
-    if (visibleCards === 1) return 'w-[280px] h-[200px] sm:w-[295px] sm:h-[230px]'; // Mobile
+    if (visibleCards === 1) return 'w-[480px] h-[200px] sm:w-[275px] sm:h-[230px]'; // Mobile
     if (visibleCards === 2) return 'w-[420px] h-[156px] md:w-[380px] md:h-[175px]'; // Tablet
     return 'w-[460px] h-[204px] lg:w-[360px] lg:h-[162px] xl:w-[280px] xl:h-[175px]'; // Desktop
   }, [visibleCards]);
@@ -563,10 +563,10 @@ const MobileTechnologies = () => {
                 className="w-full h-full"
               >
                 {/* Premium Credit Card Container */}
-                <div className={`relative rounded-2xl overflow-hidden w-full h-full transition-all duration-300 ${visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)
-                  ? 'ring-2 ring-green-500/50 dark:ring-[#00FF6A]/50 shadow-2xl'
-                  : 'ring-1 ring-white/10 shadow-lg'
-                  }`} style={{ aspectRatio: '16/10' }}>
+               <div className={`relative rounded-2xl overflow-hidden w-full h-full transition-all duration-300 ${visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)
+  ? 'ring-1 ring-white/20 dark:ring-white/20 shadow-2xl shadow-green-500/20 dark:shadow-[#00FF6A]/20 backdrop-blur-sm'
+  : 'ring-1 ring-white/10 dark:ring-white/10 shadow-lg'
+  }`} style={{ aspectRatio: '16/10' }}>
 
                   {/* Card Background with Gradient */}
                   <div
@@ -697,7 +697,7 @@ const MobileTechnologies = () => {
     <div className="sm:text-[9px] text-[10px] font-mono text-gray-400 dark:text-gray-500 mb-1 uppercase tracking-[0.1em]">
       CARD HOLDER
     </div>
-    <div className="text-sm sm:text-base font-mono font-medium 
+    <div className="text-sm sm:text-[10px] font-mono font-medium 
       bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 
       bg-clip-text text-transparent 
       drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
@@ -710,7 +710,7 @@ const MobileTechnologies = () => {
     <div className="text-[9px] sm:text-[10px] font-mono text-gray-400 dark:text-gray-500 mb-1 uppercase tracking-[0.1em]">
       CATEGORY
     </div>
-    <div className="text-sm sm:text-base font-mono font-medium text-white">
+    <div className="text-sm sm:text-[10px] font-mono font-medium text-white">
       {tech.category}
     </div>
   </div>
@@ -718,7 +718,7 @@ const MobileTechnologies = () => {
 
                     {/* Active Indicator */}
                     {(visibleCards === 1 || (visibleCards > 1 && positionIndex === 1)) && (
-                      <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
+                      <div className="sm:hidden absolute top-2 sm:top-4 right-2 sm:right-4">
                         <div className="relative">
                           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500 dark:bg-[#00FF6A]"></div>
                           <div className="absolute inset-0 animate-ping rounded-full bg-green-500/40 dark:bg-[#00FF6A]/40"></div>

@@ -58,10 +58,10 @@ const Form = ({ className }) => {
     }
 
     return (
-        <section className="relative max-w-6xl mx-auto py-12 sm:py-0 px-4 sm:px-4 xs:px-3">
+        <section className="relative max-w-6xl mx-auto py-12 sm:py-8 px-4 sm:px-4 xs:px-3">
             {/* Terminal Header */}
-            <div className="mb-8 sm:mb-6 text-center" >
-                <div className="inline-flex items-center gap-3 mb-3 sm:mb-2 text-center">
+            <div className="mb-8 sm:mb-6 text-center">
+                <div className="inline-flex items-center gap-3 mb-3 sm:mb-2">
                     <div className="flex gap-1">
                         <div className="w-2 h-2 rounded-full bg-green-500 dark:bg-[#00FF6A] animate-pulse"></div>
                         <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" style={{animationDelay: '0.2s'}}></div>
@@ -109,7 +109,7 @@ const Form = ({ className }) => {
 
                 {/* Form Content */}
                 <div className="p-6 sm:p-4 xs:p-3">
-                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-1 gap-8">
                         {/* Left Column: Contact Form */}
                         <div className="space-y-6">
                             <div>

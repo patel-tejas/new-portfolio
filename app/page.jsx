@@ -276,7 +276,7 @@ export default function Home() {
             <HackathonSection />
           </ClientOnly>
           <div className="mt-20">
-            <Form className="px-0 mb-0 pb-10 xs:pb-0 !hidden sm:!block sm:!min-h-max" />
+            <Form className="px-0 mb-0 pb-10 xs:pb-0 " />
           </div>
         </Layout>
 

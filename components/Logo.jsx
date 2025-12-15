@@ -2,13 +2,9 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import React from 'react'
-import { Kaushan_Script } from 'next/font/google'
 
 const MotionLink = motion(Link)
-const ks = Kaushan_Script({
-    weight: '400',
-    subsets: ['latin']
-})
+
 const Logo = () => {
     return (
         <div className='flex items-center justify-center my-1'>

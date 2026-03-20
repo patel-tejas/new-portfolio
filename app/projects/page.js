@@ -18,82 +18,167 @@ import TransitionEffect from '../../components/TransitionEffect'
 import urlshortener from "../../public/urlshortener.png"
 import hisaab from "../../public/hisaab.png"
 import sarthi from "../../public/sarthi.png"
+import hacknuthon from "../../public/hacknuthon.png"
 
-const FeaturedProjects = ({ type, link, title, summary, img, github }) => {
+const PolkaDotBackground = () => (
+  <div className="fixed inset-0 z-0 pointer-events-none text-gray-300 dark:text-gray-700 opacity-50">
+    <div
+      className="absolute inset-0"
+      style={{
+        backgroundImage: 'radial-gradient(circle, currentColor 2px, transparent 2px)',
+        backgroundSize: '32px 32px',
+      }}
+    />
+  </div>
+);
+
+// Vibrant pop-art colors for the Neo-Brutalist theme
+const colors = [
+  "bg-[#FF90E8]", // Pink
+  "bg-[#FFC900]", // Yellow
+  "bg-[#00E5FF]", // Cyan
+  "bg-[#00FF6A]", // Green
+  "bg-[#B388FF]", // Purple
+  "bg-[#FF5252]", // Red
+];
+
+const FeaturedProjects = ({ type, link, title, summary, img, github, colorIndex = 0, hideVisit = false }) => {
+  const cardColor = colors[colorIndex % colors.length];
+
   return (
     <motion.article 
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       viewport={{ once: true, margin: "-50px" }}
-      className='w-full flex items-center justify-between relative rounded-3xl border border-solid border-dark/10 dark:border-light/10 bg-light/40 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(182,62,150,0.2)] dark:hover:shadow-[0_8px_30px_rgb(88,230,217,0.2)] hover:border-primary/50 dark:hover:border-secondary/50 transition-all duration-500 p-8 dark:bg-dark/40 dark:text-light lg:flex-col lg:p-8 xs:rounded-2xl xs:p-4'
+      className={`w-full flex items-center justify-between relative rounded-2xl border-4 border-black dark:border-white ${cardColor} shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] transition-all duration-200 p-8 lg:flex-col lg:p-6 xs:p-4 text-black group z-10`}
     >
-      <Link href={link} target='_blank' className='w-1/2 cursor-pointer overflow-hidden rounded-2xl lg:w-full relative group'>
-        <div className="absolute inset-0 bg-primary/20 dark:bg-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 rounded-2xl pointer-events-none"></div>
-        <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }}>
+      <Link href={link} target='_blank' className='w-1/2 cursor-pointer overflow-hidden rounded-xl lg:w-full relative border-4 border-black h-full bg-white'>
+        <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} className="h-full">
           <Image
             src={img}
             alt={title}
-            className="w-full h-auto"
+            className="w-full h-auto object-cover"
           />
         </motion.div>
       </Link>
 
       <div className='w-1/2 flex flex-col items-start justify-between pl-10 lg:w-full lg:pl-0 lg:pt-8'>
-        <span className='text-primary dark:text-secondary font-bold text-sm tracking-[0.2em] uppercase'>{type}</span>
+        <div className='flex items-center gap-3 mb-2 border-2 border-black bg-white px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'>
+          <div className='w-3 h-3 rounded-full bg-red-500 animate-pulse border border-black'></div>
+          <span className='font-mono text-xs font-black uppercase tracking-widest text-black'>
+            {type}
+          </span>
+        </div>
+
         <Link href={link} target='_blank' >
-          <h2 className='my-3 w-full text-left text-5xl font-extrabold hover:text-primary dark:hover:text-secondary transition-colors duration-300 sm:text-3xl'>{title}</h2>
+          <h2 className='my-3 w-full text-left text-5xl sm:text-4xl font-black hover:underline decoration-4 underline-offset-4 transition-colors duration-300 font-mont text-black'>
+            {title}
+          </h2>
         </Link>
 
-        <p className='my-3 font-medium text-dark/80 dark:text-light/80 text-lg xs:text-base leading-relaxed'>{summary}</p>
-        <div className='flex gap-6 mt-6 items-center'>
-          {github && (
-            <Link href={github} target='_blank' className='w-12 h-12 flex items-center justify-center bg-dark text-light dark:bg-light dark:text-dark rounded-full hover:scale-110 transition-transform duration-300 shadow-md'>
-              <GithubIcon className="w-6 h-6" />
+        <p className='my-3 text-lg font-bold text-black border-l-4 border-black pl-4 leading-relaxed bg-white/40 rounded-r-lg py-2'>
+          {summary}
+        </p>
+
+        <div className='flex flex-wrap gap-4 mt-6 items-center w-full'>
+          {!hideVisit && (
+            <Link href={link} target='_blank' className='
+              flex items-center justify-center 
+              bg-white
+              text-black 
+              py-3 px-8 
+              text-lg
+              font-black 
+              rounded-xl 
+              border-4 border-black
+              shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]
+              transition-all duration-200 
+              hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+              active:translate-x-[6px] active:translate-y-[6px] active:shadow-none
+            '>
+              VISIT NOW
             </Link>
           )}
-          <Link href={link} target='_blank' className='flex items-center bg-transparent text-dark dark:text-light p-3 px-8 rounded-full text-lg font-bold border-2 border-dark dark:border-light hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark transition-all duration-300 sm:px-6 sm:text-base shadow-sm'>
-            Visit Project
-          </Link>
+
+          {github && (
+            <Link href={github} target='_blank' className='
+              flex items-center justify-center 
+              bg-black 
+              text-light
+              py-3 px-6 
+              text-lg
+              font-black 
+              rounded-xl 
+              border-4 border-black
+              shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]
+              transition-all duration-200 
+              hover:bg-gray-800
+              hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+              active:translate-x-[6px] active:translate-y-[6px] active:shadow-none
+            '>
+              <GithubIcon className="w-6 h-6 mr-2 text-light" />
+              CODE
+            </Link>
+          )}
         </div>
       </div>
     </motion.article>
   )
 }
 
-const Project = ({ title, type, img, link, github }) => {
+const Project = ({ title, type, img, link, github, colorIndex = 0 }) => {
+  const cardColor = colors[colorIndex % colors.length];
+
   return (
-    <motion.article 
+    <motion.article
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       viewport={{ once: true, margin: "-50px" }}
-      className='w-full flex flex-col items-center justify-center rounded-3xl border border-solid border-dark/10 dark:border-light/10 shadow-[0_8px_30px_rgb(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgb(182,62,150,0.2)] dark:hover:shadow-[0_8px_30px_rgb(88,230,217,0.2)] bg-light/40 backdrop-blur-xl hover:border-primary/50 dark:hover:border-secondary/50 dark:bg-dark/40 dark:text-light transition-all duration-500 gap-4 p-6 relative xs:p-4'
+      className={`w-full flex flex-col items-center justify-center relative rounded-2xl border-4 border-black dark:border-white ${cardColor} shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-200 gap-4 p-6 xs:p-5 text-black z-10`}
     >
-      <Link href={link} target='_blank' className='w-full cursor-pointer overflow-hidden rounded-2xl relative group'>
-        <div className="absolute inset-0 bg-primary/20 dark:bg-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 rounded-2xl pointer-events-none"></div>
+      <div className='w-full flex justify-between items-center mb-2'>
+        <div className='flex items-center border-2 border-black bg-white px-2 py-1 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'>
+          <span className='font-mono text-[10px] sm:text-[8px] font-black uppercase tracking-widest text-black'>
+            {type}
+          </span>
+        </div>
+        {github && (
+          <Link href={github} target='_blank' className='
+              bg-white text-black p-1.5 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] rounded-full
+              hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+              active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-200
+            '>
+            <GithubIcon className="w-5 h-5 text-black" />
+          </Link>
+        )}
+      </div>
+
+      <Link href={link} target='_blank' className='w-full cursor-pointer overflow-hidden rounded-xl relative border-4 border-black bg-white'>
         <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }}>
           <Image
             src={img}
             alt={title}
-            className="w-full h-auto"
+            className="w-full h-auto object-cover"
           />
         </motion.div>
       </Link>
 
-      <div className='w-full flex flex-col items-start justify-between mt-4 px-2'>
-        <span className='text-primary dark:text-secondary font-bold text-xs tracking-[0.2em] uppercase'>{type}</span>
-        <Link href={link} target='_blank' >
-          <h2 className='my-2 w-full text-left text-3xl font-extrabold hover:text-primary dark:hover:text-secondary transition-colors duration-300 lg:text-2xl sm:text-xl'>{title}</h2>
+      <div className='w-full flex flex-col items-start justify-between mt-2'>
+        <Link href={link} target='_blank' className="w-full">
+          <h2 className='my-2 w-full text-left text-3xl sm:text-2xl font-black font-mont text-black hover:underline decoration-4 underline-offset-4'>{title}</h2>
         </Link>
+        <div className='w-full border-b-4 border-black my-2'></div>
 
-        <div className='w-full justify-between flex gap-4 mt-6 items-center'>
-          <Link href={link} target='_blank' className='font-bold text-lg hover:underline underline-offset-8 decoration-2 hover:text-primary dark:hover:text-secondary transition-all duration-300'>Visit Project ↗</Link>
-          {github && (
-            <Link href={github} target='_blank' className='hover:scale-110 transition-transform duration-300 text-dark/70 hover:text-dark dark:text-light/70 dark:hover:text-light'>
-              <GithubIcon className="w-8 h-8" />
-            </Link>
-          )}
+        <div className='w-full justify-between flex gap-4 mt-2 items-center'>
+          <Link href={link} target='_blank' className='
+            text-sm sm:text-base font-black border-2 border-black bg-white px-4 py-2 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+            hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+            active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-200 w-full text-center
+          '>
+            EXECUTE LINK ↗
+          </Link>
         </div>
       </div>
     </motion.article>
@@ -104,11 +189,29 @@ const page = () => {
   return (
     <>
       <TransitionEffect />
-      <main className='w-full flex flex-col items-center justify-center'>
-        <Layout className="pt-16 md:pt-8 sm:pd-4 xs:pt-2">
-          <AnimatedText className="lg:text-7xl  sm:text-6xl xs:text-4xl py-8" text="Imagination trumphs Knowledge !" />
+      <main className='w-full flex flex-col items-center justify-center font-mont dark:text-light text-dark relative mx-0 min-h-screen overflow-hidden'>
+        <PolkaDotBackground />
 
-          <div className='grid grid-cols-12 gap-24 xl:gap-x-16 lg:gap-x-8 sm:gap-x-0 md:gap-y-16 mb-10'>
+        <Layout className="pt-16 md:pt-8 sm:pd-4 xs:pt-2 relative z-10 w-full">
+
+          <div className="w-full text-center">
+            <AnimatedText className="lg:text-7xl sm:text-5xl xs:text-4xl pb-8" text="Explore My Project Registry!" />
+          </div>
+
+          <div className='grid grid-cols-12 gap-24 xl:gap-x-16 lg:gap-x-8 sm:gap-x-0 md:gap-y-16 mb-20'>
+            <div className='col-span-12'>
+              <FeaturedProjects
+                title="PROTRACT"
+                summary="An AI-powered real-time financial fraud detection system combining GNNs, XGBoost, and RAG-based explainability. Crowned Champions (1st Place) at HackNUthon 6.0 out of 300+ teams!"
+                link="https://lnkd.in/dv8aYxT6"
+                type="🏆 Hackathon Winner"
+                img={hacknuthon}
+                github="https://github.com/patel-tejas/hacknuthon-aubergine"
+                colorIndex={5}
+                hideVisit={true}
+              />
+            </div>
+            {/* Using arbitrary colored indexes so they rotate nicely */}
             <div className='col-span-12'>
               <FeaturedProjects
                 title="Hisaab"
@@ -117,6 +220,7 @@ const page = () => {
                 type="Featured Project"
                 img={hisaab}
                 github="https://github.com/patel-tejas/Hisab"
+                colorIndex={0}
               />
             </div>
             <div className='col-span-12'>
@@ -126,16 +230,18 @@ const page = () => {
                 link="https://sarthifoundationngo.org/"
                 type="A Client Project"
                 img={sarthi}
+                colorIndex={2}
               />
             </div>
             <div className='col-span-12'>
               <FeaturedProjects
-                title="OpenVerse - Blog App"
-                summary="A platform to share your views, knowledge, opinions and emotions with people, freely and openly."
-                link="https://openverse-blog.vercel.app/"
+                title="URL Shortener"
+                summary="Your URL shortener web app lets users quickly shorten long URLs into compact, shareable links. Built with Next.js and MongoDB."
+                link="https://squeezeurl.vercel.app/"
                 type="Featured Project"
-                img={project1}
-                github="https://github.com/patel-tejas/openverse-blog"
+                img={urlshortener}
+                github="https://github.com/patel-tejas/URLShortener"
+                colorIndex={4}
               />
             </div>
             <div className='col-span-12'>
@@ -146,6 +252,7 @@ const page = () => {
                 type="A Client Project"
                 img={zenlect}
                 github="https://github.com/patel-tejas/Zenlect"
+                colorIndex={1}
               />
             </div>
 
@@ -156,6 +263,7 @@ const page = () => {
                 type="Featured Project"
                 img={usability}
                 github="https://github.com/patel-tejas/Usability-Clone-1"
+                colorIndex={3}
               />
             </div>
             <div className='col-span-6 sm:col-span-12'>
@@ -165,6 +273,7 @@ const page = () => {
                 type="Featured Project"
                 img={prime}
                 github="https://github.com/patel-tejas/Prime-One-Cleaning"
+                colorIndex={5}
               />
             </div>
             <div className='col-span-6 sm:col-span-12'>
@@ -174,6 +283,7 @@ const page = () => {
                 type="Featured Project"
                 img={portfolio}
                 github="https://github.com/patel-tejas/My-Portfolio"
+                colorIndex={2}
               />
             </div>
 
@@ -184,6 +294,7 @@ const page = () => {
                 type="Featured Project"
                 img={expenseTrack}
                 github="https://github.com/patel-tejas/Expense-Tracker"
+                colorIndex={0}
               />
             </div>
 
@@ -192,26 +303,30 @@ const page = () => {
                 title="SparkX Generative AI"
                 summary="A Web App used to generate text, images, videos, and audio using AI. Have used OpenAI's API services to generate text, code and image services. While for audio and video used Replicate AI's APIs."
                 link="https://spark-x-ai.vercel.app/"
-                type="Featured Project" e
+                type="Featured Project"
                 img={sparkX}
                 github="https://github.com/patel-tejas/SparkX-AI"
+                colorIndex={4}
               />
             </div>
             <div className='col-span-12'>
               <FeaturedProjects
-                title="URL Shortener"
-                summary="Your URL shortener web app lets users quickly shorten long URLs into compact, shareable links. Built with Next.js and MongoDB."
-                link="https://squeezeurl.vercel.app/"
-                type="Featured Project" e
-                img={urlshortener}
-                github="https://github.com/patel-tejas/URLShortener"
+                title="OpenVerse - Blog App"
+                summary="A platform to share your views, knowledge, opinions and emotions with people, freely and openly."
+                link="https://openverse-blog.vercel.app/"
+                type="Featured Project"
+                img={project1}
+                github="https://github.com/patel-tejas/openverse-blog"
+                colorIndex={1}
               />
             </div>
           </div>
         </Layout>
       </main>
 
-      <ArticlesPage />
+      <div className="relative z-10 bg-light dark:bg-dark border-t-8 border-black">
+        <ArticlesPage />
+      </div>
     </>
   )
 }

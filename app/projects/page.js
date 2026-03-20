@@ -46,7 +46,7 @@ const FeaturedProjects = ({ type, link, title, summary, img, github, colorIndex 
   const cardColor = colors[colorIndex % colors.length];
 
   return (
-    <motion.article 
+    <motion.article
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
@@ -203,7 +203,7 @@ const page = () => {
               <FeaturedProjects
                 title="PROTRACT"
                 summary="An AI-powered real-time financial fraud detection system combining GNNs, XGBoost, and RAG-based explainability. Crowned Champions (1st Place) at HackNUthon 6.0 out of 300+ teams!"
-                link="https://lnkd.in/dv8aYxT6"
+                link="https://www.linkedin.com/posts/pateltejas2005_hacknuthon-ai-frauddetection-ugcPost-7312763903006990338-bmey?utm_source=share&utm_medium=member_desktop&rcm=ACoAADzrHxkBTyTv0EW0y2ghgzZ_-IHIFlFtKfM"
                 type="🏆 Hackathon Winner"
                 img={hacknuthon}
                 github="https://github.com/patel-tejas/hacknuthon-aubergine"

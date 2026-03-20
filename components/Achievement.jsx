@@ -19,40 +19,52 @@ import {
   Label
 } from 'recharts'
 
-// Generate chart data with two major peaks
-// Generate chart data with two major peaks
-// Generate chart data with two major peaks in 2025
 const generateChartData = () => {
   const data = []
   const startDate = new Date(2023, 0, 1) // Jan 2023
   
-  // Two major peaks in 2025
   const peaks = [
-    { month: 26, value: 10000, name: "ECONOMIA Hackathon - 2nd Place", quarter: "Q1 2025" }, // March 2025 - $10k
-    { month: 27, value: 40000, name: "HackNUthon 6.0 - Champions", quarter: "Q2 2025" }, // April 2025 - $40k
+    { month: 26, value: 25000, name: "ECONOMIA Hackathon - Runners Up", quarter: "Q1 2025" }, // March 2025
+    { month: 27, value: 50000, name: "HackNUthon 6.0 - Champions", quarter: "Q2 2025" }, // April 2025
   ]
+
+  const milestones = {
+    4: "Learning Core Web Dev",
+    10: "First Full-Stack Apps",
+    16: "Exploring AI & ML",
+    22: "Advanced System Design"
+  }
   
-  // Generate data from Jan 2023 to Dec 2025 (36 months)
-  for (let i = 0; i <= 36; i++) {
+  // Deterministic random for smooth hydration
+  const pseudoRandom = (seed) => {
+    const x = Math.sin(seed + 1) * 10000;
+    return x - Math.floor(x);
+  }
+  
+  let currentVal = 1000;
+  for (let i = 0; i <= 28; i++) { // up to May 2025
     const date = new Date(startDate)
     date.setMonth(date.getMonth() + i)
     
-    // Base value with some noise
-    let value = 2000 + Math.sin(i * 0.3) * 1500
-    
-    // Check if this is a peak month
-    const peak = peaks.find(p => p.month === i)
-    if (peak) {
-      value = peak.value
+    if (i > 0 && i < 26) {
+      if (i < 12) currentVal += 300 + pseudoRandom(i) * 200; // 2023 growth
+      else currentVal += 800 + pseudoRandom(i) * 400; // 2024 growth
     }
     
-    // Add some random noise to non-peak points
-    if (!peak) {
-      value += (Math.random() - 0.5) * 500
+    let isPeak = false;
+    let peakInfo = null;
+
+    if (i === 26) {
+      currentVal = 25000; // Jump for Economia
+      isPeak = true;
+      peakInfo = peaks[0];
+    } else if (i === 27) {
+      currentVal = 50000; // Jump for HackNUthon
+      isPeak = true;
+      peakInfo = peaks[1];
+    } else if (i === 28) {
+      currentVal += 1500; // Post-hackathon growth
     }
-    
-    // Keep value within bounds (0-50k)
-    value = Math.max(0, Math.min(50000, Math.round(value)))
     
     const monthName = date.toLocaleDateString('en-US', { month: 'short' })
     const year = date.getFullYear()
@@ -63,10 +75,11 @@ const generateChartData = () => {
     data.push({
       month: i,
       date: `${monthName} '${year.toString().slice(-2)}`,
-      value,
-      isPeak: !!peak,
-      peakInfo: peak || null,
-      quarter: peak?.quarter || quarter
+      value: Math.round(currentVal),
+      isPeak,
+      peakInfo,
+      quarter: peakInfo?.quarter || quarter,
+      milestone: milestones[i] || null
     })
   }
   
@@ -127,22 +140,20 @@ const CustomTooltip = ({ active, payload, label }) => {
     if (tooltipRef.current) {
       const tooltip = tooltipRef.current
       const rect = tooltip.getBoundingClientRect()
-      const chartContainer = tooltip.closest('.chart-container')
+      const chartContainer = tooltip.closest('.chart-container') || document.body
       
-      if (chartContainer) {
-        const containerRect = chartContainer.getBoundingClientRect()
-        
-        // Check if tooltip overflows right side
-        if (rect.right > containerRect.right - 20) {
-          tooltip.style.left = 'auto'
-          tooltip.style.right = '20px'
-        }
-        
-        // Check if tooltip overflows left side
-        if (rect.left < containerContainer.left + 20) {
-          tooltip.style.left = '20px'
-          tooltip.style.right = 'auto'
-        }
+      const containerRect = chartContainer.getBoundingClientRect()
+      
+      // Check if tooltip overflows right side
+      if (rect.right > containerRect.right - 20) {
+        tooltip.style.left = 'auto'
+        tooltip.style.right = '20px'
+      }
+      
+      // Check if tooltip overflows left side
+      if (rect.left < containerRect.left + 20) {
+        tooltip.style.left = '20px'
+        tooltip.style.right = 'auto'
       }
     }
   }, [active, payload, label])
@@ -175,7 +186,7 @@ const CustomTooltip = ({ active, payload, label }) => {
             <div className="text-center p-2 rounded-lg bg-green-500/5 border border-green-500/10">
               <div className="font-mono text-xs text-gray-500 dark:text-gray-400">PRIZE POOL</div>
               <div className="text-xl sm:text-lg font-bold text-green-600 dark:text-[#00FF6A]">
-                ${data.value.toLocaleString()}
+                ₹{event?.prizePool?.toLocaleString()}
               </div>
             </div>
             <div className="text-center p-2 rounded-lg bg-amber-500/5 border border-amber-500/10">
@@ -208,11 +219,19 @@ const CustomTooltip = ({ active, payload, label }) => {
     }
     
     return (
-      <div className="bg-white dark:bg-[#0D0D0D] p-3 rounded-lg border border-gray-300 dark:border-[#2C2C2C]">
-        <p className="font-mono text-sm text-gray-500 dark:text-gray-400 mb-1">{label}</p>
-        <p className="font-mono font-bold text-gray-900 dark:text-white">
-          ${payload[0].value?.toLocaleString() || '0'}
-        </p>
+      <div className="bg-white dark:bg-[#0D0D0D] p-3 rounded-lg border border-gray-300 dark:border-[#2C2C2C] shadow-lg">
+        <p className="font-mono text-sm text-gray-500 dark:text-gray-400 mb-2">{data.date}</p>
+        <div className="flex items-center gap-2">
+           <div className="w-2 h-2 rounded-full bg-green-500"></div>
+           <p className="font-mono font-bold text-gray-900 dark:text-white">
+             Valuation: ₹{payload[0].value?.toLocaleString() || '0'}
+           </p>
+        </div>
+        {data.milestone && (
+           <p className="mt-2 text-xs font-mono text-amber-500 dark:text-amber-400 border-t border-gray-200 dark:border-gray-800 pt-2">
+             ► {data.milestone}
+           </p>
+        )}
       </div>
     )
   }
@@ -320,7 +339,7 @@ export const HackathonChart = () => {
         </div> */}
         
         <p className="text-center text-gray-600 dark:text-gray-400 text-base sm:text-sm xs:text-xs font-light">
-          Visualizing hackathon achievements and prize progression
+          Tracking technical growth, project milestones, and hackathon victories over time
         </p>
       </div>
 
@@ -490,7 +509,7 @@ export const HackathonChart = () => {
                             fontWeight="bold"
                             className="pointer-events-none"
                           >
-                            ${peakData.value.toLocaleString()}
+                            ₹{event.prizePool.toLocaleString()}
                           </text>
                           
                           {/* Achievement */}
@@ -979,7 +998,6 @@ export default function HackathonSection() {
   return (
     <>
       <HackathonMemories />
-      <HackathonChart />
     </>
   )
 }

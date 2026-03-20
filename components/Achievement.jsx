@@ -205,9 +205,10 @@ const CustomTooltip = ({ active, payload, label }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded font-mono text-xs font-bold
-                bg-blue-600 text-white border-2 border-black
-                shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
-                hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] 
+                bg-blue-600 text-white border-2 border-black dark:border-blue-400
+                shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(59,130,246,0.4)]
+                hover:translate-x-[1px] hover:translate-y-[1px] 
+                hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[1px_1px_0px_0px_rgba(59,130,246,0.4)]
                 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-200"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

@@ -46,9 +46,9 @@ const ScrollToTop = () => {
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
             className="group relative flex h-16 w-16 items-center justify-center 
-              bg-[#00FF6A] text-black border-2 border-black rounded-xl 
-              shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] 
-              hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]
+              bg-[#00FF6A] text-black border-2 border-black dark:border-[#00FF6A] rounded-xl 
+              shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(0,255,106,0.4)] 
+              hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(0,255,106,0.4)]
               active:shadow-none transition-all duration-200"
             aria-label="Scroll to top"
           >

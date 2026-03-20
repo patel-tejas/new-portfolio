@@ -196,7 +196,7 @@ const Navbar = () => {
           borderWidth: isScrolled ? "2px" : "0px",
           borderBottomWidth: isScrolled ? "2px" : "1px",
           borderColor: isScrolled ? "#000000" : mode === 'dark' ? "#2C2C2C" : "#E5E7EB",
-          boxShadow: isScrolled ? "4px 4px 0px 0px rgba(0,0,0,1)" : "0px 0px 0px 0px rgba(0,0,0,0)",
+          boxShadow: isScrolled ? (mode === 'dark' ? "4px 4px 0px 0px rgba(0, 255, 106, 0.4)" : "4px 4px 0px 0px rgba(0,0,0,1)") : "0px 0px 0px 0px rgba(0,0,0,0)",
           backgroundColor: isScrolled 
             ? mode === 'dark' ? "rgba(13, 13, 13, 0.7)" : "rgba(255, 255, 255, 0.7)"
             : mode === 'dark' ? "rgba(13, 13, 13, 0.95)" : "rgba(255, 255, 255, 0.95)",

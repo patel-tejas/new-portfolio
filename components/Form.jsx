@@ -203,9 +203,10 @@ const Form = ({ className }) => {
                                         type="button"
                                         className="w-full flex items-center justify-center gap-3 px-6 py-3 
                                             font-mono font-black text-black text-sm
-                                            bg-[#00FF6A] border-2 border-black rounded-lg
-                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                                            hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+                                            bg-[#00FF6A] border-2 border-black dark:border-[#00FF6A] rounded-lg
+                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(0,255,106,0.4)]
+                                            hover:translate-x-[2px] hover:translate-y-[2px] 
+                                            hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(0,255,106,0.4)]
                                             active:translate-x-[4px] active:translate-y-[4px] active:shadow-none 
                                             transition-all duration-200 group"
                                     >
@@ -240,9 +241,10 @@ const Form = ({ className }) => {
                                         target='_blank'
                                         className="flex items-center gap-4 p-4 rounded-xl
                                             bg-white dark:bg-[#0D0D0D]
-                                            border-2 border-black
-                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                                            hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
+                                            border-2 border-black dark:border-blue-400
+                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(59,130,246,0.4)]
+                                            hover:translate-x-[1px] hover:translate-y-[1px] 
+                                            hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(59,130,246,0.4)]
                                             active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
                                             transition-all duration-200 group"
                                     >
@@ -268,9 +270,10 @@ const Form = ({ className }) => {
                                         target='_blank'
                                         className="flex items-center gap-4 p-4 rounded-xl
                                             bg-white dark:bg-[#0D0D0D]
-                                            border-2 border-black
-                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                                            hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
+                                            border-2 border-black dark:border-gray-400
+                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]
+                                            hover:translate-x-[1px] hover:translate-y-[1px] 
+                                            hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)]
                                             active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
                                             transition-all duration-200 group"
                                     >
@@ -296,9 +299,10 @@ const Form = ({ className }) => {
                                         target='_blank'
                                         className="flex items-center gap-4 p-4 rounded-xl
                                             bg-white dark:bg-[#0D0D0D]
-                                            border-2 border-black
-                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                                            hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
+                                            border-2 border-black dark:border-pink-400
+                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(236,72,153,0.4)]
+                                            hover:translate-x-[1px] hover:translate-y-[1px] 
+                                            hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(236,72,153,0.4)]
                                             active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
                                             transition-all duration-200 group"
                                     >
@@ -321,8 +325,8 @@ const Form = ({ className }) => {
                             </div>
 
                             {/* Email Direct Link */}
-                            <div className="p-4 rounded-xl border-2 border-black 
-                                bg-amber-50 dark:bg-amber-900/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                            <div className="p-4 rounded-xl border-2 border-black dark:border-amber-500/50 
+                                bg-amber-50 dark:bg-amber-900/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,158,11,0.3)]">
                                 <div className="flex items-center gap-3 mb-2">
                                     <svg className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>

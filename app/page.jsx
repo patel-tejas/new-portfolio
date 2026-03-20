@@ -11,6 +11,7 @@ import TransitionEffect from '../components/TransitionEffect';
 import Expertise from '../components/Expertise';
 import Form from '../components/Form';
 import MobileTechnologies from '../components/Mobile_Technologies';
+import { motion } from "framer-motion";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import MarketTicker from '../components/MarketTicker';
@@ -59,7 +60,13 @@ export default function Home() {
           <div className='flex md:flex-col lg:flex-col sm:flex-col items-center justify-between w-full min-h-[80vh] relative mb-40 sm:mb-60'>
 
             {/* Left Column: Profile as an "Asset" */}
-            <div className='w-2/5 sm:w-full md:w-full h-full lg:flex justify-center relative p-6'>
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className='w-2/5 sm:w-full md:w-full h-full lg:flex justify-center relative p-6'
+            >
               <div className='relative border-2 border-gray-700 dark:border-[#00FF6A]/30 rounded-xl p-4 bg-white/5 dark:bg-[#0D0D0D]/80 backdrop-blur-sm'>
                 {/* Asset Header */}
                 <div className='flex justify-between items-center mb-4'>
@@ -104,10 +111,16 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column: Personal Metrics & CTA */}
-            <div className='w-3/5 md:w-full h-[60vh] lg:h-[80vh] md:h-[80vh] sm:h-[60vh] mx-5 flex flex-col md:mt-5 md:px-3'>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className='w-3/5 md:w-full h-[60vh] lg:h-[80vh] md:h-[80vh] sm:h-[60vh] mx-5 flex flex-col md:mt-5 md:px-3'
+            >
               <div className='mb-8'>
                 {/* Terminal-style header */}
                 <div className='flex items-center gap-3 mb-2'>
@@ -162,12 +175,13 @@ export default function Home() {
                   target='_blank'
                   className='
       flex items-center justify-center 
-      bg-[#00FF6A] text-black border-2 border-black
+      bg-[#00FF6A] text-black border-2 border-black dark:border-[#00FF6A]
       py-3 px-6 md:py-2.5 md:px-5 sm:py-2 sm:px-4 xs:py-2 xs:px-4 
       text-lg md:text-base sm:text-sm xs:text-sm 
       font-black rounded-lg w-full max-w-xs md:max-w-[180px] sm:max-w-[160px] xs:max-w-[190px] text-center
-      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-      hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(0,255,106,0.4)]
+      hover:translate-x-[2px] hover:translate-y-[2px] 
+      hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(0,255,106,0.4)]
       active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-200
     '
                 >
@@ -201,12 +215,13 @@ export default function Home() {
                   target='_blank'
                   className='
       flex items-center justify-center 
-      bg-blue-600 text-white border-2 border-black
+      bg-blue-600 text-white border-2 border-black dark:border-blue-400
       py-3 px-6 md:py-2.5 md:px-5 sm:py-2 sm:px-4 xs:py-2 xs:px-4 
       text-lg md:text-base sm:text-sm xs:text-sm 
       font-black rounded-lg w-full max-w-xs md:max-w-[180px] sm:max-w-[160px] xs:max-w-[190px] text-center
-      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-      hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(59,130,246,0.4)]
+      hover:translate-x-[2px] hover:translate-y-[2px] 
+      hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(59,130,246,0.4)]
       active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-200
     '
                 >
@@ -230,39 +245,74 @@ export default function Home() {
                
               </div>
 
-            </div>
+            </motion.div>
           </div>
 
-          <Expertise />
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Expertise />
+          </motion.div>
+          
+          <ClientOnly>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <MobileTechnologies className="hidden sm:block" />
+            </motion.div>
+          </ClientOnly>
 
           <ClientOnly>
-            <MobileTechnologies className="hidden sm:block" />
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <HackathonSection />
+            </motion.div>
           </ClientOnly>
-          <ClientOnly>
-            <HackathonSection />
-          </ClientOnly>
-          <div className='flex items-center justify-center w-full py-10' >
-       
+
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className='flex items-center justify-center w-full py-10' 
+          >
                <Link
                   href="/projects"
                   className='
       flex items-center justify-center 
-      bg-[#00FF6A] text-black border-2 border-black
+      bg-[#00FF6A] text-black border-2 border-black dark:border-[#00FF6A]
       py-3 px-6 md:py-2.5 md:px-5 sm:py-2 sm:px-4 xs:py-2 xs:px-4 
       text-lg md:text-base sm:text-sm xs:text-sm 
       font-black rounded-lg w-full max-w-xs md:max-w-[180px] sm:max-w-[160px] xs:max-w-[190px] text-center
-      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-      hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(0,255,106,0.4)]
+      hover:translate-x-[2px] hover:translate-y-[2px] 
+      hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(0,255,106,0.4)]
       active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-200
     '>
                 
                   <span className="truncate">[ SEE MY PROJECTS ]</span>
                 </Link>
- 
-          </div>
-          <div className="mt-10">
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-10"
+          >
             <Form className="px-0 mb-0 pb-10 xs:pb-0 " />
-          </div>
+          </motion.div>
         </Layout>
 
 

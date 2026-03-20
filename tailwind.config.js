@@ -26,7 +26,8 @@ module.exports = {
         imageMover: "mover 0.5s"
       },
       fontFamily: {
-        mont: ['var(--font-mont)'],
+        space: ['var(--font-space)'],
+        mont: ['var(--font-mont)'], // Keeping mont for backward compatibility if used explicitly elsewhere, but adding space
       },
       colors: {
         dark: "#1b1b1b",

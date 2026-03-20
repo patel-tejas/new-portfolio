@@ -1,6 +1,5 @@
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
-import { Montserrat } from 'next/font/google'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { ToastContainer } from 'react-toastify'
@@ -10,9 +9,9 @@ import Layout from '@/components/Layout'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const montserrat = Montserrat({
+const space = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-mont"
+  variable: "--font-space"
 })
 
 export const metadata = {
@@ -23,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${montserrat.variable} bg-light dark:bg-dark min-h-screen w-full font-mont relative`}>
+      <body className={`${inter.className} ${space.variable} bg-light dark:bg-dark min-h-screen w-full font-space relative`}>
         {/* Toast container with lower z-index */}
         <ToastContainer
           position="top-right"

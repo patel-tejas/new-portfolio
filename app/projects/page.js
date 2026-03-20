@@ -219,7 +219,6 @@ const page = () => {
                 link="https://hisab-delta.vercel.app/"
                 type="Featured Project"
                 img={hisaab}
-                github="https://github.com/patel-tejas/Hisab"
                 colorIndex={0}
               />
             </div>
@@ -251,7 +250,6 @@ const page = () => {
                 link="https://zenlect.vercel.app"
                 type="A Client Project"
                 img={zenlect}
-                github="https://github.com/patel-tejas/Zenlect"
                 colorIndex={1}
               />
             </div>

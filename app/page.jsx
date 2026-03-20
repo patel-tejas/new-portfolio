@@ -260,7 +260,7 @@ export default function Home() {
                 </Link>
  
           </div>
-          <div className="mt-20">
+          <div className="mt-10">
             <Form className="px-0 mb-0 pb-10 xs:pb-0 " />
           </div>
         </Layout>

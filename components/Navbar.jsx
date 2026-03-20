@@ -82,8 +82,7 @@ const CustomLink = ({ href, title, className = "" }) => {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [mode, setMode] = useState('light')
-  const [isVisible, setIsVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
+  const [isScrolled, setIsScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
 
   // Ensure component is mounted to avoid hydration mismatch
@@ -117,21 +116,19 @@ const Navbar = () => {
     console.log('Theme set to:', mode) // Debug
   }, [mode, mounted])
 
-  /* Hide / Show navbar on scroll */
+  /* Squeeze navbar on scroll */
   useEffect(() => {
     const handleScroll = () => {
-      const currentY = window.scrollY
-      if (currentY > lastScrollY && currentY > 100) {
-        setIsVisible(false)
+      if (window.scrollY > 20) {
+        setIsScrolled(true)
       } else {
-        setIsVisible(true)
+        setIsScrolled(false)
       }
-      setLastScrollY(currentY)
     }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
+  }, [])
 
   /* Lock body scroll when menu open */
   useEffect(() => {
@@ -183,14 +180,31 @@ const Navbar = () => {
     <>
       {/* ================= NAVBAR ================= */}
       <motion.header
-        initial={{ y: 0 }}
-        animate={{ y: isVisible ? 0 : -100 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`fixed top-0 left-0 w-full z-20
-        bg-white/95 dark:bg-[#0D0D0D]/95
-        border-b border-gray-200 dark:border-[#2C2C2C]
-        backdrop-blur-sm
-        px-20 py-6 flex items-center justify-between
+        initial={{ 
+          width: "100%", 
+          x: "-50%", 
+          left: "50%", 
+          top: 0, 
+          borderRadius: 0 
+        }}
+        animate={{ 
+          width: isScrolled ? "90%" : "100%",
+          top: isScrolled ? "16px" : 0, 
+          borderRadius: isScrolled ? "50px" : 0,
+          paddingTop: isScrolled ? "10px" : "24px",
+          paddingBottom: isScrolled ? "10px" : "24px",
+          borderWidth: isScrolled ? "2px" : "0px",
+          borderBottomWidth: isScrolled ? "2px" : "1px",
+          borderColor: isScrolled ? "#000000" : mode === 'dark' ? "#2C2C2C" : "#E5E7EB",
+          boxShadow: isScrolled ? "4px 4px 0px 0px rgba(0,0,0,1)" : "0px 0px 0px 0px rgba(0,0,0,0)",
+          backgroundColor: isScrolled 
+            ? mode === 'dark' ? "rgba(13, 13, 13, 0.7)" : "rgba(255, 255, 255, 0.7)"
+            : mode === 'dark' ? "rgba(13, 13, 13, 0.95)" : "rgba(255, 255, 255, 0.95)",
+          backdropFilter: isScrolled ? "blur(12px)" : "blur(4px)"
+        }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className={`fixed z-20
+        px-20 flex items-center justify-between
         ${montserrat.className}
         lg:px-12 md:px-8 sm:px-6`}
       >
@@ -324,7 +338,7 @@ const Navbar = () => {
 
         {/* Center Logo */}
         <div className="absolute left-1/2 -translate-x-1/2">
-          <Logo />
+          <Logo isScrolled={isScrolled} />
         </div>
       </motion.header>
 
@@ -359,7 +373,7 @@ const Navbar = () => {
             >
               {/* Header with Logo and Close */}
               <div className="p-6 flex justify-between items-center border-b border-gray-200 dark:border-[#2C2C2C]">
-                <Logo />
+                <Logo isScrolled={false} />
                 <button 
                   onClick={closeMenu}
                   className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-[#1A1A1A] 

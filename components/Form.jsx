@@ -58,7 +58,7 @@ const Form = ({ className }) => {
     }
 
     return (
-        <section className="relative max-w-6xl mx-auto py-12 sm:py-8 px-4 sm:px-4 xs:px-3">
+        <section className="relative max-w-6xl mx-auto pt-0 pb-12 sm:py-8 px-4 sm:px-4 xs:px-3">
             {/* Terminal Header */}
             <div className="mb-8 sm:mb-6 text-center">
                 <div className="inline-flex items-center gap-3 mb-3 sm:mb-2">

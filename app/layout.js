@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Chatbot from '../components/Chatbot'
 import Layout from '@/components/Layout'
+import ScrollToTop from '../components/ScrollToTop'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -93,6 +94,7 @@ export default function RootLayout({ children }) {
         <div className="fixed z-50">
           <Chatbot />
         </div>
+        <ScrollToTop />
       </body>
     </html>
   )

@@ -1,11 +1,39 @@
 "use client"
-import { motion } from 'framer-motion'
+import { motion, useAnimationFrame, useMotionValue, useTransform } from 'framer-motion'
 import React, { useState, useEffect } from 'react'
 
 const MarketTicker = () => {
     const [tickerData, setTickerData] = useState([])
-    const [isPaused, setIsPaused] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
+    const [direction, setDirection] = useState(1) // 1 = right-to-left, -1 = left-to-right
+    
+    const baseX = useMotionValue(0)
+    const x = useTransform(baseX, v => `${v}%`)
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            if (e.clientX < window.innerWidth / 2) {
+                setDirection(-1)
+            } else {
+                setDirection(1)
+            }
+        }
+        window.addEventListener('mousemove', handleMouseMove)
+        return () => window.removeEventListener('mousemove', handleMouseMove)
+    }, [])
+
+    useAnimationFrame((t, delta) => {
+        let moveBy = direction * -0.003 * delta; 
+        let newValue = baseX.get() + moveBy;
+        
+        if (newValue <= -50) {
+            newValue += 50;
+        } else if (newValue > 0) {
+            newValue -= 50;
+        }
+        
+        baseX.set(newValue);
+    });
 
     useEffect(() => {
         // Fetch data only once when component mounts
@@ -56,8 +84,6 @@ const MarketTicker = () => {
     return (
         <div 
             className="w-full bg-white dark:bg-[#0D0D0D] border-y border-gray-200 dark:border-[#2C2C2C] overflow-hidden relative"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
         >
             {/* Retro terminal scan line */}
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-10">
@@ -69,13 +95,7 @@ const MarketTicker = () => {
             
             <motion.div 
                 className="flex whitespace-nowrap py-2.5"
-                animate={{ x: isPaused ? 0 : '-100%' }}
-                transition={{ 
-                    duration: 20,
-                    ease: "linear",
-                    repeat: Infinity 
-                }}
-                style={{ width: '200%' }}
+                style={{ x, width: '200%' }}
             >
                 {/* First set */}
                 <div className="flex items-center gap-5 px-8">

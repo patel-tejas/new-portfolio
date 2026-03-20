@@ -201,16 +201,13 @@ const Form = ({ className }) => {
                                     <button
                                         onClick={handleSubmit(onSubmit)}
                                         type="button"
-                                        className="w-full flex items-center justify-center gap-3 px-6 py-3 rounded-xl 
-                                            font-mono font-bold text-white dark:text-black text-sm
-                                            bg-gradient-to-r from-green-600 to-emerald-600 
-                                            dark:from-[#00FF6A] dark:to-emerald-500
-                                            hover:from-green-700 hover:to-emerald-700 
-                                            dark:hover:from-[#00FF6A] dark:hover:to-emerald-600
-                                            transition-all duration-300 hover:scale-[1.02] active:scale-95
-                                            border border-green-500/30 dark:border-[#00FF6A]/30
-                                            shadow-lg shadow-green-500/20 dark:shadow-[#00FF6A]/20
-                                            group"
+                                        className="w-full flex items-center justify-center gap-3 px-6 py-3 
+                                            font-mono font-black text-black text-sm
+                                            bg-[#00FF6A] border-2 border-black rounded-lg
+                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+                                            hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+                                            active:translate-x-[4px] active:translate-y-[4px] active:shadow-none 
+                                            transition-all duration-200 group"
                                     >
                                         <span>SEND MESSAGE</span>
                                         <svg 
@@ -242,11 +239,12 @@ const Form = ({ className }) => {
                                         href="https://www.linkedin.com/in/pateltejas2005/" 
                                         target='_blank'
                                         className="flex items-center gap-4 p-4 rounded-xl
-                                            bg-white/50 dark:bg-[#0D0D0D]/50 backdrop-blur-sm
-                                            border border-gray-300 dark:border-gray-700
-                                            hover:border-blue-500/50 dark:hover:border-blue-500/50
-                                            hover:bg-blue-50/50 dark:hover:bg-blue-900/10
-                                            transition-all duration-300 hover:scale-[1.02] group"
+                                            bg-white dark:bg-[#0D0D0D]
+                                            border-2 border-black
+                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+                                            hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
+                                            active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
+                                            transition-all duration-200 group"
                                     >
                                         <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center">
                                             <GrLinkedinOption className="w-6 h-6 text-white" />
@@ -269,11 +267,12 @@ const Form = ({ className }) => {
                                         href="https://twitter.com/tejaspatel1532" 
                                         target='_blank'
                                         className="flex items-center gap-4 p-4 rounded-xl
-                                            bg-white/50 dark:bg-[#0D0D0D]/50 backdrop-blur-sm
-                                            border border-gray-300 dark:border-gray-700
-                                            hover:border-gray-500/50 dark:hover:border-gray-500/50
-                                            hover:bg-gray-50/50 dark:hover:bg-gray-900/10
-                                            transition-all duration-300 hover:scale-[1.02] group"
+                                            bg-white dark:bg-[#0D0D0D]
+                                            border-2 border-black
+                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+                                            hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
+                                            active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
+                                            transition-all duration-200 group"
                                     >
                                         <div className="w-12 h-12 rounded-lg bg-black dark:bg-white flex items-center justify-center">
                                             <RiTwitterXFill className="w-6 h-6 text-white dark:text-black" />
@@ -296,11 +295,12 @@ const Form = ({ className }) => {
                                         href="https://www.instagram.com/_me.tez_/" 
                                         target='_blank'
                                         className="flex items-center gap-4 p-4 rounded-xl
-                                            bg-white/50 dark:bg-[#0D0D0D]/50 backdrop-blur-sm
-                                            border border-gray-300 dark:border-gray-700
-                                            hover:border-pink-500/50 dark:hover:border-pink-500/50
-                                            hover:bg-pink-50/50 dark:hover:bg-pink-900/10
-                                            transition-all duration-300 hover:scale-[1.02] group"
+                                            bg-white dark:bg-[#0D0D0D]
+                                            border-2 border-black
+                                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+                                            hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
+                                            active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
+                                            transition-all duration-200 group"
                                     >
                                         <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                                             <BiLogoInstagram className="w-6 h-6 text-white" />
@@ -321,8 +321,8 @@ const Form = ({ className }) => {
                             </div>
 
                             {/* Email Direct Link */}
-                            <div className="p-4 rounded-xl border border-amber-500/20 
-                                bg-amber-500/5 backdrop-blur-sm">
+                            <div className="p-4 rounded-xl border-2 border-black 
+                                bg-amber-50 dark:bg-amber-900/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                                 <div className="flex items-center gap-3 mb-2">
                                     <svg className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>

@@ -162,27 +162,13 @@ export default function Home() {
                   target='_blank'
                   className='
       flex items-center justify-center 
-      bg-green-600 dark:bg-[#00FF6A] 
-      hover:bg-green-700 dark:hover:bg-[#00FF6A]/90 
-      text-white 
-      py-3 px-6 
-      md:py-2.5 md:px-5 
-      sm:py-2 sm:px-4 
-      xs:py-2 xs:px-4 
+      bg-[#00FF6A] text-black border-2 border-black
+      py-3 px-6 md:py-2.5 md:px-5 sm:py-2 sm:px-4 xs:py-2 xs:px-4 
       text-lg md:text-base sm:text-sm xs:text-sm 
-      font-semibold 
-      border-0 
-      rounded-lg 
-      font-mono 
-      group 
-      transition-all duration-300 
-      hover:scale-[1.02] hover:shadow-xl hover:shadow-green-500/30 
-      active:scale-95
-      w-full max-w-xs 
-      md:max-w-[180px] 
-      sm:max-w-[160px] 
-      xs:max-w-[190px]
-      text-center
+      font-black rounded-lg w-full max-w-xs md:max-w-[180px] sm:max-w-[160px] xs:max-w-[190px] text-center
+      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+      hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+      active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-200
     '
                 >
                   {/* Up arrow icon */}
@@ -209,37 +195,22 @@ export default function Home() {
                   <span className="truncate">[ VIEW RESUME ]</span>
                 </Link>
 
-                {/* Mail Button */}
+                {/* LinkedIn Button */}
                 <Link
-                  href="mailto:techtezofficial@gmail.com"
+                  href="https://www.linkedin.com/in/pateltejas2005/"
+                  target='_blank'
                   className='
       flex items-center justify-center 
-      bg-transparent 
-      hover:bg-gray-100 dark:hover:bg-[#2C2C2C] 
-      text-gray-800 dark:text-gray-300 
-      hover:text-gray-900 dark:hover:text-white 
-      py-3 px-6 
-      md:py-2.5 md:px-5 
-      sm:py-2 sm:px-4 
-      xs:py-2 xs:px-4 
+      bg-blue-600 text-white border-2 border-black
+      py-3 px-6 md:py-2.5 md:px-5 sm:py-2 sm:px-4 xs:py-2 xs:px-4 
       text-lg md:text-base sm:text-sm xs:text-sm 
-      font-semibold 
-      border-2 border-gray-400 dark:border-gray-600 
-      hover:border-gray-500 dark:hover:border-gray-500 
-      rounded-lg 
-      font-mono 
-      group 
-      transition-all duration-300 
-      hover:scale-[1.02] 
-      active:scale-95
-      w-full max-w-xs 
-      md:max-w-[180px] 
-      sm:max-w-[160px] 
-      xs:max-w-[190px]
-      text-center
+      font-black rounded-lg w-full max-w-xs md:max-w-[180px] sm:max-w-[160px] xs:max-w-[190px] text-center
+      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+      hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+      active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-200
     '
                 >
-                  {/* Mail/envelope icon */}
+                  {/* LinkedIn icon */}
                   <svg
                     className="
         w-5 h-5 
@@ -249,18 +220,12 @@ export default function Home() {
         mr-3 
         flex-shrink-0
       "
-                    fill="none"
-                    stroke="currentColor"
+                    fill="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2.5"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
-                  <span className="truncate">[ SEND MAIL ]</span>
+                  <span className="truncate">[ LINKEDIN ]</span>
                 </Link>
                
               </div>
@@ -282,27 +247,13 @@ export default function Home() {
                   href="/projects"
                   className='
       flex items-center justify-center 
-      bg-green-600 dark:bg-[#00FF6A] 
-      hover:bg-green-700 dark:hover:bg-[#00FF6A]/90 
-      text-white 
-      py-3 px-6 
-      md:py-2.5 md:px-5 
-      sm:py-2 sm:px-4 
-      xs:py-2 xs:px-4 
+      bg-[#00FF6A] text-black border-2 border-black
+      py-3 px-6 md:py-2.5 md:px-5 sm:py-2 sm:px-4 xs:py-2 xs:px-4 
       text-lg md:text-base sm:text-sm xs:text-sm 
-      font-semibold 
-      border-0 
-      rounded-lg 
-      font-mono 
-      group 
-      transition-all duration-300 
-      hover:scale-[1.02] hover:shadow-xl hover:shadow-green-500/30 
-      active:scale-95
-      w-full max-w-xs 
-      md:max-w-[180px] 
-      sm:max-w-[160px] 
-      xs:max-w-[190px]
-      text-center
+      font-black rounded-lg w-full max-w-xs md:max-w-[180px] sm:max-w-[160px] xs:max-w-[190px] text-center
+      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+      hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] 
+      active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-200
     '>
                 
                   <span className="truncate">[ SEE MY PROJECTS ]</span>

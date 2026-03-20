@@ -211,7 +211,7 @@ const MobileTechnologies = () => {
 
     autoScrollInterval.current = setInterval(() => {
       setActiveIndex((prevIndex) => {
-        const nextIndex = prevIndex + visibleCards;
+        const nextIndex = prevIndex + 1;
         return nextIndex >= techAssets.length ? 0 : nextIndex;
       });
     }, 3000);
@@ -225,21 +225,25 @@ const MobileTechnologies = () => {
 
   const nextCard = useCallback(() => {
     setActiveIndex((prevIndex) => {
-      const nextIndex = prevIndex + visibleCards;
+      const nextIndex = prevIndex + 1;
       return nextIndex >= techAssets.length ? 0 : nextIndex;
     });
-  }, [visibleCards, techAssets.length]);
+  }, [techAssets.length]);
 
   const prevCard = useCallback(() => {
     setActiveIndex((prevIndex) => {
-      const nextIndex = prevIndex - visibleCards;
-      return nextIndex < 0 ? techAssets.length - visibleCards : nextIndex;
+      const nextIndex = prevIndex - 1;
+      return nextIndex < 0 ? techAssets.length - 1 : nextIndex;
     });
-  }, [visibleCards, techAssets.length]);
+  }, [techAssets.length]);
 
   const goToCard = useCallback((index) => {
-    setActiveIndex(index);
-  }, []);
+    if (visibleCards === 3) {
+      setActiveIndex((index - 1 + techAssets.length) % techAssets.length);
+    } else {
+      setActiveIndex(index);
+    }
+  }, [visibleCards, techAssets.length]);
 
   // Touch and drag handlers
   const handleTouchStart = useCallback((e) => {
@@ -740,20 +744,20 @@ const MobileTechnologies = () => {
         </div>
 
         {/* Carousel Indicators */}
-        <div className="flex justify-center mt-8 sm:mt-10 md:mt-12 space-x-2 sm:space-x-3">
-          {Array.from({ length: Math.ceil(techAssets.length / visibleCards) }).map((_, groupIndex) => {
-            const startIndex = groupIndex * visibleCards;
-            const isActive = activeIndex >= startIndex && activeIndex < startIndex + visibleCards;
+        <div className="flex justify-center mt-8 sm:mt-10 md:mt-12 space-x-2 sm:space-x-3 flex-wrap">
+          {techAssets.map((tech, index) => {
+            const activeCenterIndex = visibleCards === 3 ? (activeIndex + 1) % techAssets.length : activeIndex;
+            const isActive = activeCenterIndex === index;
 
             return (
               <button
-                key={groupIndex}
-                onClick={() => goToCard(startIndex)}
+                key={index}
+                onClick={() => goToCard(index)}
                 className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${isActive
                   ? 'bg-green-500 dark:bg-[#00FF6A] w-5 sm:w-6 md:w-8'
                   : 'bg-gray-400 dark:bg-gray-600 hover:bg-gray-500'
                   }`}
-                aria-label={`Go to group ${groupIndex + 1}`}
+                aria-label={`Go to slide ${index + 1}`}
               />
             );
           })}

@@ -31,7 +31,7 @@ const ScrollToTop = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-32 right-8 z-50">
+    <div className="fixed bottom-32 right-8 z-40">
       <AnimatePresence>
         {isVisible && (
           <motion.button

@@ -19,6 +19,7 @@ import urlshortener from "../../public/urlshortener.png"
 import hisaab from "../../public/hisaab.png"
 import mainline from "../../public/mainline.png"
 import sarthi from "../../public/sarthi.png"
+import travely from "../../public/travely.png"
 import hacknuthon from "../../public/hacknuthon.png"
 
 const PolkaDotBackground = () => (
@@ -233,6 +234,16 @@ const page = () => {
                 type="A Client Project"
                 img={sarthi}
                 colorIndex={2}
+              />
+            </div>
+            <div className='col-span-12'>
+              <FeaturedProjects
+                title="Travely AI"
+                summary="Travely AI is an intelligent trip planning platform that leverages AI to create personalized itineraries, discover hidden gems, and streamline travel logistics for a seamless journey."
+                link="https://travelyai.vercel.app/"
+                type="Featured Project"
+                img={travely}
+                colorIndex={3}
               />
             </div>
             <div className='col-span-12'>

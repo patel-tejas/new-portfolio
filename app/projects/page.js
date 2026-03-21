@@ -45,7 +45,7 @@ const colors = [
   "bg-[#60A5FA]", // Cool Blue
 ];
 
-const FeaturedProjects = ({ type, link, title, summary, img, github, colorIndex = 0, hideVisit = false }) => {
+const FeaturedProjects = ({ type, link, title, summary, img, github, colorIndex = 0, hideVisit = false, tags = [] }) => {
   const cardColor = colors[colorIndex % colors.length];
 
   return (
@@ -67,11 +67,20 @@ const FeaturedProjects = ({ type, link, title, summary, img, github, colorIndex 
       </Link>
 
       <div className='w-1/2 flex flex-col items-start justify-between pl-10 lg:w-full lg:pl-0 lg:pt-8'>
-        <div className='flex items-center gap-3 mb-2 border-2 border-black bg-white px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'>
-          <div className='w-3 h-3 rounded-full bg-red-500 animate-pulse border border-black'></div>
-          <span className='font-mono text-xs font-black uppercase tracking-widest text-black'>
-            {type}
-          </span>
+        <div className='flex flex-wrap items-center gap-3 mb-2'>
+          <div className='flex items-center gap-3 border-2 border-black bg-white px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'>
+            <div className='w-3 h-3 rounded-full bg-red-500 animate-pulse border border-black'></div>
+            <span className='font-mono text-xs font-black uppercase tracking-widest text-black'>
+              {type}
+            </span>
+          </div>
+          {tags.map((tag, index) => (
+            <div key={index} className='flex items-center gap-2 border-2 border-black bg-white px-3 py-1 rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'>
+              <span className='font-mono text-[10px] font-black uppercase tracking-widest text-black'>
+                {tag}
+              </span>
+            </div>
+          ))}
         </div>
 
         <Link href={link} target='_blank' >
@@ -244,6 +253,7 @@ const page = () => {
                 type="Featured Project"
                 img={travely}
                 colorIndex={3}
+                tags={["Webhooks", "Rate Limiting", "Upstash", "Redis"]}
               />
             </div>
             <div className='col-span-12'>

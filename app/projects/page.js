@@ -41,6 +41,7 @@ const colors = [
   "bg-[#00FF6A]", // Green
   "bg-[#B388FF]", // Purple
   "bg-[#FF5252]", // Red
+  "bg-[#60A5FA]", // Cool Blue
 ];
 
 const FeaturedProjects = ({ type, link, title, summary, img, github, colorIndex = 0, hideVisit = false }) => {
@@ -208,7 +209,7 @@ const page = () => {
                 type="🏆 Hackathon Winner"
                 img={hacknuthon}
                 github="https://github.com/patel-tejas/hacknuthon-aubergine"
-                colorIndex={5}
+                colorIndex={6}
                 hideVisit={true}
               />
             </div>
@@ -307,10 +308,9 @@ const page = () => {
               />
             </div>
 
-            <div className='col-span-12'>
-              <FeaturedProjects
+            <div className='col-span-6 sm:col-span-12'>
+              <Project
                 title="SparkX Generative AI"
-                summary="A Web App used to generate text, images, videos, and audio using AI. Have used OpenAI's API services to generate text, code and image services. While for audio and video used Replicate AI's APIs."
                 link="https://spark-x-ai.vercel.app/"
                 type="Featured Project"
                 img={sparkX}

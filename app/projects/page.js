@@ -17,6 +17,7 @@ import ArticlesPage from '../../components/ArticlesPage'
 import TransitionEffect from '../../components/TransitionEffect'
 import urlshortener from "../../public/urlshortener.png"
 import hisaab from "../../public/hisaab.png"
+import mainline from "../../public/mainline.png"
 import sarthi from "../../public/sarthi.png"
 import hacknuthon from "../../public/hacknuthon.png"
 
@@ -136,7 +137,7 @@ const Project = ({ title, type, img, link, github, colorIndex = 0 }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       viewport={{ once: true, margin: "-50px" }}
-      className={`w-full flex flex-col items-center justify-center relative rounded-2xl border-4 border-black dark:border-white ${cardColor} shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-200 gap-4 p-6 xs:p-5 text-black z-10`}
+      className={`w-full h-full flex flex-col items-center justify-between relative rounded-2xl border-4 border-black dark:border-white ${cardColor} shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-200 gap-4 p-6 xs:p-5 text-black z-10`}
     >
       <div className='w-full flex justify-between items-center mb-2'>
         <div className='flex items-center border-2 border-black bg-white px-2 py-1 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'>
@@ -155,17 +156,17 @@ const Project = ({ title, type, img, link, github, colorIndex = 0 }) => {
         )}
       </div>
 
-      <Link href={link} target='_blank' className='w-full cursor-pointer overflow-hidden rounded-xl relative border-4 border-black bg-white'>
-        <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }}>
+      <Link href={link} target='_blank' className='w-full cursor-pointer flex-grow-[2] overflow-hidden rounded-xl relative border-4 border-black bg-white aspect-video'>
+        <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} className="h-full w-full">
           <Image
             src={img}
             alt={title}
-            className="w-full h-auto object-cover"
+            className="w-full h-full object-cover"
           />
         </motion.div>
       </Link>
 
-      <div className='w-full flex flex-col items-start justify-between mt-2'>
+      <div className='w-full flex flex-col flex-grow items-start justify-end mt-2'>
         <Link href={link} target='_blank' className="w-full">
           <h2 className='my-2 w-full text-left text-3xl sm:text-2xl font-black font-mont text-black hover:underline decoration-4 underline-offset-4'>{title}</h2>
         </Link>
@@ -222,6 +223,7 @@ const page = () => {
                 colorIndex={0}
               />
             </div>
+
             <div className='col-span-12'>
               <FeaturedProjects
                 title="Sarthi Foundation"
@@ -234,12 +236,11 @@ const page = () => {
             </div>
             <div className='col-span-12'>
               <FeaturedProjects
-                title="URL Shortener"
-                summary="Your URL shortener web app lets users quickly shorten long URLs into compact, shareable links. Built with Next.js and MongoDB."
-                link="https://squeezeurl.vercel.app/"
-                type="Featured Project"
-                img={urlshortener}
-                github="https://github.com/patel-tejas/URLShortener"
+                title="Mainline Coffee"
+                summary="A sleek, modern showcase project for a fictional coffee brand. It features a beautifully designed interface for exploring artisanal coffee blends, brewing guides, and a seamless user experience."
+                link="https://mainline-coffee.vercel.app"
+                type="Showcase Project"
+                img={mainline}
                 colorIndex={4}
               />
             </div>
@@ -254,6 +255,16 @@ const page = () => {
               />
             </div>
 
+            <div className='col-span-6 sm:col-span-12'>
+              <Project
+                title="URL Shortener"
+                link="https://squeezeurl.vercel.app/"
+                type="Featured Project"
+                img={urlshortener}
+                github="https://github.com/patel-tejas/URLShortener"
+                colorIndex={0}
+              />
+            </div>
             <div className='col-span-6 sm:col-span-12'>
               <Project
                 title="Usability Hub- Clone"
